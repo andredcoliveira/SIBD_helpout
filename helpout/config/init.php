@@ -1,11 +1,11 @@
 <?php
   session_start();
 
-  $conn = new PDO('pgsql:host=localhost;port=5432;dbname=SIDB', 'postgres', 'postgres');
+  $conn = new PDO('pgsql:host=dbm.fe.up.pt;port=5432;dbname=sibd17g21', 'sibd17g21', 'batatinhas');
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $conn->query("SET SCHEMA 'public'");
+  $conn->query("SET SCHEMA 'helpout'");
 
   /* check later */
   if (isset($_SESSION['error_message'])) {
@@ -22,15 +22,6 @@
     $_FORM_VALUES = $_SESSION['form_values'];
     unset($_SESSION['form_values']);
   }
-
-  /* test database */
-  $stmt = $conn->prepare('SELECT * FROM employee');
-  $stmt->execute();
-  $employees = $stmt->fetch();
-
-  /*testing*/
-  echo("John Doe? ");
-  print_r($employees['name'] . ".");
 ?>
 
 <?php if (isset($_ERROR_MESSAGE)) { ?>
