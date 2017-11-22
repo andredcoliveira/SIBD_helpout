@@ -1,0 +1,92 @@
+header {
+  background-color: black;
+
+  padding: 1em;
+}
+
+header > a > img {
+	width: auto;
+	height: 90px;
+}
+
+header > nav {
+	color: white;
+	text-decoration: none;  
+
+	padding: 1em;	
+}
+
+header > nav > a {
+	color: white;
+	text-decoration: none;  
+	font-size: 1.5em;
+
+	
+
+	padding: 1em;	
+}
+
+header > nav > a:hover {
+	color: green;
+	text-decoration: none;  
+}
+	
+
+
+
+
+
+
+
+main {
+	background-color: green;
+
+	padding: 1em;
+	margin: 0;
+}
+
+
+main > a > article > section > img {
+	width: auto;
+ 	max-width: 300px;
+  	height: auto;
+  	max-height: 200px;
+}
+
+main > a  > article > section + section {
+	margin: 1em;
+}
+
+main > a  > article {
+ 	border-style: solid;
+
+ 	background-color: white;	
+
+ 	width: 300px;
+
+ 	margin: 1em;
+	padding: 0;
+}
+
+main > a{
+ 	color: black;
+ 	text-decoration: none;
+}
+
+main > a:hover{
+ 	color: orange; 
+}
+
+
+
+
+footer{
+	background-color: black;
+	color: white;
+
+	padding: 1em;
+}
+
+footer > p {
+	text-align: center;
+}

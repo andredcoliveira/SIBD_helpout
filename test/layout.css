@@ -1,0 +1,19 @@
+body > header {
+	display: grid;
+	grid-template-columns:  1fr 1fr;
+}
+
+body > header > nav{
+	vertical-align: center;
+}
+
+
+
+body > main {
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
