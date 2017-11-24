@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #484848;
+}
+
+/** header code **/
+
+header {
+  position:fixed;
+  top:0;
+  height: 3em;
+  width: 100%;
+  background-color: black;
+  display:flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #484848;
+}
+
+.logo {
+  align-self: center;
+  margin-left: 0.2em;
+}
+
+.logo > img {
+  height: 2em;
+  width: auto;
+  padding-top: 0.4em;
+}
+
+.header_navigation {
+  align-self:center;
+  font-size: x-small;
+  padding: 0;
+  margin: 0;
+}
+
+.header_navigation li {
+  float: left;
+  display: inline;
+  border-right: 1px solid #FFF;
+  border-left: 1px solid #FFF;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.header_navigation li:first-child {
+  border: 0;
+}
+.header_navigation li:last-child {
+  border: 0;
+}
+
+.header_navigation a {
+  display: block;
+  padding: 0.2em;
+  color: white;
+	text-decoration: none;
+	font-size: 1.5em;
+  height: 100%;
+}
+
+.header_navigation a.active {
+  color: green;
+}
+
+.header_navigation a:hover {
+  color: #006400;
+}
+
+.header_navigation a:hover:not(.active) {
+  color: #CFCFCF;
+}
+
+/** content code **/
+
+.post_grid {
+  padding-top: 4em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75em, 1fr));
+  grid-gap: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 2.2em;
+}
+
+.post_grid a {
+  color: black;
+  text-decoration: none;
+}
+
+.post_request {
+  border: 0.1em solid #000;
+  border-radius: 0.5em;
+  background-color: white;
+  height: fit-content;
+  width: auto;
+  overflow: hidden;
+}
+
+.post_request:hover {
+  border: 0.2em solid green;
+}
+
+.post_img {
+  border-color: inherit;
+}
+
+.post_img img {
+  padding: 1px;
+  width: 100%;
+  height: auto;
+  border-bottom: 0.1em solid;
+  border-color: inherit;
+}
+
+.post_description {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+/** footer code **/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
+
+footer > .authors {
+  margin: 0;
+  color: white;
+  font-size: xx-small;
+  text-align: center;
+  padding: 0.5em;
+}
