@@ -22,7 +22,7 @@ header {
 .logo {
   height: 75%;
   align-self: center;
-  margin-left: 0.2em;
+  margin-left: 0.3em;
 }
 
 .logo > img {
@@ -31,52 +31,46 @@ header {
   padding-top: 0.1em;
 }
 
-.nav_popup_wrapper {
-  display:flex;
-  flex-direction: column;
+.trigram_container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 0 1em 0.3em 0;
 }
 
-.nav_popup {
-  margin-left: auto;
-  padding-right: 0.5em;
-  align-self: center;
+.trigram_button {
   font-size: xx-large;
-  color: white;
+  color: #fff;
   text-decoration: none;
+  transition: all 0.3s ease-out;
+  transition: opacity 500ms;
 }
 
 .header_navigation {
-  display: block;
-  align-self:center;
+  margin: 3em 0 0 0;
+  padding: 0.2em 0 0.2em 0;
   background-color: black;
-  font-size: x-small;
-  margin-top: 0.5em;
-  padding: 0.1em 1em 0.1em 1.5em;
-  transition: opacity 500ms;
-
-  border: 0.2em solid #F5F5DC;
-  border-radius: 0.5em;
+  border: 0.1em solid #F5F5DC;
+  border-radius: 0.3em;
 }
 
-#open_nav {
-  position: fixed;
-  top:0;
-  right: 0;
+.overlay {
+  transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
 }
 
-#open_nav:target .nav_popup {
-  padding-left: 3em;
-}
-
-#open_nav:target {
+.overlay:target {
   visibility: visible;
   opacity: 1;
 }
 
+.trigram_popup {
+  transition: all 500ms ease-in-out;
+}
+
 .header_navigation li {
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.3em 1.8em 0.3em 1.8em;
   list-style-type: none;
   float: none;
   opacity: 0.9;
@@ -85,8 +79,7 @@ header {
 .header_navigation a {
   color: white;
 	text-decoration: none;
-	font-size: 1.5em;
-  height: 100%;
+	font-size: 0.9em;
 }
 
 .header_navigation a.active {
@@ -104,7 +97,9 @@ header {
 /** content code **/
 
 #content {
-  padding: 4em 1em 1em 14em;
+  display: flex;
+  flex-direction: column;
+  padding: 4em 1em 1em 3.5em;
 }
 
 .post_grid {
@@ -117,6 +112,7 @@ header {
 .post_grid a {
   color: #202020;
   text-decoration: none;
+  margin: 0.5em;
 }
 
 .post_request {
@@ -126,7 +122,6 @@ header {
   width: 15em;
   height: auto;
   overflow: hidden;
-  margin: 0.5em;
 }
 
 .post_request:hover {
@@ -157,31 +152,76 @@ header {
   /** sidebar **/
 .sidebar {
   position: fixed;
-  left:0;
+  left: 0;
+  top: 0;
   margin: 3em 0 3em 0;
   padding: 1em 0.5em 0.5em 0.5em;
 
   background-color: #F5F5DC;
-  border-right: 1px solid black;
+  border-right: 0.05em solid black;
   color: #181818;
-  opacity: 0.9;
 
-  height: 100%;
-  width: 12em;
+  height: 100vh;
+  width: 0;
 
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   flex-wrap: wrap;
-}
 
-.user_photo {
-  align-self: center;
+  transition: width 500ms ease-out;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .user_photo img {
-  border: 1px solid black;
+  border: 0.1em solid black;
+  border-radius: 0.2em/0.5em;
   width: 10em;
+}
+
+.sidebar_colapsed {
+  height: 100vh;
+  width: 2.5em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 3em;
+  background-color: #181818;
+  color: #F5F5DC;
+  text-decoration: none;
+  border-right: 0.1em solid black;
+}
+
+.sidebar_colapsed span {
+  position: fixed;
+  top: 50%;
+  left: -3.1em;
+  font-size: 1.5em;
+  /* Safari */
+  -webkit-transform: rotate(-90deg);
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+  /* IE */
+  -ms-transform: rotate(-90deg);
+  /* Opera */
+  -o-transform: rotate(-90deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+#show_sidebar:target + .post_grid {
+  padding-left: 14em;
+}
+
+#show_sidebar:target {
+  visibility: visible;
+  opacity: 1;
+  width: 12em;
+}
+
+.photo_button {
+  transition: width 5s ease-in-out;
 }
 
   /** content nav **/
