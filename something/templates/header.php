@@ -18,7 +18,7 @@
       <div id="open_nav" class="overlay">
         <div class="trigram_popup">
           <div class="trigram_container">
-            <a href="#" class="trigram_button">&#9776;</a>
+            <a href="#/" class="trigram_button">&#9776;</a>
           </div>
           <ul class="header_navigation">
             <li><a href="index.php" class="active">Pedidos</a></li>

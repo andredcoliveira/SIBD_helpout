@@ -2,7 +2,7 @@
         <span><strong>SHOW SIDEBAR</strong></span>
       </a>
       <aside id="show_sidebar" class="sidebar">
-        <a href="#" class="photo_button">
+        <a href="#/" class="photo_button">
           <section class="user_photo">
             <img src="res/user_photo.jpg" alt="User Photo">
           </section>
