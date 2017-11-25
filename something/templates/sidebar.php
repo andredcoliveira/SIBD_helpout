@@ -4,7 +4,7 @@
       <aside id="show_sidebar" class="sidebar">
         <a href="#" class="photo_button">
           <section class="user_photo">
-            <img src="user_photo.jpg" alt="User Photo">
+            <img src="res/user_photo.jpg" alt="User Photo">
           </section>
         </a>
         <section class="user_info">
