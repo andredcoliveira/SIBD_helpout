@@ -382,3 +382,152 @@ footer > .authors {
 .close:hover {
   background-color: #800000;
 }
+
+
+
+
+
+
+
+/*profile!!!!*/
+
+.profile_wrapper {
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+
+.profile {
+
+  max-width: 70em;
+
+
+
+
+
+  background-color: white;
+  margin: 0 3em 0 3em;
+  padding: 0;
+
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0.2em 0 0.2em;
+
+  
+}
+
+.profile_top {
+  display: flex;
+  padding: 1em
+}
+
+.profile_pic_wrapper {
+  overflow: hidden;
+  width: 12em;
+  height: 12em;
+
+  border: 0.2em solid black;
+  border-radius: 0.3em;
+
+  background-position: center;
+  background-size: cover;
+}
+
+
+.profile_pic_wrapper img {
+  /*4/3 ratio*/
+  width: auto;
+  height: 30em;
+
+
+}
+
+
+.stars {
+  display: flex;
+  align-items: center;
+  margin-top: 1em
+}
+
+.stars h3 {
+  padding-right: 1em
+}
+
+
+.profile_top_right {
+  padding: 1em;
+  padding-left: 2em;
+}
+
+
+.profile_top_right h2{
+  padding: 0;
+  margin: 0
+}
+
+.profile_top_right h3{
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  padding-left: 1em;
+}
+
+
+.stars img {
+  height: 2em;
+  width: auto;
+}
+
+.profile_top_right ul {
+  padding-left: 0;
+}
+
+
+.description_wrapper {
+  padding: 0 1em 0 1em;
+}
+
+.description_wrapper p {
+  text-align: justify;
+}
+
+.recent_posts {
+  background-color: lightgrey;
+  margin: 0;
+  padding: 1em;
+}
+
+.recent_posts > h2 {
+  margin-top: 0;
+}
+
+.recent_comments {
+  padding: 1em;
+}
+
+.recent_comments > h2 {
+  margin-top: 0;
+}
+
+.comment {
+  padding: 0.3em;
+  background-color: lightgrey;
+  border: 0.1em solid black;
+  border-radius: 1em;
+
+  margin: 1em 0 1em 0;
+}
+
+.comment a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.comment a:hover {
+  color: green;
+}
+
+
