@@ -7,6 +7,7 @@
   $username = strip_tags($_POST['username']);
   $password = $_POST['passwd'];
   $password_bis = $_POST['passwd2'];
+  $_SESSION['form_values'] = $_POST;
 
   if(!$realname) {
     $_SESSION['error_message'] = 'Invalid name';

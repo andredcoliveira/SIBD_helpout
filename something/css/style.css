@@ -1,4 +1,4 @@
-close_sidebarhtml, body {
+html, body {
   font-family: Arial, sans-serif;
   margin: 0;
   //background-color: #484848;
@@ -84,15 +84,19 @@ header {
 }
 
 .header_navigation a.active {
-  color: green;
+  color: #4da542;
 }
 
 .header_navigation a:hover {
-  color: #006400;
+  color: #34802b;
 }
 
-.header_navigation a:hover:not(.active) {
+.header_navigation a:hover:not(.active):not(.logout) {
   color: #CFCFCF;
+}
+
+.header_navigation a.logout {
+  color: #af3030;
 }
 
 /** error/success **/
@@ -646,7 +650,7 @@ footer > .authors {
   padding: 0;
 
   display: flex;
- 
+
 }
 
 .requests_nav li {
@@ -657,20 +661,3 @@ footer > .authors {
 .requests_nav li:last-child {
   border: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -26,10 +26,14 @@
     $_NAME = $_SESSION['name'];
   }
 
-  /* check later
+  if (isset($_SESSION['id'])) {
+    $_ID = $_SESSION['id'];
+  }
+
   if (isset($_SESSION['form_values'])) {
     $_FORM_VALUES = $_SESSION['form_values'];
     unset($_SESSION['form_values']);
   }
-  */
+
+  include('tools/pages.php');
 ?>

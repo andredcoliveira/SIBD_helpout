@@ -39,4 +39,19 @@
     }
   }
 
+  function getID($username) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users WHERE username = ?');
+    $stmt->execute(array($username));
+
+    $userrow = $stmt->fetch();
+
+    if($userrow !== false) {
+      return $userrow['id'];
+    } else {
+      return false;
+    }
+  }
+
 ?>

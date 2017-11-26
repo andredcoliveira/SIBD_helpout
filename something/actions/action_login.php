@@ -5,6 +5,7 @@
 
   $username = $_POST['username'];
   $password = $_POST['passwd'];
+  $_SESSION['form_values'] = $_POST;
 
   if(!$username) {
     $_SESSION['error_message'] = "Invalid username";
@@ -17,6 +18,7 @@
       $_SESSION['success_message'] = 'Logged in.';
       $_SESSION['username'] = $username;
       $_SESSION['name'] = getName($username);
+      $_SESSION['id'] = getID($username);
     } else {
       $_SESSION['error_message'] = "Login failed";
       die(header('Location: ../index.php'));
