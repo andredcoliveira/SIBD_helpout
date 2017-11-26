@@ -1,8 +1,14 @@
-<?php include('config/init.php'); ?>
-<?php include('templates/header.php'); ?>
-<?php include('templates/sidebar.php'); ?>
+<?php
+  include('config/init.php');
 
-<?php include('templates/usr_profile.php'); ?>
+  if(!isset($_USERNAME)) {
+    die(header('Location: index.php'));
+  }
 
+  include('templates/header.php');
+  include('templates/sidebar.php');
 
-<?php include('templates/footer.php'); ?>
+  include('templates/usr_profile.php');
+
+  include('templates/footer.php');
+?>

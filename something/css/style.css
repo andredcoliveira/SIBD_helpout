@@ -1,4 +1,4 @@
-html, body {
+close_sidebarhtml, body {
   font-family: Arial, sans-serif;
   margin: 0;
   //background-color: #484848;
@@ -7,7 +7,7 @@ html, body {
   width: 100%;
 }
 
-/** header code **/
+/** header **/
 
 header {
   z-index: 100;
@@ -95,7 +95,31 @@ header {
   color: #CFCFCF;
 }
 
-/** content code **/
+/** error/success **/
+
+.success_error {
+  padding: 3em 0 1em 0;
+  text-align: center;
+}
+
+.success_error h3 {
+  margin: 0;
+  padding-top: 0.5em;
+  background-color: #900;
+}
+
+#error, #success {
+  padding: 0.5em 0 1em 0;
+  width: 100vw;
+  background-color: #900;
+}
+
+#success {
+  background-color: #007400;
+}
+
+
+/** content **/
 
 #content {
   display: flex;
@@ -118,7 +142,7 @@ header {
 }
 
 .post_request {
-  border: 0.2em solid #000;
+  border: 0.1em solid #000;
   border-radius: 0.5em;
   background-color: white;
   width: 15em;
@@ -127,7 +151,7 @@ header {
 }
 
 .post_request:hover {
-  border: 0.2em solid green;
+  border-color: green;
 }
 
 .post_img {
@@ -152,30 +176,31 @@ header {
 }
 
   /** sidebar **/
+
 .sidebar {
   overflow: hidden;
+  white-space: nowrap;
   z-index: 100;
   position: fixed;
   left: 0;
   top: 0;
   margin: 3em 0 3em 0;
-  padding: 1em 0.5em 0.5em 0.5em;
+  padding: 0 0.5em 0.5em 0.5em;
 
   background-color: #F5F5DC;
   border-right: 0.05em solid black;
   color: #181818;
 
   height: 100vh;
-  width: 0;
+  width: 2em;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
 
-  transition: width 500ms ease-out;
+  transition: all 500ms ease-out;
   visibility: hidden;
-  opacity: 0;
 }
 
 .user_photo img {
@@ -220,15 +245,23 @@ header {
 
 #show_sidebar:target {
   visibility: visible;
-  opacity: 1;
   width: 12em;
 }
 
-.photo_button {
-  transition: width 5s ease-in-out;
+.close_sidebar {
+  text-decoration: none;
+  color: black;
+  font-size: 0.7em;
+  margin: 0.1em 0 1em auto;
+  font: Verdana, sans-serif;
+}
+
+.close_sidebar:hover {
+  color: #800000;
 }
 
   /** content nav **/
+
 .content_navigation {
   display: flex;
   justify-content: space-around;
@@ -262,7 +295,6 @@ header {
   padding-right: 1em;
   display: block;
   color: white;
-  //text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   text-decoration: none;
   font-size: 1.5em;
   height: 100%;
@@ -277,12 +309,9 @@ header {
   color: #CFCFCF;
 }
 
-/*
-.content_navigation a:hover:not(.active) {
-  color: #CFCFCF;
-}*/
 
-/** footer code **/
+/** footer **/
+
 footer {
   z-index: 100;
   position: fixed;
@@ -299,17 +328,15 @@ footer > .authors {
   padding: 0.5em;
 }
 
-
-/** recent additions **/
-
 /****** index ******/
 
 .visitor {
   background-color: #282828;
   border: 0.1em solid black;
   border-radius: 0.5em;
-  margin: 1em 2.5em 0 0;
-
+  margin: 1em auto;
+  padding: 0 6em;
+  width: fit-content;
 }
 
 .visitor h1 {
@@ -349,7 +376,6 @@ footer > .authors {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  padding: 2em;
   margin: auto;
   background-color: #F5F5DC;
   border: 0.05em solid black;
@@ -360,36 +386,28 @@ footer > .authors {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 1.5em 2.5em 1.5em;
 }
 
 .popup h2 {
   text-align: center;
+  margin: 0.5em 0 1em 0;
 }
 
 .close {
   text-decoration: none;
-  text-align: center;
-  width: 1.1em;
-  background-color: gray;
-  font-size: 1em;
   color: black;
-  position: absolute;
-  transform: translate(12em, -2.5em);
-  border: 0.05em solid black;
-  border-radius: 50%;
+  font-size: 1.1em;
+  width: fit-content;
+  margin: 0 0.25em 0 auto;
 }
 
 .close:hover {
-  background-color: #800000;
+  color: #800000;
 }
 
 
-
-
-
-
-
-/*profile!!!!*/
+/* profile */
 
 .profile_wrapper {
   justify-content: center;
@@ -402,10 +420,6 @@ footer > .authors {
 
   max-width: 70em;
 
-
-
-
-
   background-color: white;
   margin: 0 3em 0 3em;
   padding: 0;
@@ -414,7 +428,7 @@ footer > .authors {
   border-color: black;
   border-width: 0 0.2em 0 0.2em;
 
-  
+
 }
 
 .profile_top {
@@ -436,7 +450,7 @@ footer > .authors {
 
 
 .profile_pic_wrapper img {
-  /*4/3 ratio*/
+  /*4:3 ratio*/
   width: auto;
   height: 30em;
 
@@ -529,5 +543,3 @@ footer > .authors {
 .comment a:hover {
   color: green;
 }
-
-
