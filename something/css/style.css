@@ -337,6 +337,9 @@ footer > .authors {
   margin: 1em auto;
   padding: 0 6em;
   width: fit-content;
+  min-width: 12em;
+  /** only page with no sidebar **/
+  transform: translateX(-1.5em);
 }
 
 .visitor h1 {
