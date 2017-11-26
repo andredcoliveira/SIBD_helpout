@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<?php include('tools/pages.php'); ?>
 <html lang="en-US">
   <head>
     <title>HelpOut</title>
