@@ -661,3 +661,53 @@ footer > .authors {
 .requests_nav li:last-child {
   border: 0;
 }
+
+
+/** Novo Pedido **/
+
+.new_request {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new_request form {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.new_request form * {
+  margin: 0.5em;
+}
+
+.new_request textarea {
+  resize: vertical;
+}
+
+
+/** Link para editar perfil no topo do perfil de utilizador **/
+
+.profile > a {
+  color: black;
+  text-decoration: none;
+
+  border: 0.1em solid black;
+  border-radius: 0.5em;
+  padding: 0.2em;
+
+  background-color: lightgrey;
+
+  margin: 1em;
+
+}
+
+.profile > a:hover {
+  color: green;
+  border-color: green;
+  background-color: white;
+}
+
+
