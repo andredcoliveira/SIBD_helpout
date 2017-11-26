@@ -704,4 +704,27 @@ footer > .authors {
 }
 
 
+/** formulario apagar conta **/
+
+#delete_form {
+  border: 0.1em solid red;
+  border-radius: 0.5em;
+  background-color: #ffb0b0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 3em;
+}
+
+#delete_form input {
+  background-color: white;
+  border-color: red;
+}
+
+#delete_form input:hover {
+  background-color: #ffb0b0;
+}
+
 
