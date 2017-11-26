@@ -4,7 +4,7 @@ CREATE TABLE users (
 	username VARCHAR(32) NOT NULL UNIQUE,
 	pw VARCHAR(64) NOT NULL,
 	description VARCHAR(1024),
-	active BOOLEAN DEFAULT TRUE,
+	active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE pedido (
@@ -14,7 +14,7 @@ CREATE TABLE pedido (
 	added_date TIMESTAMP,
 	description VARCHAR(512),
 	location VARCHAR(128),
-	date_limit DATE,
+	date_limit DATE
 );
 
 CREATE TABLE users_pedido (
