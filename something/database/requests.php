@@ -5,7 +5,7 @@
     global $conn;
 
     $stmt = $conn->prepare("INSERT INTO pedido
-    VALUES (DEFAULT, 'nome', 'recompensa', CURRENT_TIMESTAMP, 'descrição', 'local',  '2017-12-25')
+    VALUES (DEFAULT, ?, ?, CURRENT_TIMESTAMP, ?, ?,  ?)
     RETURNING id");
     $stmt->execute(array($title, $reward, $description, $location, $date));
 

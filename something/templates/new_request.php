@@ -6,19 +6,20 @@
     <div class="new_request">
       <h2>Novo Pedido</h2>
 
-      <form action="actions/new_request.php" method="post" enctype="multipart/form-data">
+      <form action="actions/action_new_request.php" method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Título para o pedido" required="required">
         <input type="text" name="location" placeholder="Localização" required="required">
         <input type="date" name="date">
         <input type="text" name="reward" placeholder="Recompensa">
-        <textarea rows="4" cols="58">Insira aqui uma pequena decrição do seu pedido... </textarea>
+        <textarea name="description" rows="4" cols="58">Insira aqui uma pequena decrição do seu pedido... </textarea>
         
         <label>Escolha uma imagem:
-          <input type="file" name="image">
+          <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
         
 
-        <input type="submit" value="Submeter">
+        
+        <input type="submit" value="Submeter" name="submit">
       </form>
     </div>
     
