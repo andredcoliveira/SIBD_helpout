@@ -3,6 +3,7 @@
     <div class="profile_top">
       <div class="profile_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
       <div class="profile_top_right">
+        
         <h2>Nome</h2>
         <div class="stars">
           <img src="res/star.png">
@@ -15,6 +16,7 @@
         </ul>
       </div>
     </div>
+    <a href="edit_usr_profile.php">Editar Perfil</a>
     <div class="description_wrapper">
       <h2>Descrição</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia consectetur ligula, sed pharetra ipsum faucibus ut. Nunc dignissim finibus elit in imperdiet. Vivamus eu scelerisque enim. Vestibulum a fermentum nunc. Duis id dui et mauris finibus sagittis in sit amet felis. Nulla dictum dui justo, vel varius ligula euismod sed. Suspendisse pellentesque consectetur rutrum. Proin fringilla enim enim, vitae aliquam neque efficitur et. Morbi sed dignissim elit, quis porttitor tortor. Praesent dapibus scelerisque luctus. Etiam et dolor mauris. Fusce bibendum sed purus et tincidunt. Proin metus massa, viverra nec pulvinar sit amet, venenatis id diam. Cras pulvinar vel ipsum eget elementum. Donec sed consectetur leo, id dictum turpis. Vivamus nec risus non enim hendrerit consectetur a sed tortor.</p>
