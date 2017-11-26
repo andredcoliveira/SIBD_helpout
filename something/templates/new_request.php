@@ -11,9 +11,12 @@
         <input type="text" name="location" placeholder="Localização" required="required">
         <input type="date" name="date">
         <input type="text" name="reward" placeholder="Recompensa">
-        <textarea rows="4" cols="50">Insira aqui uma pequena decrição do seu pedido... </textarea>
+        <textarea rows="4" cols="58">Insira aqui uma pequena decrição do seu pedido... </textarea>
         
-        <input type="file" name="image">
+        <label>Escolha uma imagem:
+          <input type="file" name="image">
+        </label>
+        
 
         <input type="submit" value="Submeter">
       </form>
