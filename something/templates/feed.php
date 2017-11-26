@@ -1,10 +1,8 @@
       <div class="post_grid">
         <?php for($i=0; $i<20; $i++) { ?>
-          <a href="index2.php">
+          <a href="request.php">
             <article class="post_request">
-              <section class="post_img">
-                <img src="res/estudar.jpg" alt="Request Photo">
-              </section>
+              <div class="post_img_wrapper" style="background-image: url('./res/estudar.jpg');"></div>
               <section class="post_description">
                 <h3>Preciso de ajuda a estudar!</h3>
                 <ul>
@@ -12,6 +10,7 @@
                   <li>20/11/2017</li>
                   <li>1 Pessoa</li>
                 </ul>
+                <p>Por: Daniel Granhão</p>
               </section>
             </article>
           </a>

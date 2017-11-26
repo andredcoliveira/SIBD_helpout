@@ -24,11 +24,9 @@
       <h2>Pedidos Recentes</h2>
       <div class="post_grid">          <!-- ISTO PODE SER UM TEMPLATE -->
         <?php for($i=0; $i<6; $i++) { ?>    
-            <a href="index2.php">
+            <a href="request.php">
               <article class="post_request">
-                <section class="post_img">
-                  <img src="estudar.jpg" alt="Request Photo">
-                </section>
+                <div class="post_img_wrapper" style="background-image: url('./res/estudar.jpg');"></div>
                 <section class="post_description">
                   <h3>Preciso de ajuda a estudar!</h3>
                   <ul>
@@ -36,6 +34,7 @@
                     <li>20/11/2017</li>
                     <li>1 Pessoa</li>
                   </ul>
+                  <p>Por: Daniel Granhão</p>
                 </section>
               </article>
             </a>
@@ -43,25 +42,7 @@
       </div>                          <!-- ATÉ AQUI  -->
     </div>
 
-    <div class="recent_comments">
-      <h2>Comentários Recentes</h2>
-
-
-      <?php for($i=0; $i<6; $i++) { ?>
-        <article class="comment">
-
-          <div class="stars">
-            <h3>Titulo Comentário</h3>
-            <?php for($j=0; $j<5; $j++) { ?>
-              <img src="res/star.png">
-            <?php } ?>
-          </div>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia consectetur ligula, sed pharetra ipsum faucibus ut. Nunc dignissim finibus elit in imperdiet.</p>
-          <p>Por: <a href="usr_profile.php">Daniel Granhão</a></p>
-        </article>
-      <?php } ?>
-    </div>
+    <?php include('templates/comments.php'); ?>
 
 
 

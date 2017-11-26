@@ -154,20 +154,13 @@ header {
   border-color: green;
 }
 
-.post_img {
-  border-color: inherit;
+.post_img_wrapper {
   width: 15em;
   height: 11em;
-  overflow: hidden;
+  background-position: center;
+  background-size: cover;
   border-bottom: 0.1em solid;
   border-color: inherit;
-}
-
-.post_img img {
-  display: block;
-  height: 100%;
-  width: auto;
-  margin: auto;
 }
 
 .post_description {
@@ -421,6 +414,7 @@ footer > .authors {
 
 .profile {
 
+  min-height: 100vh;
   max-width: 70em;
 
   background-color: white;
@@ -441,25 +435,15 @@ footer > .authors {
 
 .profile_pic_wrapper {
   overflow: hidden;
-  width: 12em;
-  height: 12em;
 
   border: 0.2em solid black;
   border-radius: 0.3em;
 
+  width: 12em;
+  height: 12em;
   background-position: center;
   background-size: cover;
 }
-
-
-.profile_pic_wrapper img {
-  /*4:3 ratio*/
-  width: auto;
-  height: 30em;
-
-
-}
-
 
 .stars {
   display: flex;
@@ -546,3 +530,147 @@ footer > .authors {
 .comment a:hover {
   color: green;
 }
+
+
+
+
+
+
+
+
+
+
+
+/** Request **/
+
+.request {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.request_left {
+  padding: 0;
+  margin: 1em;
+
+  max-width: 35em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: lightgrey;
+  border: 0.1em solid black;
+  border-radius: 1em;
+}
+
+.request_pic_wrapper {
+  overflow: hidden;
+
+  border: 0.2em solid black;
+  border-radius: 0.3em;
+
+  width: 20em;
+  height: 15em;
+  background-position: center;
+  background-size: cover;
+}
+
+.request_right {
+  padding: 0;
+  margin: 0;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.request_fields {
+  padding: 0.3em 1em;
+  background-color: lightgrey;
+  border: 0.1em solid black;
+  border-radius: 1em;
+
+  margin: 1em;
+}
+
+.request_usr_profile {
+  padding: 1em;
+  background-color: lightgrey;
+  border: 0.1em solid black;
+  border-radius: 1em;
+
+  margin: 1em;
+}
+
+.request_usr_profile:hover {
+  border-color: green;
+  background-color: grey;
+}
+
+.usr_profile_link {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+/** Meus pedidos **/
+
+.requests_nav {
+  align-self: center;
+  width: fit-content;
+  background-color: white;
+  margin-top: 1em;
+  padding: 1em;
+
+  border: 0.1em solid black;
+  border-radius: 1em;
+
+}
+
+.requests_nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.requests_nav a:hover {
+  color: green;
+}
+
+.requests_nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+ 
+}
+
+.requests_nav li {
+  border-right: 0.1em solid black;
+  padding: 0 1em;
+}
+
+.requests_nav li:last-child {
+  border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
