@@ -34,6 +34,4 @@
     $_FORM_VALUES = $_SESSION['form_values'];
     unset($_SESSION['form_values']);
   }
-
-  include('tools/pages.php');
 ?>
