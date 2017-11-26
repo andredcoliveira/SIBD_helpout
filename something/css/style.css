@@ -7,7 +7,7 @@ html, body {
   width: 100%;
 }
 
-/** header **/
+/**    header    **/
 
 header {
   z-index: 100;
@@ -99,7 +99,7 @@ header {
   color: #af3030;
 }
 
-/** error/success **/
+/**    error/success    **/
 
 .success_error {
   padding: 3em 0 1em 0;
@@ -123,7 +123,7 @@ header {
 }
 
 
-/** content **/
+/**    content    **/
 
 #content {
   display: flex;
@@ -172,7 +172,7 @@ header {
   padding-right: 0.5em;
 }
 
-  /** sidebar **/
+  /**    sidebar    **/
 
 .sidebar {
   overflow: hidden;
@@ -257,7 +257,7 @@ header {
   color: #800000;
 }
 
-  /** content nav **/
+  /**    content nav    **/
 
 .content_navigation {
   display: flex;
@@ -307,7 +307,7 @@ header {
 }
 
 
-/** footer **/
+/**    footer    **/
 
 footer {
   z-index: 100;
@@ -325,7 +325,9 @@ footer > .authors {
   padding: 0.5em;
 }
 
-/****** index ******/
+
+
+/**    index    **/
 
 .visitor {
   background-color: #282828;
@@ -537,14 +539,6 @@ footer > .authors {
 
 
 
-
-
-
-
-
-
-
-
 /** Request **/
 
 .request {
@@ -661,9 +655,6 @@ footer > .authors {
 .requests_nav li:last-child {
   border: 0;
 }
-<<<<<<< HEAD
-=======
-
 
 /** Novo Pedido **/
 
@@ -714,16 +705,3 @@ footer > .authors {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> master
