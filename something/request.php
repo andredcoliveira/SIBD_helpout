@@ -5,6 +5,13 @@
     die(header('Location: index.php'));
   }
 
+  include('database/requests.php');
+  $request_id = $_GET['id'];
+  $request = getRequest($request_id);
+  $request_owner = getRequestOwner($request_id);
+  $owner_id = $request_owner['users_id'];
+
+
   include('templates/header.php');
   include('templates/sidebar.php');
 

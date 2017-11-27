@@ -128,7 +128,7 @@ header {
 #content {
   display: flex;
   flex-direction: column;
-  padding: 3em 1em 1em 3.5em;
+  padding: 4em 1em 2em 3.5em;
 }
 
 .post_grid {
@@ -419,7 +419,6 @@ footer > .authors {
 
 
 .profile {
-
   min-height: 100vh;
   max-width: 70em;
 
@@ -427,22 +426,19 @@ footer > .authors {
   margin: 0 3em 0 3em;
   padding: 0;
 
-  border-style: solid;
-  border-color: black;
-  border-width: 0 0.2em 0 0.2em;
-
-
+  border: 0.1em solid black;
+  border-radius: 0.5em;
 }
 
 .profile_top {
   display: flex;
-  padding: 1em
+  padding: 1.5em 1em 1em 2em;
 }
 
 .profile_pic_wrapper {
   overflow: hidden;
 
-  border: 0.2em solid black;
+  border: 0.1em solid black;
   border-radius: 0.3em;
 
   width: 12em;
@@ -463,8 +459,8 @@ footer > .authors {
 
 
 .profile_top_right {
-  padding: 1em;
-  padding-left: 2em;
+  width: fit-content;
+  margin: 2em 0 0 4em;
 }
 
 
@@ -488,6 +484,7 @@ footer > .authors {
 }
 
 .profile_top_right ul {
+  list-style-type: circle;
   padding-left: 0;
 }
 
@@ -545,6 +542,7 @@ footer > .authors {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 0 1em;
 }
 
 
@@ -611,6 +609,10 @@ footer > .authors {
 .usr_profile_link {
   text-decoration: none;
   color: black;
+}
+
+.request_usr_profile .profile_top_right {
+  margin: 1em auto;
 }
 
 
@@ -687,44 +689,54 @@ footer > .authors {
   color: black;
   text-decoration: none;
 
-  border: 0.1em solid black;
-  border-radius: 0.5em;
-  padding: 0.2em;
+  border: 0.05em solid black;
+  border-radius: 0.3em;
 
   background-color: lightgrey;
 
-  margin: 1em;
-
+  display: inline-block;
+  padding: 0.2em;
+  float: right;
+  margin: 0.5em 0.5em 0 0;
 }
 
 .profile > a:hover {
-  color: green;
-  border-color: green;
-  background-color: white;
+  color: #F5F5DC;
+  background-color: #464646;
 }
 
 
 /** formulario apagar conta **/
 
 #delete_form {
-  border: 0.1em solid red;
-  border-radius: 0.5em;
-  background-color: #ffb0b0;
+  border: 0.1em solid #d73a49;
+  border-radius: 0.3em;
+  background-color: #ffdddd;
+  color: #5d2020;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
-  margin-top: 3em;
+  width: 50%;
+  margin: 3em auto;
 }
 
 #delete_form input {
-  background-color: white;
-  border-color: red;
+  font-weight: bold;
+  font-size: 1em;
+  color: #cb2431;
+  padding: 0.5em 1em;
+  border: 0.05em solid;
+  border-radius: 0.3em;
+  background-color: #fafbfc;
+  background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
 }
 
 #delete_form input:hover {
-  background-color: #ffb0b0;
+  cursor: pointer;
+  background-image: none;
+  background-color: #cb2431;
+  color: #fafbfc;
 }
-
-

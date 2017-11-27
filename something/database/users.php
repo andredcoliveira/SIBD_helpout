@@ -54,4 +54,34 @@
     }
   }
 
+  function getUserInfo($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt->execute(array($user_id));
+
+    $userrow = $stmt->fetch();
+
+    if($userrow !== false) {
+      return $userrow;
+    } else {
+      return false;
+    }
+  }
+
+  function getUserDescription($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt->execute(array($user_id));
+
+    $userrow = $stmt->fetch();
+
+    if($userrow !== false) {
+      echo $userrow['description'];
+    } else {
+      return false;
+    }
+  }
+
 ?>
