@@ -22,12 +22,12 @@
       </div>
     </div>
     <div class="description_wrapper">
-      <h2>Descrição</h2>
+      <h3>Descrição</h3>
       <p><?=$user_info['description']?></p>
     </div>
 
     <div class="recent_posts">
-      <h2>Pedidos Recentes</h2>
+      <h3>Pedidos Recentes</h3>
       <?php include('templates/post_grid.php'); ?>
     </div>
 
