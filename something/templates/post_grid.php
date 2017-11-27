@@ -1,9 +1,11 @@
       <div class="post_grid">
         <?php if($requests != false) {
-          foreach($requests as $request) { ?>
+          foreach($requests as $key => $request) { ?>
             <a href="request.php?id=<?=$request['pedido_id']?>">
               <article class="post_request">
-                <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$k++]?>');"></div>
+                <?php if($request_photo_paths[$key] !== false) { ?>
+                  <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$key]?>');"></div>
+                <?php } ?>
                 <section class="post_description">
                   <h3><?=$request['name']?></h3>
                   <ul>

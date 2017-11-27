@@ -4,7 +4,9 @@
       <a href="edit_usr_profile.php">Editar Perfil</a>
     <?php } ?>
     <div class="profile_top">
-      <div class="profile_pic_wrapper" style="background-image: url('<?=$user_photo_path?>');"></div>
+      <?php if($user_photo_path !== false) { ?>
+        <div class="profile_pic_wrapper" style="background-image: url('<?=$user_photo_path?>');"></div>
+      <?php } ?>
       <div class="profile_top_right">
 
         <h2><?=$user_info['name']?></h2>

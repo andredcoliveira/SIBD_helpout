@@ -104,6 +104,7 @@ header {
 .success_error {
   padding: 3em 0 1em 0;
   text-align: center;
+  width: 100vw;
 }
 
 .success_error h3 {
@@ -628,13 +629,23 @@ footer > .authors {
 
 }
 
-.requests_nav a {
+.requests_nav a.active {
+  color: #006400;
+  text-decoration: none;
+}
+
+.requests_nav a:not(.active) {
   color: black;
   text-decoration: none;
 }
 
-.requests_nav a:hover {
-  color: green;
+.requests_nav a.active:hover {
+  color: #019c01;
+}
+
+.requests_nav a:not(.active):hover {
+  color: #303030;
+  text-decoration: none;
 }
 
 .requests_nav ul {
