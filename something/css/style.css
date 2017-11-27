@@ -768,3 +768,58 @@ footer > .authors {
   background-color: #cb2431;
   color: #fafbfc;
 }
+
+
+/** Pariticipantes no pedido **/
+
+.participants {
+  margin:1em 2em 2em 2em;
+  background-color: lightgrey;
+
+  border: 0.1em solid black;
+  border-radius: 1em;
+
+}
+
+.participants h3 {
+  margin: 1em;
+}
+
+.participants_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.participant {
+  margin: 0em;
+
+  width: 50%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.participant a {
+  text-decoration: none;
+  color: black;
+}
+
+.participant a:hover {
+  color: green;
+}
+
+.participant_pic_wrapper {
+  overflow: hidden;
+
+  border: 0.1em solid black;
+  border-radius: 0.3em;
+
+  width: 3em;
+  height: 3em;
+  background-position: center;
+  background-size: cover;
+
+  margin: 1em;
+}
+ 
+
