@@ -1,73 +1,101 @@
 <?php
 	include('../config/init.php');
- 	include('../database/users.php');
+	include('../database/users.php');
 
- 	include('../database/requests.php');
+	include('../database/requests.php');
 
- 	$title = strip_tags($_POST['title']);
- 	$location = strip_tags($_POST['location']);
- 	$date = date('Y-m-d', strtotime($_POST['date']));
- 	$reward = strip_tags($_POST['reward']);
- 	$description = strip_tags($_POST['description']);
-
- 	if(isset($_POST['skills'])){
- 		$skills = $_POST['skills']; /** Array com id's de skills selecionadas **/
- 	}
- 	else $skills = NULL;
+	$title = strip_tags($_POST['title']);
+	$location = strip_tags($_POST['location']);
+	$date = date('Y-m-d', strtotime($_POST['date']));
+	$reward = strip_tags($_POST['reward']);
+	$description = strip_tags($_POST['description']);
 
 
- 	$request_id = insertRequest($title, $location, $date, $reward, $description, $skills);
+	if(!$title) {
+		$_SESSION['error_message'] = 'Título Inválido';
+		die(header('Location: ../new_request.php'));
+	} elseif(!$location) {
+		$_SESSION['error_message'] = "Localização Inválida";
+		die(header('Location: ../new_request.php'));
+	} elseif(!$date) {
+		$_SESSION['error_message'] = "Data Inválida";
+		die(header('Location: ../new_request.php'));
+	}
+	if(isset($_POST['skills'])){
+		$skills = $_POST['skills']; /** Array com id's de skills selecionadas **/
+	}
+	else $skills = NULL;
 
- 	$extension = explode('.' , basename($_FILES["fileToUpload"]["name"]));
- 	$extension = '.' . end($extension);
-
- 	$target_dir = "../res/uploads/requests/";
-	$target_file = $target_dir . $request_id . $extension;
-	$uploadOk = 1;
-	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	// Check if image file is a actual image or fake image
-	if(isset($_POST["submit"])) {
-	    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-	    if($check !== false) {
-	        echo "File is an image - " . $check["mime"] . ".";
-	        $uploadOk = 1;
-	    } 
-	    else {
-	        echo "File is not an image.";
-	        $uploadOk = 0;
-	    }
+	try{
+		$request_id = insertRequest($title, $location, $date, $reward, $description, $skills);
+	}
+	catch(PDOException $e) {
+      $_SESSION['error_message'] = $e->getMessage();
+      die(header('Location: ../new_request.php'));
 	}
 
-	// Check if file already exists
-	if (file_exists($target_file)) {
-	    echo "Sorry, file already exists.";
-	    $uploadOk = 0;
-	}
+	if(!isset($_FILES['fileToUpload']) || $_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
+		/** DO NOTHING **/
+	} else {
+		$extension = explode('.' , basename($_FILES["fileToUpload"]["name"]));
+		$extension = '.' . end($extension);
 
-	// Check file size
-	if ($_FILES["fileToUpload"]["size"] > 500000) {
-	    echo "Sorry, your file is too large.";
-	    $uploadOk = 0;
-	}
+		$target_dir = "../res/uploads/requests/";
+		$target_file = $target_dir . $request_id . $extension;
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		// Check if image file is a actual image or fake image
+		if(isset($_POST["submit"])) {
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        /*echo "File is an image - " . $check["mime"] . ".";*/
+		        $uploadOk = 1;
+		    } 
+		    else {
+		        /*echo "File is not an image.";*/
+		        $uploadOk = 0;
+		    }
+		}
 
-	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-	&& $imageFileType != "gif" ) {
-	    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-	    $uploadOk = 0;
-	}
+		// Check if file already exists
+		if (file_exists($target_file)) {
+			/*
+			chmod('your-filename.ext',0755); //Change the file permissions if allowed
+    		unlink('your-filename.ext'); //remove the file*/
+    		//Código anterior serve para apagar o ficheiro
+
+		    //echo "Sorry, file already exists.";
+		    $uploadOk = 0;
+		}
+
+		// Check file size
+		if ($_FILES["fileToUpload"]["size"] > 1000000) {
+		    //echo "Sorry, your file is too large.";
+		    $uploadOk = 0;
+		}
+
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		    $uploadOk = 0;
+		}
 
 
-	// Check if $uploadOk is set to 0 by an error
-	if ($uploadOk == 0) {
-	    echo "Sorry, your file was not uploaded.";
-	// if everything is ok, try to upload file
-	} 
-	else {
-	    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-	        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-	    } else {
-	        echo "Sorry, there was an error uploading your file.";
-	    }
-	}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    //echo "Sorry, your file was not uploaded.";
+		    $_SESSION['error_message'] = "Imagem não foi carregada.";
+		// if everything is ok, try to upload file
+		} 
+		else {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		        $_SESSION['success_message'] = 'Pedido foi inserido com sucesso.';
+		    } else {
+		    	$_SESSION['error_message'] = 'Houve um problema com o carregamento da imagem.';
+		    }
+		}
+	}	
+	header("Location: ../request.php?id=$request_id");
 ?>

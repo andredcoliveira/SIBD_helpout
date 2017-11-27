@@ -16,7 +16,7 @@
         <label for="location"><h3 class="title">Localização</h3></label><input type="text" name="location" placeholder="Localização" required="required">
         <label for="date"><h3 class="title">Data</h3></label><input type="date" name="date">
         <label for="reward"><h3 class="title">Recompensa</h3></label><input type="text" name="reward" placeholder="Recompensa">
-        <label for="description"><h3 class="title">Descrição</h3></label><textarea name="description" rows="4" cols="58">Insira aqui uma pequena decrição do seu pedido... </textarea>
+        <label for="description"><h3 class="title">Descrição</h3></label><textarea name="description" rows="4" cols="58"></textarea>
 
         <div class="choose_skills">
           <h3 class="title">Habilidades</h3>
