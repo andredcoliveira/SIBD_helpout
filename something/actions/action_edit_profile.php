@@ -56,10 +56,13 @@
     // Check if file already exists
     $possibleImagePath = '../' . getUserPhoto($_ID);
     if (file_exists($possibleImagePath)) {  
-      chmod($possibleImagePath,0); //Change the file permissions if allowed
+      //chmod($possibleImagePath,0); //Change the file permissions if allowed
       
       $status = unlink($possibleImagePath); //remove the file
-      if($status != true) $uploadOk = 0;
+      if($status != true){
+        $_SESSION['error_message'] = "Couldn't delete previous photo.";
+        $uploadOk = 0;
+      } 
     }
 
     // Check file size
