@@ -80,8 +80,8 @@
         <h5 style="color:green;">Pedido a decorrer!</h5>
       <?php }?>
 
-      <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active']) {?>
-        <h5 id="help_request"><a href="actions/action_finish_request.php?id=<?=$request_id?>">Ajudar!</a></h5>
+      <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active'] && !isHelping($request_id, $_ID)) {?>
+        <h5 id="help_request"><a href="actions/action_help_request.php?id=<?=$request_id?>">Ajudar!</a></h5>
       <?php } ?>
     </div>
 

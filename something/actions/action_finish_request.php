@@ -12,7 +12,12 @@
 	}
 
 	if(getRequestOwner($request_id)['id'] == $_ID){
-		finishRequest($request_id);
+		try {
+	      finishRequest($request_id);
+	    } catch(PDOException $e) {
+	      $_SESSION['error_message'] = $e->getMessage();
+	      die(header('Location: ../request.php?id=$request_id'));
+	    }
 	}
 	else{
 		$_SESSION['error_message'] = 'Não pode terminar um pedido que não fez.';

@@ -116,4 +116,27 @@
     return true;
   }
 
+  function startHelpingRequest($request_id, $user_id){
+    global $conn;
+
+    $stmt = $conn->prepare("INSERT INTO users_pedido VALUES (?, ?, 'false')");
+    $stmt->execute(array($user_id, $request_id));
+
+    return true;
+  }
+
+  function isHelping($request_id, $user_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT *
+                  FROM users_pedido JOIN users ON (users_id = id)
+                  WHERE owner = false AND pedido_id = ? AND users_id = ?');
+    $stmt->execute(array($request_id, $user_id));
+
+
+    $return_fetch = $stmt->fetch();
+    if($return_fetch != NULL) return true;
+    else return false;
+  }
+
 ?>
