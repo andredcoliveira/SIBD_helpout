@@ -10,7 +10,13 @@
  	$reward = strip_tags($_POST['reward']);
  	$description = strip_tags($_POST['description']);
 
- 	$request_id = insertRequest($title, $location, $date, $reward, $description);
+ 	if(isset($_POST['skills'])){
+ 		$skills = $_POST['skills']; /** Array com id's de skills selecionadas **/
+ 	}
+ 	else $skills = NULL;
+
+
+ 	$request_id = insertRequest($title, $location, $date, $reward, $description, $skills);
 
  	$extension = explode('.' , basename($_FILES["fileToUpload"]["name"]));
  	$extension = '.' . end($extension);

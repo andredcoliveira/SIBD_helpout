@@ -1,6 +1,6 @@
 <?php
 
-  function insertRequest($title, $location, $date, $reward, $description) {
+  function insertRequest($title, $location, $date, $reward, $description, $skills) {
     global $_ID;
     global $conn;
 
@@ -14,6 +14,13 @@
     $stmt = $conn->prepare("INSERT INTO users_pedido VALUES ($_ID, ?, 'true')");
     $stmt->execute(array($request_id));
 
+    if($skills != null){
+      foreach ($skills as $skill_id) {
+        $stmt = $conn->prepare("INSERT INTO pedido_skill VALUES (?,?)");
+        $stmt->execute(array($request_id, $skill_id));
+      }
+    }
+    
     return $request_id;
   }
 
@@ -86,6 +93,18 @@
     $stmt->execute(array($request_id));
 
     return $stmt->fetch();
+  }
+
+  function getAllSkills() {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM skill');
+    $stmt->execute();
+
+
+    $skills = $stmt->fetchAll();
+    if($skills != false) return $skills;
+    return false;
   }
 
 ?>

@@ -665,6 +665,11 @@ footer > .authors {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 25em;
+}
+
+.new_request label {
+  font-size: small;
 }
 
 .new_request form {
@@ -680,6 +685,12 @@ footer > .authors {
 
 .new_request textarea {
   resize: vertical;
+}
+
+.choose_skills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
