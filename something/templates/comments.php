@@ -1,12 +1,12 @@
 <div class="recent_comments">
-  <h2>Comentários Recentes</h2>
+  <h3>Comentários Recentes</h3>
 
 
   <?php foreach($comments as $comment) { ?>
     <article class="comment">
 
       <div class="stars">
-        <h3><?php echo getRequest($comment['pedido_id'])['name']?></h3>
+        <h4><?php echo getRequest($comment['pedido_id'])['name']?></h4>
         <?php for($j = 0; $j < $comment['classification']; $j++) { ?>
           <img src="res/star.png">
         <?php } ?>

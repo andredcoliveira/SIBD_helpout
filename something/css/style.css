@@ -7,6 +7,10 @@ html, body {
   width: 100%;
 }
 
+h3 {
+  text-transform: uppercase;
+}
+
 /**    header    **/
 
 header {
@@ -202,7 +206,7 @@ header {
 }
 
 .user_photo img {
-  border: 0.1em solid black;
+  border: 0.05em solid black;
   border-radius: 0.2em/0.5em;
   width: 10em;
 }
@@ -332,7 +336,7 @@ footer > .authors {
 
 .visitor {
   background-color: #282828;
-  border: 0.1em solid black;
+  border: 0.05em solid black;
   border-radius: 0.5em;
   margin: 1em auto;
   padding: 0 6em;
@@ -425,7 +429,7 @@ footer > .authors {
   margin: 0 3em 0 3em;
   padding: 0;
 
-  border: 0.1em solid black;
+  border: 0.05em solid black;
   border-radius: 0.5em;
 }
 
@@ -437,7 +441,7 @@ footer > .authors {
 .profile_pic_wrapper {
   overflow: hidden;
 
-  border: 0.1em solid black;
+  border: 0.05em solid black;
   border-radius: 0.3em;
 
   width: 12em;
@@ -498,7 +502,7 @@ footer > .authors {
 
 .recent_posts {
   background-color: lightgrey;
-  padding: 1em 4em;
+  padding: 1em 1em;
 }
 
 .recent_posts > h2 {
@@ -516,8 +520,8 @@ footer > .authors {
 .comment {
   padding: 0.3em;
   background-color: lightgrey;
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 
   margin: 1em 0 1em 0;
 }
@@ -547,6 +551,7 @@ footer > .authors {
 .request_left {
   padding: 0;
   margin: 1em;
+  overflow: hidden;
 
   max-width: 35em;
 
@@ -555,15 +560,15 @@ footer > .authors {
   align-items: center;
 
   background-color: lightgrey;
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 }
 
 .request_pic_wrapper {
   overflow: hidden;
 
-  border: 0.2em solid black;
-  border-radius: 0.3em;
+  border-top: 0.05em solid black;
+  border-bottom: 0.05em solid black;
 
   width: 20em;
   height: 15em;
@@ -575,7 +580,6 @@ footer > .authors {
   padding: 0;
   margin: 0;
 
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -584,8 +588,8 @@ footer > .authors {
 .request_fields {
   padding: 0.3em 1em;
   background-color: lightgrey;
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 
   margin: 1em;
 }
@@ -593,8 +597,8 @@ footer > .authors {
 .request_usr_profile {
   padding: 1em;
   background-color: lightgrey;
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 
   margin: 1em;
 }
@@ -624,8 +628,8 @@ footer > .authors {
   margin-top: 1em;
   padding: 1em;
 
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 
 }
 
@@ -776,8 +780,8 @@ footer > .authors {
   margin:1em 2em 2em 2em;
   background-color: lightgrey;
 
-  border: 0.1em solid black;
-  border-radius: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.5em;
 
 }
 
@@ -815,7 +819,7 @@ footer > .authors {
 .participant_pic_wrapper {
   overflow: hidden;
 
-  border: 0.1em solid black;
+  border: 0.05em solid black;
   border-radius: 0.3em;
 
   width: 3em;
