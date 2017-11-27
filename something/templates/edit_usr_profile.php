@@ -12,7 +12,7 @@
         <label for="description"><h3 class="title">Descrição:</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description">Não me apetece.. </textarea>
 
         <label>Escolha uma foto de perfil:
-          <input type="file" name="image">
+          <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
        
         <input type="submit" value="Submeter" name="submit" id="submit_button_edit_profile">

@@ -3,6 +3,7 @@ CREATE TABLE users (
 	name VARCHAR(128) NOT NULL,
 	username VARCHAR(32) NOT NULL UNIQUE,
 	pw VARCHAR(64) NOT NULL,
+	birthdate DATE,
 	description VARCHAR(1024),
 	active BOOLEAN DEFAULT TRUE
 );
