@@ -2,7 +2,7 @@
         if( getHelpingRequests($_ID, 0) === false ) {
           $helping_requests = 0;
         } else {
-          $helping_requests = count(getHelpingRequests($_ID));
+          $helping_requests = count(getHelpingRequests($_ID, 0));
         }
         if( getOwnedRequests($_ID, 0) === false ) {
           $owned_requests = 0;
