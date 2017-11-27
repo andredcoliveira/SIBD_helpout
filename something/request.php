@@ -11,6 +11,8 @@
   $request = getRequest($request_id);
   $request_owner = getRequestOwner($request_id);
   $owner_id = $request_owner['users_id'];
+  
+  $participants = getParticipants($request_id);
 
 
   include('templates/header.php');
