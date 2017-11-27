@@ -1,6 +1,4 @@
 <?php
-  include('database/requests.php');
-
   $skills = getAllSkills();
 ?>
 

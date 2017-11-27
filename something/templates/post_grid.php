@@ -5,7 +5,9 @@
               <article class="post_request">
                 <?php if($request_photo_paths[$key] !== false) { ?>
                   <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$key]?>');"></div>
-                <?php } ?>
+                <?php } else {?>
+                  <div class="post_img_wrapper" style="background-image: url('res/default.png');"></div>
+                <?php }?>
                 <section class="post_description">
                   <h3><?=$request['name']?></h3>
                   <ul>

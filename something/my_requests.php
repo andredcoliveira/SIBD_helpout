@@ -2,6 +2,7 @@
   include('config/init.php');
   include('database/requests.php');
   include('tools/request.php');
+  include('tools/user.php');
 
   if(!isset($_USERNAME)) {
     die(header('Location: index.php'));
