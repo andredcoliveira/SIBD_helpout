@@ -15,9 +15,9 @@
       </a>
       <aside id="show_sidebar" class="sidebar">
         <a href="#/" class="close_sidebar">close</a>
-        <?php if($user_photo_path !== false) { ?>
+        <?php if(getUserPhoto($_ID) !== false) { ?>
           <section class="user_photo">
-            <img src="<?=$user_photo_path?>" alt="User Photo">
+            <img src="<?=getUserPhoto($_ID)?>" alt="User Photo">
           </section>
         <?php } ?>
         <section class="user_info">
