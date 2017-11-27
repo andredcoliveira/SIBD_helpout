@@ -36,7 +36,7 @@ CREATE TABLE comment (
 	comment VARCHAR(512) NOT NULL,
 	time_posted TIMESTAMP,
 	pedido_id INTEGER REFERENCES pedido NOT NULL,
-	UNIQUE(commenter_id, commented_id)
+	UNIQUE(commenter_id, pedido_id) 
 );
 
 CREATE TABLE skill (

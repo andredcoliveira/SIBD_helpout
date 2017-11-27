@@ -148,4 +148,15 @@
     else return false;
   }
 
+  function getParticipants($request_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT *
+                  FROM users_pedido JOIN users ON (users_id = id)
+                  WHERE owner = false AND pedido_id = ?');
+    $stmt->execute(array($request_id));
+
+    return $stmt->fetchAll();
+  }
+
 ?>

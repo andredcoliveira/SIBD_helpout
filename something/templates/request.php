@@ -45,26 +45,18 @@
     <div class="participants">
       <h3>Quem se encontra a ajudar:</h3>
       <div class="participants_wrapper">
-        <article class="participant">
-          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
-          <h4><a href="usr_profile.php">José Faria</a></h4>
-        </article>
-        <article class="participant">
-          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
-          <h4><a href="usr_profile.php">José Faria</a></h4>
-        </article>
-        <article class="participant">
-          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
-          <h4><a href="usr_profile.php">José Faria</a></h4>
-        </article>
-        <article class="participant">
-          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
-          <h4><a href="usr_profile.php">José Faria</a></h4>
-        </article>
-        <article class="participant">
-          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
-          <h4><a href="usr_profile.php">José Faria</a></h4>
-        </article>
+
+        <?php foreach($participants as $participant){ ?>
+          <article class="participant">
+            <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
+            <h4><a href="usr_profile.php"><?=$participant['name']?></a></h4>
+          </article>
+        <?php } 
+        if($participants == NULL){ ?>
+          <article class="no_participant">
+            <h4>De momento ninguém se encontra a ajudar...</h4>
+          </article>
+        <?php } ?>
 
       </div>
     </div>
