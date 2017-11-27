@@ -125,6 +125,15 @@
     return true;
   }
 
+  function stopHelpingRequest($request_id, $user_id){
+    global $conn;
+
+    $stmt = $conn->prepare("DELETE FROM users_pedido WHERE users_id = ? AND pedido_id = ?");
+    $stmt->execute(array($user_id, $request_id));
+
+    return true;
+  }
+
   function isHelping($request_id, $user_id){
     global $conn;
 

@@ -854,3 +854,7 @@ footer > .authors {
   color: green;
 }
 
+#stop_help_request > a:hover {
+  color: red;
+}
+

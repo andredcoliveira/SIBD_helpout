@@ -83,6 +83,9 @@
       <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active'] && !isHelping($request_id, $_ID)) {?>
         <h5 id="help_request"><a href="actions/action_help_request.php?id=<?=$request_id?>">Ajudar!</a></h5>
       <?php } ?>
+      <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active'] && isHelping($request_id, $_ID)) {?>
+        <h5 id="stop_help_request"><a href="actions/action_stop_help_request.php?id=<?=$request_id?>">Deixar de Ajudar!</a></h5>
+      <?php } ?>
     </div>
 
 
