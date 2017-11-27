@@ -14,7 +14,8 @@ CREATE TABLE pedido (
 	added_date TIMESTAMP,
 	description VARCHAR(512),
 	location VARCHAR(128),
-	date_limit DATE
+	date_limit DATE,
+	active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE users_pedido (
