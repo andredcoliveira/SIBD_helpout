@@ -107,4 +107,13 @@
     return false;
   }
 
+  function finishRequest($request_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('UPDATE pedido SET active = FALSE WHERE id = ?');
+    $stmt->execute(array($request_id));
+
+    return true;
+  }
+
 ?>
