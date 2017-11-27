@@ -19,6 +19,6 @@
 		die(header("Location: ../request.php?id=$request_id"));
 	}
 
-	$_SESSION['success_message'] = 'Não pode terminar um pedido que não fez.';
+	$_SESSION['success_message'] = 'Pedido terminado!';
 	header("Location: ../request.php?id=$request_id");
 ?>

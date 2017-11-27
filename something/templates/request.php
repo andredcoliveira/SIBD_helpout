@@ -57,8 +57,34 @@
           <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
           <h4><a href="usr_profile.php">José Faria</a></h4>
         </article>
+        <article class="participant">
+          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
+          <h4><a href="usr_profile.php">José Faria</a></h4>
+        </article>
+        <article class="participant">
+          <div class="participant_pic_wrapper" style="background-image: url('res/pessoa.jpg');"></div>
+          <h4><a href="usr_profile.php">José Faria</a></h4>
+        </article>
+
       </div>
     </div>
+
+    <div class="options">
+      <?php if($request_owner['id'] == $_ID && getRequest($request_id)['active']) {?>
+        <h5 id="finish_request"><a href="actions/action_finish_request.php?id=<?=$request_id?>">Terminar Pedido</a></h5>
+      <?php } ?>
+
+      <?php if(getRequest($request_id)['active'] == false){ ?>
+        <h5 style="color:red;">Pedido terminado!</h5>
+      <?php } else {?>
+        <h5 style="color:green;">Pedido a decorrer!</h5>
+      <?php }?>
+
+      <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active']) {?>
+        <h5 id="help_request"><a href="actions/action_finish_request.php?id=<?=$request_id?>">Ajudar!</a></h5>
+      <?php } ?>
+    </div>
+
 
   </div>
 </div>
