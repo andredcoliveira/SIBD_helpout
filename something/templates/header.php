@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <a href="index.php" class="logo">
+      <a href="feed.php" class="logo">
         <img src="res/logo.png" alt="HelpOut">
       </a>
       <!-- check if user logged in before showing this -->
