@@ -26,7 +26,7 @@
 
     <div class="recent_posts">
       <h2>Pedidos Recentes</h2>
-      <?php include('templates/post_grid.php')?>
+      <?php include('templates/post_grid.php'); ?>
     </div>
 
     <?php include('templates/comments.php'); ?>

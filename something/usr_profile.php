@@ -19,11 +19,14 @@
   $user_photo_path = getUserPhoto($user_id);
   $comments = recentCommentsToUser($user_id, 10); //limite = 10
   $requests = getOwnedRequests($user_id, 10); //limite = 10
-  $k = 0;
-  foreach($requests as $request) {
-    $request_photo_paths[$k++] = getRequestPhoto($request['pedido_id']);
+
+  if($requests != false) {
+    $k = 0;
+    foreach($requests as $request) {
+      $request_photo_paths[$k++] = getRequestPhoto($request['pedido_id']);
+    }
+    $k = 0;
   }
-  $k = 0;
 
   include('templates/header.php');
   include('templates/sidebar.php');

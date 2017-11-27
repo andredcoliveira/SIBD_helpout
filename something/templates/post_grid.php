@@ -1,5 +1,6 @@
-      <div class="post_grid">          <!-- ISTO PODE SER UM TEMPLATE -->
-        <?php foreach($requests as $request) { ?>
+      <div class="post_grid">
+        <?php if($requests != false) {
+          foreach($requests as $request) { ?>
             <a href="request.php?id=<?=$request['pedido_id']?>">
               <article class="post_request">
                 <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$k++]?>');"></div>
@@ -14,5 +15,8 @@
                 </section>
               </article>
             </a>
+        <?php }
+        } else { ?>
+          <p>Não foi encontrado nenhum pedido ativo.</p>
         <?php } ?>
-      </div>                          <!-- ATÉ AQUI  -->
+      </div>

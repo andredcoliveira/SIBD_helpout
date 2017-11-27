@@ -4,6 +4,4 @@
     <li><a href="my_requests.php?h=0">A pedir ajuda</a></li>
   </ul>
 </nav>
-<?php if($requests != false) {
-  include('templates/post_grid.php');
-} ?>
+<?php include('templates/post_grid.php'); ?>
