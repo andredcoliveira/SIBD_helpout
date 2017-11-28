@@ -30,7 +30,10 @@
       <ul>
         <?php foreach($mySkills as $mySkill) { ?>
           <li><?=$mySkill['nome']?></li>
+        <?php } if($mySkills == FALSE) { ?>
+          <p>De momento sem especialidades!</p>
         <?php } ?>
+
       </ul>
     </div>
     <div class="description_wrapper">
