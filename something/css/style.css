@@ -39,7 +39,7 @@ header {
 .logo > img {
   height: 100%;
   width: auto;
-  padding-top: 0.1em;
+  padding-top: 1px;
 }
 
 .trigram_container {
@@ -61,7 +61,7 @@ header {
   margin: 3em 0 0 0;
   padding: 0.2em 0 0.2em 0;
   background-color: black;
-  border: 0.1em solid #F5F5DC;
+  border: 1px solid #F5F5DC;
   border-radius: 0.3em;
 }
 
@@ -157,7 +157,7 @@ header {
 }
 
 .post_request {
-  border: 0.1em solid #000;
+  border: 1px solid #000;
   border-radius: 0.5em;
   background-color: white;
   width: 15em;
@@ -170,11 +170,10 @@ header {
 }
 
 .post_img_wrapper {
-  width: 15em;
   height: 11em;
   background-position: center;
   background-size: cover;
-  border-bottom: 0.1em solid;
+  border-bottom: 1px solid;
   border-color: inherit;
 }
 
@@ -212,7 +211,7 @@ header {
 }
 
 .user_photo img {
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.2em/0.5em;
   width: 10em;
 }
@@ -227,7 +226,7 @@ header {
   background-color: #181818;
   color: #F5F5DC;
   text-decoration: none;
-  border-right: 0.1em solid black;
+  border-right: 1px solid black;
 }
 
 .sidebar_colapsed span {
@@ -260,7 +259,7 @@ header {
   text-decoration: none;
   color: black;
   font-size: 0.7em;
-  margin: 0.1em 0 1em auto;
+  margin: 1px 0 1em auto;
   font: Verdana, sans-serif;
 }
 
@@ -342,7 +341,7 @@ footer > .authors {
 
 .visitor {
   background-color: #282828;
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
   margin: 1em auto;
   padding: 0 6em;
@@ -374,7 +373,7 @@ footer > .authors {
 }
 
 .visitor .box a:first-child {
-  border-right: 0.1em solid black;
+  border-right: 1px solid black;
   padding-right: 1.5em;
 }
 
@@ -433,7 +432,7 @@ footer > .authors {
   background-color: white;
   margin: 0 3em 0 3em;
 
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 }
 
@@ -445,8 +444,8 @@ footer > .authors {
 .profile_pic_wrapper {
   overflow: hidden;
 
-  border-top: 0.1em solid black;
-  border-bottom: 0.1em solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   border-radius: 0.3em;
 
   width: 12em;
@@ -525,7 +524,7 @@ ul {
 .comment {
   padding: 0.3em;
   background-color: lightgrey;
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
   margin: 1em 0 1em 0;
@@ -564,15 +563,15 @@ ul {
   align-items: center;
 
   background-color: lightgrey;
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 }
 
 .request_pic_wrapper {
   overflow: hidden;
 
-  border-top: 0.1em solid black;
-  border-bottom: 0.1em solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   border-radius: 0.5em;
 
   width: 20em;
@@ -594,7 +593,7 @@ ul {
 .request_fields {
   padding: 0.3em 1em;
   background-color: lightgrey;
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
   margin: 1em;
@@ -603,7 +602,7 @@ ul {
 .request_usr_profile {
   padding: 1em;
   background-color: lightgrey;
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
   margin: 1em;
@@ -634,7 +633,7 @@ ul {
   margin-top: 1em;
   padding: 1em;
 
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
 }
@@ -668,7 +667,7 @@ ul {
 }
 
 .requests_nav li {
-  border-right: 0.1em solid black;
+  border-right: 1px solid black;
   padding: 0 1em;
 }
 
@@ -762,7 +761,7 @@ ul {
 /** formulario apagar conta **/
 
 #delete_form {
-  border: 0.1em solid #d73a49;
+  border: 1px solid #d73a49;
   border-radius: 0.3em;
   background-color: #ffdddd;
   color: #5d2020;
@@ -802,7 +801,7 @@ ul {
   margin:1em 2em 2em 2em;
   background-color: lightgrey;
 
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
 }
@@ -841,7 +840,7 @@ ul {
 .participant_pic_wrapper {
   overflow: hidden;
 
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.3em;
 
   width: 3em;
@@ -856,7 +855,7 @@ ul {
   margin:1em 2em 2em 2em;
   background-color: lightgrey;
 
-  border: 0.1em solid black;
+  border: 1px solid black;
   border-radius: 0.5em;
 
   display: flex;
