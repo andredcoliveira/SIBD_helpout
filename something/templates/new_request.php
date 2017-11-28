@@ -1,8 +1,3 @@
-<?php
-  $skills = getAllSkills();
-?>
-
-
 <div class="profile_wrapper">
   <div class="profile">
 
@@ -10,7 +5,7 @@
       <h2>Novo Pedido</h2>
 
       <form action="actions/action_new_request.php" method="post" enctype="multipart/form-data">
-        <label for="title"><h3 class="title">Título</h3></label><input type="text" name="title" placeholder="Título para o pedido" required="required">
+        <label for="title"><h3 class="title">Título</h3></label><input type="text" name="title" value="<?php echo isset($_FORM_VALUES['title'])?$_FORM_VALUES['title']:'';?>" placeholder="Título para o pedido" required="required">
         <label for="location"><h3 class="title">Localização</h3></label><input type="text" name="location" placeholder="Localização" required="required">
         <label for="date"><h3 class="title">Data</h3></label><input type="date" name="date">
         <label for="reward"><h3 class="title">Recompensa</h3></label><input type="text" name="reward" placeholder="Recompensa">
@@ -25,7 +20,7 @@
           <?php } ?>
         </div>
 
-        <label>Escolha uma imagem:
+        <label><strong>Escolha uma imagem:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
 

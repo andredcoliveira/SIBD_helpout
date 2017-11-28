@@ -12,7 +12,7 @@
       </div>
       <div class="request_right">
         <div class="request_fields">
-          <h3>Acerca deste pedido:</h3>
+          <h3>Sobre</h3>
           <ul>
             <li><?=$request['reward']?></li>
             <li><?=$request['date_limit']?></li>
@@ -22,6 +22,8 @@
 
         <a href="./usr_profile.php?id=<?=$owner_id?>" class="usr_profile_link">
           <div class="request_usr_profile">
+            <h3>Feito por</h3>
+            <div class="profile_pic_wrapper" style="background-image: url('res/uploads/users/<?=$owner_id?>.jpg');"></div>
             <h3>Pedido feito por:</h3>
             <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
             <div class ="profile_top_right">
@@ -43,7 +45,7 @@
     </div>
 
     <div class="participants">
-      <h3>Quem se encontra a ajudar:</h3>
+      <h3>Participantes</h3>
       <div class="participants_wrapper">
 
         <?php foreach($participants as $participant){ ?>
@@ -54,7 +56,7 @@
         <?php }
         if($participants == NULL){ ?>
           <article class="no_participant">
-            <h4>De momento ninguém se encontra a ajudar...</h4>
+            <span>De momento ninguém se encontra a ajudar...</span>
           </article>
         <?php } ?>
 

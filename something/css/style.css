@@ -1,10 +1,20 @@
 html, body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, verdana, tahoma, sans-serif;
   margin: 0;
   //background-color: #484848;
-  background: url("../res/background.jpg") repeat;
+  background: url("../res/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   height: 100%;
   width: 100%;
+  font-size: 14px;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
 }
 
 /**    header    **/
@@ -482,9 +492,9 @@ footer > .authors {
   width: auto;
 }
 
-.profile_top_right ul {
+ul {
   list-style-type: circle;
-  padding-left: 0;
+  padding-left: 1.3em;
 }
 
 
@@ -517,7 +527,7 @@ footer > .authors {
   padding: 0.3em;
   background-color: lightgrey;
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
   margin: 1em 0 1em 0;
 }
@@ -556,14 +566,14 @@ footer > .authors {
 
   background-color: lightgrey;
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
 
 .request_pic_wrapper {
   overflow: hidden;
 
-  border: 0.2em solid black;
-  border-radius: 0.3em;
+  border: 0.1em solid black;
+  border-radius: 0.5em;
 
   width: 20em;
   height: 15em;
@@ -585,7 +595,7 @@ footer > .authors {
   padding: 0.3em 1em;
   background-color: lightgrey;
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
   margin: 1em;
 }
@@ -594,7 +604,7 @@ footer > .authors {
   padding: 1em;
   background-color: lightgrey;
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
   margin: 1em;
 }
@@ -625,7 +635,7 @@ footer > .authors {
   padding: 1em;
 
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
 }
 
@@ -694,6 +704,21 @@ footer > .authors {
   resize: vertical;
 }
 
+.new_request form input[type='submit'] {
+  font-weight: bold;
+  padding: 0.4em 1em;
+  margin: 2em auto 1em auto;
+  border: 0.05em solid black;
+  border-radius: 0.3em;
+  background-color: lightgrey;
+}
+
+.new_request form input[type='submit']:hover {
+  cursor: pointer;
+  color: #F5F5DC;
+  background-color: #464646;
+}
+
 .choose_skills {
   display: flex;
   flex-direction: column;
@@ -703,7 +728,7 @@ footer > .authors {
 
 .choose_skills .title {
   margin-left: 0;
-  font-size: 0.95em;
+  font-size: 1.1em;
 }
 
 .choose_skills .skill {
@@ -752,6 +777,7 @@ footer > .authors {
 }
 
 #delete_form input {
+  margin: 1em auto;
   font-weight: bold;
   font-size: 1em;
   color: #cb2431;
@@ -777,7 +803,7 @@ footer > .authors {
   background-color: lightgrey;
 
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
 }
 
@@ -825,13 +851,13 @@ footer > .authors {
 
   margin: 1em;
 }
- 
+
 .options {
   margin:1em 2em 2em 2em;
   background-color: lightgrey;
 
   border: 0.1em solid black;
-  border-radius: 1em;
+  border-radius: 0.5em;
 
   display: flex;
   justify-content: center;
@@ -864,7 +890,6 @@ footer > .authors {
 
 
 
-
 #edit_profile_description {
   margin-bottom: 2em;
 }
@@ -877,4 +902,3 @@ footer > .authors {
 .skills_profile_wrapper > h3 {
   margin-left: 1em;
 }
-

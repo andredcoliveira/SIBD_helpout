@@ -84,7 +84,7 @@
     }
   }
 
-  function editUser($name, $password, $date, $description, $user_id){
+  function editUser($name, $password, $date, $description, $user_id) {
     global $conn;
 
     $options = [
@@ -93,7 +93,7 @@
 
     $hash = password_hash($password , PASSWORD_DEFAULT, $options);
 
-    $stmt = $conn->prepare('UPDATE users 
+    $stmt = $conn->prepare('UPDATE users
                             SET name = ? , pw = ? , birthdate = ? , description = ?
                             WHERE id = ?');
     $stmt->execute(array($name, $hash, $date, $description, $user_id));

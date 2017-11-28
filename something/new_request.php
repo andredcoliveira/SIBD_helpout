@@ -8,6 +8,8 @@
     die(header('Location: index.php'));
   }
 
+  $skills = getAllSkills();
+
   include('templates/header.php');
   include('templates/sidebar.php');
 
