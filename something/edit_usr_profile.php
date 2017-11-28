@@ -2,6 +2,7 @@
   include('config/init.php');
   include('database/users.php');
   include('database/requests.php');
+  include('database/users.php');
   include('tools/request.php');
   include('tools/user.php');
 

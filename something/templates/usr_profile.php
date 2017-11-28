@@ -1,3 +1,7 @@
+<?php 
+  $mySkills = getUserSkills($user_id);
+?>
+
 <div class="profile_wrapper">
   <div class="profile">
     <?php if($_ID == $user_id) { ?>
@@ -12,7 +16,7 @@
         <h2><?=$user_info['name']?></h2>
         <div class="stars">
           <img src="res/star.png">
-          <h3>4.3</h3>
+          <h3><?=getScore($user_id)?></h3>
         </div>
         <ul>
           <li>Profissão</li>
@@ -20,6 +24,14 @@
           <li>Qualquer coisa mais</li>
         </ul>
       </div>
+    </div>
+    <div class="skills_profile_wrapper">
+      <h3>As minhas especialidades:</h3>
+      <ul>
+        <?php foreach($mySkills as $mySkill) { ?>
+          <li><?=$mySkill['nome']?></li>
+        <?php } ?>
+      </ul>
     </div>
     <div class="description_wrapper">
       <h3>Descrição</h3>

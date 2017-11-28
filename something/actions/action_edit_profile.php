@@ -11,6 +11,11 @@
   $description = strip_tags($_POST['description']);
   $_SESSION['form_values'] = $_POST;
 
+  if(isset($_POST['skills'])){
+    $skills = $_POST['skills']; /** Array com id's de skills selecionadas **/
+  }
+  else $skills = NULL;
+
   if(!$name) {
     $_SESSION['error_message'] = 'Nome inválido';
     die(header('Location: ../edit_usr_profile.php'));
@@ -23,11 +28,13 @@
   } else {
     try {
       editUser($name, $password, $date, $description, $_ID);
+      editUserSkills($_ID, $skills);
     } catch(PDOException $e) {
       $_SESSION['error_message'] = $e->getMessage();
       die(header('Location: ../edit_usr_profile.php'));
     }
   }
+
 
 
   if(!isset($_FILES['fileToUpload']) || $_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
