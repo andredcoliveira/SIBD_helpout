@@ -45,7 +45,7 @@
         if($check !== false) {
             /*echo "File is an image - " . $check["mime"] . ".";*/
             $uploadOk = 1;
-        } 
+        }
         else {
             /*echo "File is not an image.";*/
             $_SESSION['error_message'] = "File is not an image.";
@@ -55,16 +55,16 @@
 
     // Check if file already exists
     $possibleImagePath = getUserPhoto2($_ID);
-    if (file_exists($possibleImagePath)) {  
+    if (file_exists($possibleImagePath)) {
       $status = unlink($possibleImagePath); //remove the file
       if($status != true){
         $_SESSION['error_message'] = $possibleImagePath . '-> não consegue apagar isto';
         $uploadOk = 0;
-      } 
+      }
     }
 
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 1000000) {
+    if ($_FILES["fileToUpload"]["size"] > 2000000) {
         //echo "Sorry, your file is too large.";
         $_SESSION['error_message'] = "File is too large";
         $uploadOk = 0;
@@ -84,7 +84,7 @@
         //echo "Sorry, your file was not uploaded.";
         //$_SESSION['error_message'] = "Imagem não foi carregada.";
     // if everything is ok, try to upload file
-    } 
+    }
     else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
@@ -93,7 +93,7 @@
         $_SESSION['error_message'] = 'Houve um problema com o carregamento da imagem.';
       }
     }
-  } 
+  }
 
 
   $_SESSION['success_message'] = 'Your account was successfully edited.';

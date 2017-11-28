@@ -4,7 +4,7 @@
     <div class="request">
       <div class="request_left">
         <h2><?=$request['name']?></h2>
-        <div class="request_pic_wrapper" style="background-image: url('res/uploads/requests/<?=$request_id?>.jpg');"></div>
+        <div class="request_pic_wrapper" style="background-image: url('<?=getRequestPhoto($request_id)?>');"></div>
         <div class="description_wrapper">
           <h2>Descrição</h2>
           <p><?=$request['description']?></p>
@@ -51,7 +51,7 @@
             <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
             <h4><a href="usr_profile.php?id=<?=$participant['id']?>"><?=$participant['name']?></a></h4>
           </article>
-        <?php } 
+        <?php }
         if($participants == NULL){ ?>
           <article class="no_participant">
             <h4>De momento ninguém se encontra a ajudar...</h4>

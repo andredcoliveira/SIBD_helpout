@@ -1,6 +1,7 @@
 <?php
   include('config/init.php');
   include('tools/user.php');
+  include('tools/request.php');
 
   if(!isset($_USERNAME)) {
     die(header('Location: index.php'));
@@ -11,7 +12,7 @@
   $request = getRequest($request_id);
   $request_owner = getRequestOwner($request_id);
   $owner_id = $request_owner['users_id'];
-  
+
   $participants = getParticipants($request_id);
 
 
