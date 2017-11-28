@@ -116,7 +116,7 @@
       $sum = $sum + $comment['classification'];
       $i = $i + 1;
     }
-
+    if($i == 0) return 'Ainda sem comentários!';
     return round($sum / $i, 1); 
   }
 
