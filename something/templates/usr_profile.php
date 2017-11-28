@@ -1,3 +1,7 @@
+<?php 
+  $mySkills = getUserSkills($user_id);
+?>
+
 <div class="profile_wrapper">
   <div class="profile">
     <?php if($_ID == $user_id) { ?>
@@ -20,6 +24,14 @@
           <li>Qualquer coisa mais</li>
         </ul>
       </div>
+    </div>
+    <div class="skills_profile_wrapper">
+      <h3>As minhas especialidades:</h3>
+      <ul>
+        <?php foreach($mySkills as $mySkill) { ?>
+          <li><?=$mySkill['nome']?></li>
+        <?php } ?>
+      </ul>
     </div>
     <div class="description_wrapper">
       <h3>Descrição</h3>

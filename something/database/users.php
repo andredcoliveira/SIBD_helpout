@@ -147,4 +147,15 @@
     }
   }
 
+  function getUserSkills($user_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT nome 
+FROM users JOIN users_skill ON users.id = users_id JOIN skill ON skill_id = skill.id
+WHERE users.id = ?');
+    $stmt->execute(array($user_id));
+
+    return $stmt->fetchAll();
+  }
+
 ?>
