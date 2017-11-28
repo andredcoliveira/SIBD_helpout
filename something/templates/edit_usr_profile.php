@@ -5,16 +5,16 @@
       <h2>Editar Perfil</h2>
 
       <form action="actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
-        <label for="name"><h3 class="title">Nome:</h3></label><input type="text" name="name" value="Daniel Granhão" required="required">
-        <label for="pw"><h3 class="title">Password:</h3></label><input type="password" name="pw" required="required">
-        <label for="pw2"><h3 class="title">Repita a Password:</h3></label><input type="password" name="pw2" required="required">
-        <label for="date"><h3 class="title">Data de nascimento:</h3></label><input type="date" name="date" value="1996-06-03">
-        <label for="description"><h3 class="title">Descrição:</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description">Não me apetece.. </textarea>
+        <label for="name"><h3 class="title">Nome</h3></label><input type="text" name="name" value="<?php echo isset($_FORM_VALUES['name'])?$_FORM_VALUES['name']:$_NAME;?>">
+        <label for="pw"><h3 class="title">Nova palavra-passe</h3></label><input type="password" name="pw">
+        <label for="pw2"><h3 class="title">Repetir palavra-passe</h3></label><input type="password" name="pw2">
+        <label for="date"><h3 class="title">Data de nascimento</h3></label><input type="date" name="date" value="<?php echo isset($_FORM_VALUES['date'])?$_FORM_VALUES['date']:getUserInfo($_ID)['birthdate'];?>">
+        <label for="description"><h3 class="title">Descrição</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description"><?php echo isset($_FORM_VALUES['description'])?$_FORM_VALUES['description']:getUserInfo($_ID)['description'];?></textarea>
 
-        <label>Escolha uma foto de perfil:
+        <label><strong>Foto de perfil:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
-       
+
         <input type="submit" value="Submeter" name="submit" id="submit_button_edit_profile">
       </form>
 
