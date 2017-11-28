@@ -101,4 +101,25 @@
     return true;
   }
 
+  function getScore($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM comment WHERE commented_id = ?');
+    $stmt->execute(array($user_id));
+
+    $comments = $stmt->fetchAll();
+
+    $sum = 0;
+    $i = 0;
+
+    foreach ($comments as $comment) {
+      $sum = $sum + $comment['classification'];
+      $i = $i + 1;
+    }
+
+    return round($sum / $i, 1); 
+  }
+
+  
+
 ?>

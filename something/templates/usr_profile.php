@@ -12,7 +12,7 @@
         <h2><?=$user_info['name']?></h2>
         <div class="stars">
           <img src="res/star.png">
-          <h3>4.3</h3>
+          <h3><?=getScore($user_id)?></h3>
         </div>
         <ul>
           <li>Profissão</li>
