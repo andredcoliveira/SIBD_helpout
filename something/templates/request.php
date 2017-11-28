@@ -23,7 +23,7 @@
         <a href="./usr_profile.php?id=<?=$owner_id?>" class="usr_profile_link">
           <div class="request_usr_profile">
             <h3>Pedido feito por:</h3>
-            <div class="profile_pic_wrapper" style="background-image: url('res/uploads/users/<?=$owner_id?>.jpg');"></div>
+            <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
             <div class ="profile_top_right">
               <h2><?=$request_owner['name']?></h2>
             <div class="stars">
