@@ -428,12 +428,10 @@ footer > .authors {
 
 
 .profile {
-  min-height: 100vh;
   overflow: hidden;
 
   background-color: white;
   margin: 0 3em 0 3em;
-  padding: 0;
 
   border: 0.1em solid black;
   border-radius: 0.5em;
@@ -447,7 +445,8 @@ footer > .authors {
 .profile_pic_wrapper {
   overflow: hidden;
 
-  border: 0.1em solid black;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
   border-radius: 0.3em;
 
   width: 12em;
@@ -462,7 +461,7 @@ footer > .authors {
   margin-top: 1em
 }
 
-.stars h3 {
+.stars h4 {
   padding-right: 1em
 }
 
@@ -499,7 +498,7 @@ ul {
 
 
 .description_wrapper {
-  padding: 0 1em 0 1em;
+  padding: 0 1em;
 }
 
 .description_wrapper p {
@@ -572,7 +571,8 @@ ul {
 .request_pic_wrapper {
   overflow: hidden;
 
-  border: 0.1em solid black;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
   border-radius: 0.5em;
 
   width: 20em;
@@ -896,9 +896,8 @@ ul {
 
 #submit_button_edit_profile {
   margin-top: 1.5em;
-  font-size: medium;
 }
 
-.skills_profile_wrapper > h3 {
-  margin-left: 1em;
+.skills_profile_wrapper {
+  padding: 0 1em;
 }
