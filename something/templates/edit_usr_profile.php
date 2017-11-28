@@ -1,3 +1,7 @@
+<?php
+  $allSkills = getAllSkills();
+?>
+
 <div class="profile_wrapper">
   <div class="profile">
 
@@ -10,6 +14,16 @@
         <label for="pw2"><h3 class="title">Repita a Password:</h3></label><input type="password" name="pw2" required="required">
         <label for="date"><h3 class="title">Data de nascimento:</h3></label><input type="date" name="date" value="1996-06-03">
         <label for="description"><h3 class="title">Descrição:</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description">Não me apetece.. </textarea>
+
+        <div class="choose_skills">
+          <h3 class="title">Habilidades:</h3>
+          <?php foreach($allSkills as $skill) { ?>
+            <div class="skill">
+              <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php echo (userHasSkill($_ID, $skill['id'])? 'checked' : '')?>><?=$skill['nome']?></label>
+            </div>
+          <?php } ?>
+        </div>
+
 
         <label>Escolha uma foto de perfil:
           <input type="file" name="fileToUpload" id="fileToUpload">

@@ -120,6 +120,31 @@
     return round($sum / $i, 1); 
   }
 
-  
+  function userHasSkill($user_id, $skill_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users_skill WHERE users_id = ? AND skill_id = ?');
+    $stmt->execute(array($user_id, $skill_id));
+
+    $skill = $stmt->fetch();
+
+    if($skill != NULL) return true;
+    return false;
+  }
+
+  function editUserSkills($user_id, $skills){
+    global $conn;
+
+
+    $stmt = $conn->prepare("DELETE FROM users_skill WHERE users_id = ?");
+    $stmt->execute(array($user_id));
+    
+    if($skills != null){
+      foreach ($skills as $skill_id) {
+        $stmt = $conn->prepare("INSERT INTO users_skill VALUES (?,?)");
+        $stmt->execute(array($user_id, $skill_id));
+      }
+    }
+  }
 
 ?>
