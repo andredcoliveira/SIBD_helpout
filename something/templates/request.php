@@ -49,7 +49,7 @@
         <?php foreach($participants as $participant){ ?>
           <article class="participant">
             <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
-            <h4><a href="usr_profile.php"><?=$participant['name']?></a></h4>
+            <h4><a href="usr_profile.php?id=<?=$participant['id']?>"><?=$participant['name']?></a></h4>
           </article>
         <?php } 
         if($participants == NULL){ ?>
