@@ -1,4 +1,4 @@
-<?php 
+<?php
   $mySkills = getUserSkills($user_id);
 ?>
 
@@ -16,7 +16,7 @@
         <h2><?=$user_info['name']?></h2>
         <div class="stars">
           <img src="res/star.png">
-          <h3><?=getScore($user_id)?></h3>
+          <span><?=getScore($user_id)?></span>
         </div>
         <ul>
           <li>Profissão</li>
@@ -26,12 +26,12 @@
       </div>
     </div>
     <div class="skills_profile_wrapper">
-      <h3>As minhas especialidades:</h3>
+      <h3>As minhas especialidades</h3>
       <ul>
         <?php foreach($mySkills as $mySkill) { ?>
           <li><?=$mySkill['nome']?></li>
         <?php } if($mySkills == FALSE) { ?>
-          <p>De momento sem especialidades!</p>
+          <p>Este utilizador ainda não escolheu especialidades.</p>
         <?php } ?>
 
       </ul>

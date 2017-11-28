@@ -15,9 +15,8 @@
         <label for="date"><h3 class="title">Data de nascimento</h3></label><input type="date" name="date" value="<?php echo isset($_FORM_VALUES['date'])?$_FORM_VALUES['date']:getUserInfo($_ID)['birthdate'];?>">
         <label for="description"><h3 class="title">Descrição</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description"><?php echo isset($_FORM_VALUES['description'])?$_FORM_VALUES['description']:getUserInfo($_ID)['description'];?></textarea>
 
-        <label><strong>Foto de perfil:&nbsp;</strong>
         <div class="choose_skills">
-          <h3 class="title">Habilidades:</h3>
+          <h3 class="title">Habilidades</h3>
           <?php foreach($allSkills as $skill) { ?>
             <div class="skill">
               <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php echo (userHasSkill($_ID, $skill['id'])? 'checked' : '')?>><?=$skill['nome']?></label>
@@ -26,7 +25,7 @@
         </div>
 
 
-        <label>Escolha uma foto de perfil:
+        <label><strong>Foto de perfil:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
 
