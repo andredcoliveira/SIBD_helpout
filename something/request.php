@@ -8,15 +8,24 @@
   }
 
   include('database/requests.php');
+  include('database/comments.php');
   
   $request_id = $_GET['id'];
-  $request = getRequest($request_id);
-  $request_owner = getRequestOwner($request_id);
+  try{
+    $request = getRequest($request_id);
+    $request_owner = getRequestOwner($request_id);
+    $participants = getParticipants($request_id);
+    $skills = getAllSkills();
+  } catch(PDOException $e) {
+    $_SESSION['error_message'] = $e->getMessage();
+    die(header("Location: index.php"));
+  }
+  
   $owner_id = $request_owner['users_id'];
 
-  $participants = getParticipants($request_id);
+  
 
-  $skills = getAllSkills();
+  
 
   include('templates/header.php');
   include('templates/sidebar.php');

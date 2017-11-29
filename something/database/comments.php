@@ -14,4 +14,23 @@
 
   }
 
+  function getComment($user_id, $request_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT *
+                            FROM comment
+                            WHERE commented_id = ? AND pedido_id = ?');
+    $stmt->execute(array($user_id, $request_id));
+
+    return $stmt->fetch();
+  }
+
+  function insertComment($commented_id, $commenter_id, $request_id, $comment, $classification) {
+    global $conn;
+
+    $stmt = $conn->prepare('INSERT INTO comment
+                            VALUES (DEFAULT, ?, ?, ?, ?, CURRENT_TIMESTAMP, ?)');
+    $stmt->execute(array($commenter_id, $commented_id, $classification, $comment, $request_id));
+  }
+
 ?>
