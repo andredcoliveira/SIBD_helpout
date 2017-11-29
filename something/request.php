@@ -9,6 +9,7 @@
 
   include('database/requests.php');
   include('database/comments.php');
+  include('database/users.php');
   
   $request_id = $_GET['id'];
   try{

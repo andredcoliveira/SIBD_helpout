@@ -36,7 +36,11 @@
               <h2><?=$request_owner['name']?></h2>
             <div class="stars">
               <img src="res/star.png">
-              <h3>4.3</h3>
+              <?php if(($score=getScore($owner_id)) != -1) { ?>
+                <span>&nbsp;&nbsp;<?=$score?></span>
+              <?php } else { ?>
+                <span class="no_score">&nbsp;&nbsp;Sem classificação.</span>
+              <?php } ?>
             </div>
             <ul>
               <li>Profissão</li>
