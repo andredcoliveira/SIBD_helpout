@@ -4,7 +4,11 @@
     <div class="request">
       <div class="request_left">
         <h2><?=$request['name']?></h2>
-        <div class="request_pic_wrapper" style="background-image: url('<?=getRequestPhoto($request_id)?>');"></div>
+        <?php if(getRequestPhoto($request_id) != false) { ?>
+          <div class="request_pic_wrapper" style="background-image: url('<?=getRequestPhoto($request_id)?>');"></div>
+        <?php } else { ?>
+          <div class="request_pic_wrapper" style="background-image: url('res/default_request.png');"></div>
+        <?php } ?>
         <div class="description_wrapper">
           <h2>Descrição</h2>
           <p><?=$request['description']?></p>
@@ -23,7 +27,11 @@
         <a href="./usr_profile.php?id=<?=$owner_id?>" class="usr_profile_link">
           <div class="request_usr_profile">
             <h3>Feito por</h3>
-            <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
+            <?php if(getUserPhoto($owner_id) != false) { ?>
+              <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
+            <?php } else { ?>
+              <div class="profile_pic_wrapper" style="background-image: url('res/avatar.png');"></div>
+            <?php } ?>
             <div class ="profile_top_right">
               <h2><?=$request_owner['name']?></h2>
             <div class="stars">

@@ -30,6 +30,8 @@
     $k = 0;
   }
 
+  $skills = getAllSkills();
+
 
   include('templates/header.php');
   include('templates/sidebar.php');

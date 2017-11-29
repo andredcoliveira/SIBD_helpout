@@ -20,7 +20,7 @@
         $stmt->execute(array($request_id, $skill_id));
       }
     }
-    
+
     return $request_id;
   }
 
@@ -155,6 +155,29 @@
                   FROM users_pedido JOIN users ON (users_id = id)
                   WHERE owner = false AND pedido_id = ?');
     $stmt->execute(array($request_id));
+
+    return $stmt->fetchAll();
+  }
+
+  function fillFeed($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT *
+                  FROM pedido
+                  WHERE active = true
+
+                  EXCEPT
+
+                  (SELECT id, name, reward, added_date, description, location, date_limit, active
+                  FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
+                  WHERE active = true AND filters.users_id = ?
+
+                  UNION
+
+                  SELECT id, name, reward, added_date, description, location, date_limit, active
+                  FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
+                  WHERE users_id = ? AND users_pedido.owner = true)');
+    $stmt->execute(array($user_id, $user_id));
 
     return $stmt->fetchAll();
   }

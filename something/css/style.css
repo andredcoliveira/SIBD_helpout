@@ -185,7 +185,7 @@ header {
   /**    sidebar    **/
 
 .sidebar {
-  overflow: hidden;
+  overflow: auto;
   white-space: nowrap;
   z-index: 100;
   position: fixed;
@@ -198,16 +198,18 @@ header {
   border-right: 0.05em solid black;
   color: #181818;
 
-  height: 100vh;
+  height: 100%;
   width: 2em;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
 
   transition: all 500ms ease-out;
   visibility: hidden;
+}
+
+.sidebar_wrapper {
+  margin: 0 auto;
 }
 
 .user_photo img {
@@ -216,8 +218,45 @@ header {
   width: 10em;
 }
 
+.sidebar .user_info a {
+  color: black;
+  text-decoration: none;
+}
+
+.sidebar .user_info a:hover {
+  color: #006400;
+  text-decoration: none;
+}
+
+.sidebar .user_info h4 {
+  margin: 0.5em 0 0.2em 0;
+}
+
+.sidebar .user_info form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .user_info form label {
+  margin: 0 0 0.2em 0;
+}
+
+.sidebar .user_info form > input {
+  width: fit-content;
+  margin: 0.5em 0 0 1.5em;
+  border: 0.05em solid black;
+  border-radius: 0.3em;
+  background-color: lightgrey;
+}
+
+.sidebar .user_info form > input:hover {
+  cursor: pointer;
+  color: #F5F5DC;
+  background-color: #464646;
+}
+
 .sidebar_colapsed {
-  height: 100vh;
+  height: 100%;
   width: 2.5em;
   position: fixed;
   top: 0;
@@ -287,10 +326,14 @@ header {
 .content_navigation li {
   float: left;
   display: inline;
-  border-right: 1px solid black;
+  border-right: 1px solid #484848;
   border-left: 0;
   padding-left: 0.2em;
   padding-right: 0.2em;
+}
+
+.content_navigation li:before {
+  content: none;
 }
 
 .content_navigation li:last-child {
@@ -428,9 +471,10 @@ footer > .authors {
 
 .profile {
   overflow: hidden;
+  max-width: 58em;
 
   background-color: white;
-  margin: 0 3em 0 3em;
+  margin: 0 auto;
 
   border: 1px solid black;
   border-radius: 0.5em;
@@ -460,14 +504,18 @@ footer > .authors {
   margin-top: 1em
 }
 
+.stars .no_score {
+  color: gray;
+}
+
 .stars h4 {
-  padding-right: 1em
+  margin: 0 1em 0 0;
 }
 
 
 .profile_top_right {
   width: fit-content;
-  margin: 2em 0 0 4em;
+  margin: auto 0 0 4em;
 }
 
 
@@ -486,15 +534,23 @@ footer > .authors {
 
 
 .stars img {
-  height: 2em;
+  height: 1.5em;
   width: auto;
+  padding-bottom: 0.2em;
 }
 
 ul {
-  list-style-type: circle;
-  padding-left: 1.3em;
+  list-style: none;
+  padding-left: 0;
 }
 
+ul li {
+  margin: 0.5em 0;
+}
+
+ul li:before {
+		 content: "\2023 \0020";
+}
 
 .description_wrapper {
   padding: 0 1em;
@@ -515,6 +571,10 @@ ul {
 
 .recent_comments {
   padding: 1em;
+}
+
+.recent_comments span {
+  color: gray;
 }
 
 .recent_comments > h2 {
@@ -636,6 +696,10 @@ ul {
   border: 1px solid black;
   border-radius: 0.5em;
 
+}
+
+.requests_nav ul li:before {
+  content: none;
 }
 
 .requests_nav a.active {
@@ -899,4 +963,8 @@ ul {
 
 .skills_profile_wrapper {
   padding: 0 1em;
+}
+
+.skills_profile_wrapper span {
+  color: gray;
 }

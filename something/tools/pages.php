@@ -6,5 +6,10 @@
       echo 'active';
     }
   }
-  
+
+  function getCurrentPage() {
+    $name = basename($_SERVER['PHP_SELF']);
+    return $name;
+  }
+
 ?>

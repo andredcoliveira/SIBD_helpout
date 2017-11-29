@@ -116,7 +116,7 @@
       $sum = $sum + $comment['classification'];
       $i = $i + 1;
     }
-    if($i == 0) return 'Sem classificação';
+    if($i == 0) return -1;
     return round($sum / $i, 1);
   }
 
@@ -135,11 +135,10 @@
   function editUserSkills($user_id, $skills){
     global $conn;
 
-
     $stmt = $conn->prepare("DELETE FROM users_skill WHERE users_id = ?");
     $stmt->execute(array($user_id));
 
-    if($skills != null){
+    if($skills != null) {
       foreach ($skills as $skill_id) {
         $stmt = $conn->prepare("INSERT INTO users_skill VALUES (?,?)");
         $stmt->execute(array($user_id, $skill_id));
@@ -147,15 +146,41 @@
     }
   }
 
-  function getUserSkills($user_id){
+  function getUserSkills($user_id) {
     global $conn;
 
     $stmt = $conn->prepare('SELECT nome
-FROM users JOIN users_skill ON users.id = users_id JOIN skill ON skill_id = skill.id
-WHERE users.id = ?');
+                  FROM users JOIN users_skill ON users.id = users_id JOIN skill ON skill_id = skill.id
+                  WHERE users.id = ?');
     $stmt->execute(array($user_id));
 
     return $stmt->fetchAll();
+  }
+
+  function updateFilters($user_id, $skills) {
+    global $conn;
+
+    $stmt = $conn->prepare("DELETE FROM filters WHERE users_id = ?");
+    $stmt->execute(array($user_id));
+
+    if($skills != null) {
+      foreach ($skills as $skill_id) {
+        $stmt = $conn->prepare("INSERT INTO filters VALUES (?,?)");
+        $stmt->execute(array($user_id, $skill_id));
+      }
+    }
+  }
+
+  function userHasFilter($user_id, $skill_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM filters WHERE users_id = ? AND skill_id = ?');
+    $stmt->execute(array($user_id, $skill_id));
+
+    $skill = $stmt->fetch();
+
+    if($skill != NULL) return true;
+    return false;
   }
 
 ?>

@@ -1,6 +1,6 @@
 -- Pedidos em que user é dono
 SELECT *
-FROM pedido JOIN users_pedido ON (pedido.id = users_id)
+FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
 WHERE users_id = $_ID AND users_pedido.owner = true
 
 
@@ -46,3 +46,20 @@ WHERE id = $_ID
 SELECT *
 FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
 WHERE users_id = $_ID AND users_pedido.owner = false
+
+-- Pedidos filtrados
+SELECT *
+FROM pedido
+WHERE active = true
+
+EXCEPT
+
+SELECT id, name, reward, added_date, description, location, date_limit, active
+FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
+WHERE active = true AND filters.users_id = 1
+
+-- Pedidos sem skills
+SELECT *
+FROM pedido
+WHERE id NOT IN (SELECT id
+FROM pedido_skill JOIN pedido ON pedido_id=id)

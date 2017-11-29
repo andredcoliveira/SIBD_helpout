@@ -1,7 +1,3 @@
-<?php
-  $mySkills = getUserSkills($user_id);
-?>
-
 <div class="profile_wrapper">
   <div class="profile">
     <?php if($_ID == $user_id) { ?>
@@ -10,13 +6,19 @@
     <div class="profile_top">
       <?php if($user_photo_path !== false) { ?>
         <div class="profile_pic_wrapper" style="background-image: url('<?=$user_photo_path?>');"></div>
+      <?php } else { ?>
+        <div class="profile_pic_wrapper" style="background-image: url('res/avatar.png');"></div>
       <?php } ?>
       <div class="profile_top_right">
 
         <h2><?=$user_info['name']?></h2>
         <div class="stars">
           <img src="res/star.png">
-          <span><?=getScore($user_id)?></span>
+          <?php if(($score=getScore($user_id)) != -1) { ?>
+            <span>&nbsp;&nbsp;<?=$score?></span>
+          <?php } else { ?>
+            <span class="no_score">&nbsp;&nbsp;Sem classificação.</span>
+          <?php } ?>
         </div>
         <ul>
           <li>Profissão</li>
@@ -28,12 +30,11 @@
     <div class="skills_profile_wrapper">
       <h3>As minhas especialidades</h3>
       <ul>
-        <?php foreach($mySkills as $mySkill) { ?>
+        <?php if($mySkills == FALSE) { ?>
+          <span>Este utilizador ainda não escolheu especialidades.</span>
+        <?php } else { foreach($mySkills as $mySkill) { ?>
           <li><?=$mySkill['nome']?></li>
-        <?php } if($mySkills == FALSE) { ?>
-          <p>Este utilizador ainda não escolheu especialidades.</p>
-        <?php } ?>
-
+        <?php } } ?>
       </ul>
     </div>
     <div class="description_wrapper">

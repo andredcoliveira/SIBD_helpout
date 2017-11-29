@@ -1,12 +1,12 @@
       <div class="post_grid">
         <?php if($requests != false) {
           foreach($requests as $key => $request) { ?>
-            <a href="request.php?id=<?=$request['pedido_id']?>">
+            <a href="request.php?id=<?=$request['id']?>">
               <article class="post_request">
                 <?php if($request_photo_paths[$key] !== false) { ?>
                   <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$key]?>');"></div>
                 <?php } else {?>
-                  <div class="post_img_wrapper" style="background-image: url('res/default.png');"></div>
+                  <div class="post_img_wrapper" style="background-image: url('res/default_request.png');"></div>
                 <?php }?>
                 <section class="post_description">
                   <h3><?=$request['name']?></h3>
@@ -15,7 +15,7 @@
                     <li><?=$request['date_limit']?></li>
                     <li>nr de pessoas (?)</li>
                   </ul>
-                  <p>Por: <?=getRequestOwner($request['pedido_id'])['name'];?></p>
+                  <p>Por: <?=getRequestOwner($request['id'])['name'];?></p>
                 </section>
               </article>
             </a>

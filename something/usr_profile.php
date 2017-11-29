@@ -28,6 +28,11 @@
     $k = 0;
   }
 
+  $mySkills = getUserSkills($user_id);
+  
+  $skills = getAllSkills();
+
+
   include('templates/header.php');
   include('templates/sidebar.php');
 

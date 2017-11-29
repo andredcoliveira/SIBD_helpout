@@ -8,6 +8,7 @@
   }
 
   include('database/requests.php');
+  
   $request_id = $_GET['id'];
   $request = getRequest($request_id);
   $request_owner = getRequestOwner($request_id);
@@ -15,6 +16,7 @@
 
   $participants = getParticipants($request_id);
 
+  $skills = getAllSkills();
 
   include('templates/header.php');
   include('templates/sidebar.php');

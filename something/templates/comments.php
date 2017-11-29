@@ -13,7 +13,7 @@
       </div>
 
       <p><?php echo $comment['comment']?></p>
-      <p>Por: <a href="usr_profile.php?id=<?=$comment['commenter_id']?>"><?=$comment['name']?></a></p>
+      <p>&nbsp;-&nbsp;<a href="usr_profile.php?id=<?=$comment['commenter_id']?>"><?=$comment['name']?></a></p>
     </article>
   <?php } ?>
 </div>
