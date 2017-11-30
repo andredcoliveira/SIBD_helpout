@@ -27,9 +27,15 @@
               <li><a href='my_requests.php?h=1#show_sidebar'>A ajudar: <?=$helping_requests?></a></li>
               <li><a href='my_requests.php?h=0#show_sidebar'>A pedir ajuda: <?=$owned_requests?></a></li>
             </ul>
+          </section>
+          <section class="tools">
             <?php if(getCurrentPage()=='feed.php') { ?>
               <br><a href="#custom_feed" id="customize_feed">Personalizar Feed</a>
             <?php } ?>
+            <form action="actions/action_filter.php" method="post">
+              <input type="text" name="search_box" placeholder="Pesquisa" size='15'>
+              <input type="submit" style="display: none;">
+            </form>
           </section>
         </div>
       </aside>

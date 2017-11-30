@@ -196,4 +196,25 @@
     return false;
   }
 
+  function searchUser($keyword) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT  *
+                  FROM users
+                  WHERE users.name COLLATE UTF8_GENERAL_CI LIKE '%?%'");
+    $stmt->execute($keyword);
+
+    $results[0] = $stmt->fetchAll();
+
+    $stmt = $conn->prepare("SELECT  *
+                  FROM pedido
+                  WHERE pedido.name COLLATE UTF8_GENERAL_CI LIKE '%?%'");
+    $stmt->execute($keyword);
+
+    $results[1] = $stmt->fetchAll();
+
+    if($results != false) return $results;
+    return false;
+  }
+
 ?>
