@@ -171,6 +171,19 @@
     }
   }
 
+  function getUserFilters($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT users_id, skill_id, nome
+                  FROM filters JOIN skill ON skill_id = skill.id
+                  WHERE users_id = ?');
+    $stmt->execute(array($user_id));
+
+    $filters = $stmt->fetchAll();
+    if($filters != false) return $filters;
+    return false;
+  }
+
   function userHasFilter($user_id, $skill_id) {
     global $conn;
 

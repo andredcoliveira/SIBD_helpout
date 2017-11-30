@@ -1,10 +1,5 @@
 <?php
   include('config/init.php');
-  include('database/users.php');
-  include('database/requests.php');
-  include('database/comments.php');
-  include('tools/user.php');
-  include('tools/request.php');
 
   if(!isset($_USERNAME)) {
     die(header('Location: index.php'));
@@ -29,7 +24,7 @@
   }
 
   $mySkills = getUserSkills($user_id);
-  
+
   $skills = getAllSkills();
 
 

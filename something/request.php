@@ -1,14 +1,10 @@
 <?php
   include('config/init.php');
-  include('tools/user.php');
-  include('tools/request.php');
 
   if(!isset($_USERNAME)) {
     die(header('Location: index.php'));
   }
 
-  include('database/requests.php');
-  
   $request_id = $_GET['id'];
   $request = getRequest($request_id);
   $request_owner = getRequestOwner($request_id);

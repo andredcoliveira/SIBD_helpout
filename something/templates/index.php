@@ -23,7 +23,7 @@
       <div class="popup">
         <a class="close" href="#/">&times;</a>
         <h2>Registar</h2>
-        <div class="input_box ">
+        <div class="input_box">
           <form method="post" action="actions/action_register.php">
             <input type="text" name="realname" placeholder="Nome completo" value="<?=$realname?>" required><br>
             <input type="text" name="username" placeholder="Nome de utilizador" value="<?=$username?>" required><br>

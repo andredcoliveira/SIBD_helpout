@@ -1,5 +1,5 @@
       <div class="post_grid">
-        <?php if($requests != false) {
+        <?php if($requests != false && $requests != -1) {
           foreach($requests as $key => $request) { ?>
             <a href="request.php?id=<?=$request['id']?>">
               <article class="post_request">

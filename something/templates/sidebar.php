@@ -28,14 +28,54 @@
               <li><a href='my_requests.php?h=0#show_sidebar'>A pedir ajuda: <?=$owned_requests?></a></li>
             </ul>
             <?php if(getCurrentPage()=='feed.php') { ?>
-            <h4>Ignorar</h4>
-            <form action="actions/action_filter_feed.php?" method="post" class="filters">
-              <?php if($skills != false) { foreach($skills as $skill) { ?>
-                <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php echo (userHasFilter($_ID, $skill['id'])? 'checked' : '')?>><?=$skill['nome']?></label>
-              <?php } } ?>
-              <input type="submit" value="Atualizar" name="submit">
-            </form>
+              <br><a href="#custom_feed" id="customize_feed">Personalizar Feed</a>
             <?php } ?>
           </section>
         </div>
       </aside>
+      <div id="custom_feed" class="overlay">
+        <div class="popup">
+          <a class="close" href="#/">×</a>
+          <h2>Feed</h2>
+          <form action="actions/action_filter_feed.php?" method="post" class="all_filters">
+            <fieldset class="filters">
+              <legend><strong>Filtros</strong></legend>
+              <?php if($skills != false) { foreach($skills as $skill) { ?>
+                <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php echo (userHasFilter($_ID, $skill['id'])? 'checked' : '')?>><?=$skill['nome']?></label>
+              <?php } } ?>
+              <div id=filter_type>
+                <label><input type="radio" value="any" name="filter_type" checked>Qualquer um</label>
+                <label><input type="radio" value="all" name="filter_type">Todos</label>
+              </div>
+            </fieldset>
+            <fieldset class="order">
+              <legend><strong>Ordenar</strong></legend>
+              <?php $id_array = array('name','reward', 'added_date', 'date_limit');
+                $label_array = array('Nome', 'Recompensa', 'Data de adição', 'Data limite');
+                for($i=0; $i<4; $i++) {?>
+                <div id="<?=$id_array[$i]?>">
+                  <label><input type="checkbox" value=<?=$id_array[$i]?> name="name[]"><?=$label_array[$i]?></label><br>
+                  <label><input type="radio" value="asc" name="type[<?=$id_array[$i]?>]" checked>&darr;</label>
+                  <label><input type="radio" value="desc" name="type[<?=$id_array[$i]?>]">&uarr;</label>
+                </div>
+              <?php } ?>
+            </fieldset>
+            <fieldset class="priority">
+              <legend><strong>Prioridade</strong></legend>
+              <?php $id_array = array('name','reward', 'added_date', 'date_limit');
+                $label_array = array('Nome', 'Recompensa', 'Data de adição', 'Data limite');
+                for($i=0; $i<4; $i++) { ?>
+                <div id="<?=$id_array[$i]?>">
+                  <label><select name="priority[<?=$id_array[$i]?>]">
+                    <option <?php echo ($i+1)==1?"selected='selected'":"";?>>1</option>
+                    <option <?php echo ($i+1)==2?"selected='selected'":"";?>>2</option>
+                    <option <?php echo ($i+1)==3?"selected='selected'":"";?>>3</option>
+                    <option <?php echo ($i+1)==4?"selected='selected'":"";?>>4</option>
+                  </select><?=$label_array[$i]?></label>
+                </div>
+              <?php } ?>
+            </fieldset>
+            <input type="submit" value="Atualizar" name="submit">
+          </form>
+        </div>
+      </div>

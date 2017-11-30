@@ -47,19 +47,53 @@ SELECT *
 FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
 WHERE users_id = $_ID AND users_pedido.owner = false
 
--- Pedidos filtrados
+-- Ignorar filtros
 SELECT *
 FROM pedido
 WHERE active = true
 
 EXCEPT
 
+(SELECT id, name, reward, added_date, description, location, date_limit, active
+FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
+WHERE active = true AND filters.users_id = ?
+
+UNION
+
+SELECT id, name, reward, added_date, description, location, date_limit, active
+FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
+WHERE users_id = ? AND users_pedido.owner = true)
+
+
+-- Apenas filtros (pedidos com qualquer um deles)
 SELECT id, name, reward, added_date, description, location, date_limit, active
 FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
-WHERE active = true AND filters.users_id = 1
+WHERE active = true AND filters.users_id = ?
+
+UNION
+
+SELECT id, name, reward, added_date, description, location, date_limit, active
+FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
+WHERE users_id = ? AND users_pedido.owner = true
+
 
 -- Pedidos sem skills
 SELECT *
 FROM pedido
 WHERE id NOT IN (SELECT id
-FROM pedido_skill JOIN pedido ON pedido_id=id)
+FROM pedido_skill JOIN pedido ON pedido_id = id)
+
+
+-- Pedidos com filtros com AND (para OR trocar INTERSECT por UNION)
+SELECT DISTINCT id, reward
+FROM filters JOIN pedido_skill USING (skill_id) JOIN pedido ON pedido_id = id
+WHERE users_id = 1 AND id IN (SELECT pedido_id
+    FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
+    WHERE users_id = 1 AND skill_id = 2
+
+    INTERSECT
+
+    SELECT pedido_id
+    FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
+    WHERE users_id = 1 AND skill_id = 5)
+ORDER BY id ASC

@@ -85,6 +85,7 @@ header {
   list-style-type: none;
   float: none;
   opacity: 0.9;
+  margin: 0;
 }
 
 .header_navigation a {
@@ -226,33 +227,6 @@ header {
 .sidebar .user_info a:hover {
   color: #006400;
   text-decoration: none;
-}
-
-.sidebar .user_info h4 {
-  margin: 0.5em 0 0.2em 0;
-}
-
-.sidebar .user_info form {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar .user_info form label {
-  margin: 0 0 0.2em 0;
-}
-
-.sidebar .user_info form > input {
-  width: fit-content;
-  margin: 0.5em 0 0 1.5em;
-  border: 0.05em solid black;
-  border-radius: 0.3em;
-  background-color: lightgrey;
-}
-
-.sidebar .user_info form > input:hover {
-  cursor: pointer;
-  color: #F5F5DC;
-  background-color: #464646;
 }
 
 .sidebar_colapsed {
@@ -433,7 +407,7 @@ footer > .authors {
   width: fit-content;
   margin: auto;
   background-color: #F5F5DC;
-  border: 0.05em solid black;
+  border: 1px solid black;
   border-radius: 0.2em;
 }
 
@@ -634,6 +608,8 @@ ul li:before {
   border-bottom: 1px solid black;
   border-radius: 0.5em;
 
+  margin: 0 1em;
+
   width: 20em;
   height: 15em;
   background-position: center;
@@ -771,7 +747,7 @@ ul li:before {
   font-weight: bold;
   padding: 0.4em 1em;
   margin: 2em auto 1em auto;
-  border: 0.05em solid black;
+  border: 1px solid black;
   border-radius: 0.3em;
   background-color: lightgrey;
 }
@@ -805,7 +781,7 @@ ul li:before {
   color: black;
   text-decoration: none;
 
-  border: 0.05em solid black;
+  border: 1px solid black;
   border-radius: 0.3em;
 
   background-color: lightgrey;
@@ -818,7 +794,7 @@ ul li:before {
 
 .profile > a:hover {
   color: #F5F5DC;
-  background-color: #464646;
+  background-color: #262626;
 }
 
 
@@ -845,7 +821,7 @@ ul li:before {
   font-size: 1em;
   color: #cb2431;
   padding: 0.5em 1em;
-  border: 0.05em solid;
+  border: 1px solid;
   border-radius: 0.3em;
   background-color: #fafbfc;
   background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
@@ -952,7 +928,6 @@ ul li:before {
 }
 
 
-
 #edit_profile_description {
   margin-bottom: 2em;
 }
@@ -967,4 +942,86 @@ ul li:before {
 
 .skills_profile_wrapper span {
   color: gray;
+}
+
+#custom_feed {
+  position: absolute;
+  align-self: center;
+}
+
+#custom_feed .popup {
+  transform: translateY(30%);
+}
+
+#custom_feed h2 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#custom_feed form label {
+  margin: 0 0 0.2em 0;
+  white-space: nowrap;
+}
+
+#custom_feed form > input[type="submit"] {
+  width: fit-content;
+  margin: 0.2em auto;
+  position: relative;
+  top: 1.5em;
+  padding: 0.2em 0.5em;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  background-color: lightgrey;
+}
+
+#custom_feed form > input[type="submit"]:hover {
+  cursor: pointer;
+  color: #F5F5DC;
+  background-color: #181818;
+}
+
+#custom_feed span {
+  margin: 0.2em;
+}
+
+#filter_type {
+  width: fit-content;
+  margin: 0.2em auto;
+}
+
+.all_filters fieldset {
+  margin: 0 auto 0.5em auto;
+}
+
+.order, .priority {
+  margin: 0 auto;
+}
+
+.order > div, .priority > div {
+  display: inline-block;
+  padding: 0 1em 0 0.5em;
+  border-right: 1px solid gray;
+}
+
+.order > div:last-child, .priority > div:last-child {
+  border: 0;
+}
+
+.priority select {
+  margin-right: 0.2em;
+}
+
+#customize_feed {
+  width: fit-content;
+  margin: 0.2em auto;
+  padding: 0.2em 0.5em;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  background-color: lightgrey;
+}
+
+#customize_feed:hover {
+  cursor: pointer;
+  color: #F5F5DC;
+  background-color: #181818;
 }

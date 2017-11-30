@@ -7,6 +7,12 @@
 
   $conn->query("SET SCHEMA 'helpout'");
 
+  include('database/comments.php');
+  include('database/requests.php');
+  include('database/users.php');
+  include('tools/pages.php');
+  include('tools/request.php');
+  include('tools/user.php');
 
   if (isset($_SESSION['error_message'])) {
     $_ERROR_MESSAGE = $_SESSION['error_message'];
