@@ -36,7 +36,11 @@
               <h2><?=$request_owner['name']?></h2>
             <div class="stars">
               <img src="res/star.png">
-              <h3>4.3</h3>
+              <?php if(($score=getScore($owner_id)) != -1) { ?>
+                <span>&nbsp;&nbsp;<?=$score?></span>
+              <?php } else { ?>
+                <span class="no_score">&nbsp;&nbsp;Sem classificação.</span>
+              <?php } ?>
             </div>
             <ul>
               <li>Profissão</li>
@@ -58,6 +62,10 @@
           <article class="participant">
             <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
             <h4><a href="usr_profile.php?id=<?=$participant['id']?>"><?=$participant['name']?></a></h4>
+
+
+              <?php if($request['active'] === false) include('templates/request_comments.php'); ?>
+
           </article>
         <?php }
         if($participants == NULL){ ?>

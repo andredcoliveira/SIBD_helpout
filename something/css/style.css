@@ -862,10 +862,9 @@ ul li:before {
 .participant {
   margin: 0em;
 
-  width: 50%;
+  width: 100%;
 
   display: flex;
-  flex-wrap: wrap;
 }
 
 .participant a {
@@ -884,7 +883,9 @@ ul li:before {
   border-radius: 0.3em;
 
   width: 3em;
+  min-width: 3em;
   height: 3em;
+  min-height: 3em;
   background-position: center;
   background-size: cover;
 
@@ -1024,4 +1025,122 @@ ul li:before {
   cursor: pointer;
   color: #F5F5DC;
   background-color: #181818;
+
+
+
+.comment_form {
+  margin: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: auto;
+}
+
+.comment_form_top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment_form textarea {
+  resize: none;
+}
+
+
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: fit-content;
+  line-height: fit-content;
+  font-size: small;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: orange;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px orange;
+}
+
+
+
+
+
+
+
+.comment_request_page {
+  padding: 0.3em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5em;
+
+  margin: 0.5em 1em 0.5em auto;
+  margin-left: auto;
+
+  width: 100%;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment_request_page_stars p {
+  color: orange;
+  margin: 0;
+  padding: 0;
 }
