@@ -3,24 +3,22 @@
   </style>
   <div class="google_api">
     <div id="floating-panel">
-      <input id="address" type="textbox" value="Porto, Portugal" readonly>
+      <?php $local = "Rua Dr. Roberto Frias, 4200-465 PORTO" ?>
+      <input id="address" type="textbox" value="<?=$local?>" readonly>
+      <span><?=$local?></span>
     </div>
     <div id="map"></div>
     <script type="text/javascript">
       function initMap() {
-
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 41.1622023, lng: -8.6569732}
+          zoom: 8
         });
         var geocoder = new google.maps.Geocoder();
 
         geocodeAddress(geocoder, map);
-
       }
 
       function geocodeAddress(geocoder, resultsMap) {
-
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
@@ -33,10 +31,22 @@
             alert('Ocorreu um erro na procura do endereço: ' + status);
           }
         });
-
       }
+
+	  /*
+      var p1 = new google.maps.LatLng(45.463688, 9.18814);
+      var p2 = new google.maps.LatLng(46.0438317, 9.75936230000002);
+
+      alert(calcDistance(p1, p2));
+
+      //calculates distance between two points in km's
+      function calcDistance(p1, p2) {
+        return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+      }
+	  */
+
     </script>
     <script type="text/javascript" async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_UlQuw6zj8Xg-FKYNP1PemRTwLtiz5k&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_UlQuw6zj8Xg-FKYNP1PemRTwLtiz5k&callback=initMap&libraries=geometry">
     </script>
   </div>

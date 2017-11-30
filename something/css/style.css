@@ -462,8 +462,8 @@ footer > .authors {
 .profile_pic_wrapper {
   overflow: hidden;
 
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
   border-radius: 0.3em;
 
   width: 12em;
@@ -472,10 +472,23 @@ footer > .authors {
   background-size: cover;
 }
 
+.profile_top .stars {
+  padding: 0.4em 1em;
+  border: 1px solid #505050;
+  border-radius: 1em;
+  background-color: #262626;
+  font-size: 10px;
+}
+
+.profile_top .stars span {
+  color: #e9c202ed;
+  font-size: 1.3em;
+}
+
 .stars {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  margin-top: 1em
+  margin: 1em auto 0 0;
 }
 
 .stars .no_score {
@@ -539,8 +552,8 @@ ul li:before {
   padding: 1em 4em;
 }
 
-.recent_posts > h2 {
-  margin-top: 0;
+.recent_posts > h3 {
+  transform: translateX(-2.5em);
 }
 
 .recent_comments {
@@ -604,8 +617,8 @@ ul li:before {
 .request_pic_wrapper {
   overflow: hidden;
 
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
   border-radius: 0.5em;
 
   margin: 0 1em;
@@ -1115,7 +1128,6 @@ ul li:before {
   color: #000;
   text-shadow: 0 0 5px orange;
 }
-
 
 
 .comment_request_page {
