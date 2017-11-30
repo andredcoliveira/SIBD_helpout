@@ -1,0 +1,28 @@
+/** google API **/
+
+.google_api {
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  width: fit-content;
+  overflow: hidden;
+  padding: 2em;
+  background-color: #F5F5DC;
+}
+
+#map {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0.3em;
+  position: relative;
+  overflow: hidden;
+  height: 30em;
+  width: 30em;
+}
+
+#floating-panel {
+  margin: 1em auto;
+  width: fit-content;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+}
