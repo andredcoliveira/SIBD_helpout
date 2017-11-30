@@ -60,9 +60,9 @@
     return $a['priority'] - $b['priority'];
   });
 
-  $_SESSION['feed_order'];
+  $_SESSION['feed_order'] = $order;
 
-  header('Location: ../feed.php#show_sidebar');
+  header('Location: ../feed.php');
   exit();
 
 ?>

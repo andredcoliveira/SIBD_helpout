@@ -42,12 +42,12 @@
     if($limit === 0) {
       $stmt = $conn->prepare('SELECT *
                     FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                    WHERE users_id = ? AND users_pedido.owner = true');
+                    WHERE users_id = ? AND users_pedido.owner = true AND active = true');
       $stmt->execute(array($user_id));
     } else {
       $stmt = $conn->prepare('SELECT *
                     FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                    WHERE users_id = ? AND users_pedido.owner = true
+                    WHERE users_id = ? AND users_pedido.owner = true AND active = true
                     LIMIT ?');
       $stmt->execute(array($user_id, $limit));
     }
@@ -66,12 +66,12 @@
     if($limit === 0) {
       $stmt = $conn->prepare('SELECT *
                         FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                        WHERE users_id = ? AND users_pedido.owner = false');
+                        WHERE users_id = ? AND users_pedido.owner = false AND active = true');
       $stmt->execute(array($user_id));
     } else {
       $stmt = $conn->prepare('SELECT *
                         FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                        WHERE users_id = ? AND users_pedido.owner = false
+                        WHERE users_id = ? AND users_pedido.owner = false AND active = true
                         LIMIT ?');
       $stmt->execute(array($user_id, $limit));
     }
