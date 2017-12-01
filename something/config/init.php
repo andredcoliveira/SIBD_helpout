@@ -33,4 +33,10 @@
     $_FORM_VALUES = $_SESSION['form_values'];
     unset($_SESSION['form_values']);
   }
+
+  if (isset($_SESSION['results'])) {
+    $_RESULTS = $_SESSION['results'];
+    unset($_SESSION['results']);
+  }
+
 ?>

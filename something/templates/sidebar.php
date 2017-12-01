@@ -32,7 +32,8 @@
             <?php if(getCurrentPage()=='feed.php') { ?>
               <br><a href="#custom_feed" id="customize_feed">Personalizar Feed</a>
             <?php } ?>
-            <form action="actions/action_filter.php" method="post">
+            <form action="actions/action_search.php" method="post">
+              <input type="hidden" name="referrer_page" value="<?=getCurrentPage()?>">
               <input type="text" name="search_box" placeholder="Pesquisa" size='15'>
               <input type="submit" style="display: none;">
             </form>

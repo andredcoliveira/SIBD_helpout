@@ -61,6 +61,7 @@ header {
   padding: 0.2em 0 0.2em 0;
   background-color: black;
   border: 1px solid #F5F5DC;
+  border-radius: 0.3em;
 }
 
 .overlay {
@@ -139,20 +140,11 @@ header {
   display: flex;
   flex-direction: column;
   margin: 4em 1em 2em 3.5em;
-}
-
-.post_grid, .post_grid:before, .post_grid:after {
-  box-sizing:  border-box !important;
+  //padding: 4em 1em 2em 3.5em;
 }
 
 .post_grid {
-  margin: 1em auto;
- -moz-column-width: 15em;
- -webkit-column-width: 15em;
- -moz-column-gap: 2em;
- -webkit-column-gap: 2em;
- max-width: 70em;
- //text-align: center;
+  margin: 0 auto;
 }
 
 .post_grid a {
@@ -161,13 +153,6 @@ header {
 }
 
 .post_request {
-  display: inline-block;
-  border: 2px solid #FFF;
-  background-color: white;
-  width: 100%;
-  height: auto;
-  margin: 0 auto 1.5em auto;
-  overflow: hidden;
 
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
@@ -175,13 +160,16 @@ header {
   transition: all .2s ease;
 }
 
-.post_grid .post_request:hover {
-  border-color: #282828;
+.post_grid:hover .post_request:not(:hover) {
+  opacity: 0.7;
 }
 
 .post_img_wrapper {
-  width: 100%;
-  height: auto;
+  height: 11em;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid;
+  border-color: inherit;
 }
 
 .post_description {
@@ -223,6 +211,8 @@ header {
 }
 
 .user_photo img {
+  border: 1px solid black;
+  border-radius: 0.2em/0.5em;
   width: 10em;
 }
 
@@ -305,7 +295,7 @@ header {
 .content_navigation li {
   float: left;
   display: inline;
-  border-right: 1px solid #F5F5DC;
+  border-right: 1px solid #484848;
   border-left: 0;
   padding-left: 0.2em;
   padding-right: 0.2em;
@@ -363,6 +353,7 @@ footer > .authors {
 
 .visitor {
   background-color: #282828;
+  border: 1px solid black;
   border-radius: 0.5em;
   margin: 1em auto;
   padding: 0 6em;
@@ -453,6 +444,9 @@ footer > .authors {
 
   background-color: white;
   margin: 0 auto;
+
+  border: 1px solid black;
+  border-radius: 0.5em;
 }
 
 .profile_top {
@@ -462,6 +456,10 @@ footer > .authors {
 
 .profile_pic_wrapper {
   overflow: hidden;
+
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
+  border-radius: 0.3em;
 
   width: 12em;
   height: 12em;
@@ -518,7 +516,7 @@ footer > .authors {
 
 
 .stars img {
-  height: 1em;
+  height: 1.5em;
   width: auto;
   padding-bottom: 0.2em;
 }
@@ -537,13 +535,7 @@ ul li:before {
 }
 
 .description_wrapper {
-  width: 100%;
   padding: 0 1em;
-  border-top: 2em solid #FFF;
-}
-
-.description_wrapper * {
-  margin-left: 1em;
 }
 
 .description_wrapper p {
@@ -574,6 +566,9 @@ ul li:before {
 .comment {
   padding: 0.3em 1em;
   background-color: lightgrey;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
+  border-radius: 0.5em;
 
   margin: 1em 0 1em 0;
 }
@@ -585,12 +580,10 @@ ul li:before {
 }
 
 .comment a:hover {
-  color: #303030;
+  color: green;
 }
 
-.comment .stars {
-  margin-bottom: 1em;
-}
+
 
 /** Request **/
 
@@ -598,7 +591,7 @@ ul li:before {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 1em;
+  padding: 0 1em;
 }
 
 
@@ -606,25 +599,28 @@ ul li:before {
   padding: 0;
   margin: 1em;
 
-  max-width: 21em;
+  max-width: 35em;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   background-color: lightgrey;
-}
-
-.request_left h3 {
-  margin: 1em auto;
+  border: 1px solid black;
+  border-radius: 0.5em;
 }
 
 .request_pic_wrapper {
   overflow: hidden;
 
-  width: 100%;
-  max-width: 40em;
-  height: auto;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
+  border-radius: 0.5em;
+
+  margin: 0 1em;
+
+  width: 20em;
+  height: 15em;
   background-position: center;
   background-size: cover;
 }
@@ -632,6 +628,8 @@ ul li:before {
 .request_right {
   padding: 0;
   margin: 0;
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -640,17 +638,24 @@ ul li:before {
 .request_fields {
   padding: 0.3em 1em;
   background-color: lightgrey;
+  border: 1px solid black;
+  border-radius: 0.5em;
+
   margin: 1em;
 }
 
 .request_usr_profile {
   padding: 1em;
   background-color: lightgrey;
+  border: 1px solid black;
+  border-radius: 0.5em;
+
   margin: 1em;
 }
 
 .request_usr_profile:hover {
-  background-color: #ababab;
+  border-color: green;
+  background-color: grey;
 }
 
 .usr_profile_link {
@@ -671,8 +676,11 @@ ul li:before {
   width: fit-content;
   background-color: white;
   margin-top: 1em;
-  padding: 0.5em;
-  border-radius: 0.2em;
+  padding: 1em;
+
+  border: 1px solid black;
+  border-radius: 0.5em;
+
 }
 
 .requests_nav ul li:before {
@@ -747,16 +755,15 @@ ul li:before {
   font-weight: bold;
   padding: 0.4em 1em;
   margin: 2em auto 1em auto;
-  border: none;
-  border-radius: 100px;
+  border: 1px solid black;
+  border-radius: 0.3em;
   background-color: lightgrey;
-  color: #181818;
 }
 
 .new_request form input[type='submit']:hover {
   cursor: pointer;
-  color: lightgrey;
-  background-color: #181818;
+  color: #F5F5DC;
+  background-color: #464646;
 }
 
 .choose_skills {
@@ -783,22 +790,20 @@ ul li:before {
   color: black;
   text-decoration: none;
 
-  width: fit-content;
-  padding: 0.4em 1em;
-  border: none;
-  border-radius: 100px;
+  border: 1px solid black;
+  border-radius: 0.3em;
+
   background-color: lightgrey;
-  color: #181818;
 
   display: inline-block;
+  padding: 0.2em;
   float: right;
-  margin: 1em 1em 0 0;
+  margin: 0.5em 0.5em 0 0;
 }
 
 .profile > a:hover {
-  cursor: pointer;
-  color: lightgrey;
-  background-color: #181818;
+  color: #F5F5DC;
+  background-color: #262626;
 }
 
 
@@ -842,50 +847,66 @@ ul li:before {
 /** Pariticipantes no pedido **/
 
 .participants {
-  margin:0 2em 2em 2em;
-  padding-top: 1px;
+  margin:1em 2em 2em 2em;
   background-color: lightgrey;
+
+  border: 1px solid black;
+  border-radius: 0.5em;
+
 }
 
-.participants h4 {
+.participants h3 {
   margin: 1em;
 }
 
 .participants_wrapper {
   display: flex;
   flex-direction: column;
+
+
+
   width: 100%;
 }
 
 .participant {
-  margin: 0;
+  margin: 0em;
+
   width: 100%;
+
   display: flex;
 }
 
 .participant a {
-  position: relative;
-  top: 0.8em;
   text-decoration: none;
   color: black;
 }
 
 .participant a:hover {
-  color: #383838;
+  color: green;
 }
 
 .participant_pic_wrapper {
   overflow: hidden;
+
+  border: 1px solid black;
+  border-radius: 0.3em;
+
   width: 3em;
+  min-width: 3em;
   height: 3em;
+  min-height: 3em;
   background-position: center;
   background-size: cover;
+
   margin: 1em;
 }
 
 .options {
   margin:1em 2em 2em 2em;
   background-color: lightgrey;
+
+  border: 1px solid black;
+  border-radius: 0.5em;
 
   display: flex;
   justify-content: center;
@@ -1002,17 +1023,16 @@ ul li:before {
 
 #customize_feed {
   width: fit-content;
-  padding: 0.4em 1em;
   margin: 0.2em auto;
-  border: none;
-  border-radius: 100px;
+  padding: 0.2em 0.5em;
+  border: 1px solid black;
+  border-radius: 0.3em;
   background-color: lightgrey;
-  color: #181818;
 }
 
 #customize_feed:hover {
   cursor: pointer;
-  color: lightgrey;
+  color: #F5F5DC;
   background-color: #181818;
 }
 

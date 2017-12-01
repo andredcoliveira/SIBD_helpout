@@ -163,46 +163,44 @@
     global $conn;
 
     $array = array();
+    $query = "";
 
     $user_filters = getUserFilters($user_id);
 
-    $query = "SELECT DISTINCT id, ";
+    $select = "SELECT DISTINCT id, ";
 
     if($order != false) {
       foreach($order as $column) {
         if($column != false) {
-          $query = $query . $column['name'] . ", ";
+          $select = $select . $column['name'] . ", ";
         }
       }
     }
-    $query = substr($query, 0, -2);
-    $query = $query . " \n";
+    $select = substr($select, 0, -2);
+    $select = $select . "\n";
 
     if($user_filters == false) {
-      $query = $query . "FROM users_pedido JOIN pedido ON pedido_id = id
-      WHERE active = true AND users_id != ? \n";
-      $array = array($user_id);
+      $query = "SELECT *\n" . "FROM users_pedido JOIN pedido ON pedido_id = id
+      WHERE active = true AND users_id != ?  AND owner = true \n";
+      $array = array_merge($array, array($user_id));
     } else {
       foreach($user_filters as $key => $filter) {
         if($key > 0) {
           if($operator == 'AND') {
-            $query = $query . "\n INTERSECT \n\n";
+            $query = $query . "\n\n INTERSECT \n\n";
           } elseif($operator == 'OR') {
-            $query = $query . "\n UNION \n\n";
+            $query = $query . "\n\n UNION \n\n";
           } else {
             $_SESSION['error_message'] = "An error occured when fetching your feed.";
             return -1;
           }
-          $query = $query . "SELECT pedido_id
-          FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
-          WHERE users_id = ? AND skill_id = ?) \n";
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
+                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
           $array = array_merge($array, array($user_id, $filter['skill_id']));
         } else {
-          $query = $query . "FROM filters JOIN pedido_skill USING (skill_id) JOIN pedido ON pedido_id = id
-          WHERE users_id = ? AND id IN (SELECT pedido_id
-              FROM filters JOIN pedido_skill USING(skill_id) JOIN pedido ON pedido_id = id
-              WHERE users_id = ? AND skill_id = ? \n";
-          $array = array_merge($array, array($user_id, $user_id, $filter['skill_id']));
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
+                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $array = array_merge($array, array($user_id, $filter['skill_id']));
         }
       }
     }
@@ -210,7 +208,7 @@
     if($order != false) {
       foreach($order as $key => $column) {
         if($key == 0) {
-          $query = $query . "ORDER BY ";
+          $query = "(" . $query . ")\nORDER BY ";
         }
         if($column['name'] != false && $column['type'] != false) {
           $query = $query . $column['name'] . " " . $column['type'] . ", ";
@@ -218,7 +216,7 @@
       }
       $query = substr($query, 0, -2);
     }
-
+    
     $stmt = $conn->prepare($query);
     $stmt->execute($array);
 

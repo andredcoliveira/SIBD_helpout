@@ -3,20 +3,20 @@
 
     <div class="request">
       <div class="request_left">
-        <h2><?=$request['name']?></h2>
         <?php if(getRequestPhoto($request_id) != false) { ?>
-          <div class="request_pic_wrapper" style="background-image: url('<?=getRequestPhoto($request_id)?>');"></div>
+          <img class="request_pic_wrapper" src="<?=getRequestPhoto($request_id)?>">
         <?php } else { ?>
-          <div class="request_pic_wrapper" style="background-image: url('res/default_request.png');"></div>
+          <img class="request_pic_wrapper" src="res/default_request.png">
         <?php } ?>
+        <h3><?=$request['name']?></h3>
         <div class="description_wrapper">
-          <h2>Descrição</h2>
+          <h4>Descrição</h4>
           <p><?=$request['description']?></p>
         </div>
       </div>
       <div class="request_right">
         <div class="request_fields">
-          <h3>Sobre</h3>
+          <h4>Sobre</h4>
           <ul>
             <li><?=$request['reward']?></li>
             <li><?=$request['date_limit']?></li>
@@ -26,7 +26,7 @@
 
         <a href="./usr_profile.php?id=<?=$owner_id?>" class="usr_profile_link">
           <div class="request_usr_profile">
-            <h3>Feito por</h3>
+            <h4>Feito por</h4>
             <?php if(getUserPhoto($owner_id) != false) { ?>
               <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
             <?php } else { ?>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="participants">
-      <h3>Participantes</h3>
+      <h4>Participantes</h4>
       <div class="participants_wrapper">
 
         <?php foreach($participants as $participant){ ?>

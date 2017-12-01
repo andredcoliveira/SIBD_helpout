@@ -4,9 +4,9 @@
             <a href="request.php?id=<?=$request['id']?>">
               <article class="post_request">
                 <?php if($request_photo_paths[$key] !== false) { ?>
-                  <div class="post_img_wrapper" style="background-image: url('<?=$request_photo_paths[$key]?>');"></div>
+                  <img class="post_img_wrapper" src="<?=$request_photo_paths[$key]?>">
                 <?php } else {?>
-                  <div class="post_img_wrapper" style="background-image: url('res/default_request.png');"></div>
+                  <img class="post_img_wrapper" src="res/default_request.png">
                 <?php }?>
                 <section class="post_description">
                   <h3><?=$request['name']?></h3>
