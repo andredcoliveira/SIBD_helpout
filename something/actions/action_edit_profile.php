@@ -5,6 +5,7 @@
   include('../tools/user.php');
 
   $name = strip_tags($_POST['name']);
+  $password_old = $_POST['pwold'];
   $password = $_POST['pw'];
   $password_bis = $_POST['pw2'];
   $date = date('Y-m-d', strtotime($_POST['date']));
@@ -16,11 +17,18 @@
   }
   else $skills = NULL;
 
+
   if(!$name) {
     $_SESSION['error_message'] = 'Nome inválido';
     die(header('Location: ../edit_usr_profile.php'));
+  } elseif(!$password_old) {
+    $_SESSION['error_message'] = "Palavra-passe antiga inválida";
+    die(header('Location: ../edit_usr_profile.php'));
+  } elseif(!logUserById($_ID, $password_old)) {
+    $_SESSION['error_message'] = "Palavra-passe antiga inválida";
+    die(header('Location: ../edit_usr_profile.php'));
   } elseif(!$password) {
-    $_SESSION['error_message'] = "Palavra-passe inválida";
+    $_SESSION['error_message'] = "Palavra-passe nova inválida";
     die(header('Location: ../edit_usr_profile.php'));
   } elseif(!$password_bis || ($password_bis != $password)) {
     $_SESSION['error_message'] = "As palavras-passe diferem.";

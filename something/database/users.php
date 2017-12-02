@@ -24,6 +24,17 @@
     return $userrow !== false && password_verify($password, $userrow['pw']);
   }
 
+  function logUserById($user_id, $password) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt->execute(array($user_id));
+
+    $userrow = $stmt->fetch();
+
+    return $userrow !== false && password_verify($password, $userrow['pw']);
+  }
+
   function getName($username) {
     global $conn;
 

@@ -10,6 +10,7 @@
 
       <form action="actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
         <label for="name"><h3 class="title">Nome</h3></label><input type="text" name="name" value="<?php echo isset($_FORM_VALUES['name'])?$_FORM_VALUES['name']:$_NAME;?>">
+        <label for="pwold"><h3 class="title">Palavra-passe antiga</h3></label><input type="password" name="pwold">
         <label for="pw"><h3 class="title">Nova palavra-passe</h3></label><input type="password" name="pw">
         <label for="pw2"><h3 class="title">Repetir palavra-passe</h3></label><input type="password" name="pw2">
         <label for="date"><h3 class="title">Data de nascimento</h3></label><input type="date" name="date" value="<?php echo isset($_FORM_VALUES['date'])?$_FORM_VALUES['date']:getUserInfo($_ID)['birthdate'];?>">
