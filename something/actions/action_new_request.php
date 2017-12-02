@@ -2,6 +2,7 @@
 	include('../config/init.php');
 	include('../database/users.php');
 	include('../database/requests.php');
+	include('../database/chat.php');
 	include('../tools/request.php');
 
 	$title = strip_tags($_POST['title']);
@@ -28,6 +29,7 @@
 
 	try{
 		$request_id = insertRequest($title, $location, $date, $reward, $description, $skills);
+		newChat($request_id, $_ID);
 	}
 	catch(PDOException $e) {
     $_SESSION['error_message'] = $e->getMessage();

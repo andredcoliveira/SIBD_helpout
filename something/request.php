@@ -3,6 +3,7 @@
   include('database/comments.php');
   include('database/requests.php');
   include('database/users.php');
+  include('database/chat.php');
   include('tools/pages.php');
   include('tools/request.php');
   include('tools/user.php');
