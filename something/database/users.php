@@ -9,7 +9,8 @@
 
     $hash = password_hash ($password , PASSWORD_DEFAULT, $options);
 
-    $stmt = $conn->prepare('INSERT INTO users VALUES (DEFAULT, ?, ?, ?)');
+    $stmt = $conn->prepare('INSERT INTO users (id, name, username, pw)
+                            VALUES (DEFAULT, ?, ?, ?)');
     $stmt->execute(array($realname, $username, $hash));
   }
 
@@ -95,7 +96,7 @@
     }
   }
 
-  function editUser($name, $password, $date, $description, $user_id) {
+  function editUser($name, $password, $date, $description, $user_id, $profession, $location) {
     global $conn;
 
     $options = [
@@ -105,9 +106,9 @@
     $hash = password_hash($password , PASSWORD_DEFAULT, $options);
 
     $stmt = $conn->prepare('UPDATE users
-                            SET name = ? , pw = ? , birthdate = ? , description = ?
+                            SET name = ? , pw = ? , birthdate = ? , description = ? , profession = ? , local = ? 
                             WHERE id = ?');
-    $stmt->execute(array($name, $hash, $date, $description, $user_id));
+    $stmt->execute(array($name, $hash, $date, $description, $profession, $location, $user_id));
 
     return true;
   }

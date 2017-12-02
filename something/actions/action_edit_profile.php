@@ -9,6 +9,8 @@
   $password = $_POST['pw'];
   $password_bis = $_POST['pw2'];
   $date = date('Y-m-d', strtotime($_POST['date']));
+  $profession = strip_tags($_POST['profession']);
+  $location = strip_tags($_POST['location']);
   $description = strip_tags($_POST['description']);
   $_SESSION['form_values'] = $_POST;
 
@@ -33,9 +35,15 @@
   } elseif(!$password_bis || ($password_bis != $password)) {
     $_SESSION['error_message'] = "As palavras-passe diferem.";
     die(header('Location: ../edit_usr_profile.php'));
+  } elseif(!$profession) {
+    $_SESSION['error_message'] = "Profissão inválida";
+    die(header('Location: ../edit_usr_profile.php'));
+  } elseif(!$location) {
+    $_SESSION['error_message'] = "Localização inválida";
+    die(header('Location: ../edit_usr_profile.php'));
   } else {
     try {
-      editUser($name, $password, $date, $description, $_ID);
+      editUser($name, $password, $date, $description, $_ID, $profession, $location);
       editUserSkills($_ID, $skills);
     } catch(PDOException $e) {
       $_SESSION['error_message'] = $e->getMessage();

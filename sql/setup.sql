@@ -5,6 +5,8 @@ CREATE TABLE users (
 	pw VARCHAR(64) NOT NULL,
 	birthdate DATE,
 	description VARCHAR(1024),
+	profession VARCHAR(32),
+	local VARCHAR(32),
 	active BOOLEAN DEFAULT TRUE
 );
 
