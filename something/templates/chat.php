@@ -8,7 +8,7 @@
     	</div>
     	<div class="chat_new_message">
     		<form action="actions/action_new_message.php" method="post">
-    			<input type="text" name="message" placeholder="Insira aqui uma nova mensagem..." size="40">
+    			<input type="text" name="message" placeholder="Insira aqui uma nova mensagem..." size="33">
     			<input type="hidden" name="chat_id" value="<?=$chat_id?>">
     			<input type="submit" value="Enviar" name="submit">
     		</form>
