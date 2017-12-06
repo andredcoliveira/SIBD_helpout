@@ -543,6 +543,7 @@ ul li:before {
 }
 
 .description_wrapper * {
+  margin-right: 1em;
   margin-left: 1em;
 }
 
@@ -1225,7 +1226,7 @@ ul li:before {
   background-color: lightgrey;
   margin: 0.5em 0 0.5em auto;
 
-  
+
 
   max-width: 70%;
   width: fit-content;
@@ -1233,4 +1234,3 @@ ul li:before {
   border-radius: 1em;
   padding: 0.3em;
 }
-

@@ -51,8 +51,8 @@
                 <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php echo (userHasFilter($_ID, $skill['id'])? 'checked' : '')?>><?=$skill['nome']?></label>
               <?php } } ?>
               <div id=filter_type>
-                <label><input type="radio" value="any" name="filter_type" checked>Qualquer um</label>
-                <label><input type="radio" value="all" name="filter_type">Todos</label>
+                <label><input type="radio" value="all" name="filter_type" checked>Todos</label>
+                <label><input type="radio" value="any" name="filter_type">Qualquer</label>
               </div>
             </fieldset>
             <fieldset class="order">
