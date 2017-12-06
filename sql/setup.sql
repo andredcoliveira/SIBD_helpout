@@ -5,6 +5,8 @@ CREATE TABLE users (
 	pw VARCHAR(64) NOT NULL,
 	birthdate DATE,
 	description VARCHAR(1024),
+	profession VARCHAR(32),
+	local VARCHAR(32),
 	active BOOLEAN DEFAULT TRUE
 );
 
@@ -30,13 +32,16 @@ CREATE TABLE users_pedido (
 
 CREATE TABLE comment (
 	id SERIAL PRIMARY KEY,
-	commenter_id INTEGER REFERENCES users NOT NULL,
-	commented_id INTEGER REFERENCES users NOT NULL,
+	commenter_id INTEGER REFERENCES users NOT NULL
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	commented_id INTEGER REFERENCES users NOT NULL
+		ON DELETE CASCADE ON UPDATE CASCADE,
 	classification NUMERIC(1,0)
 		CHECK(classification >= 1 AND classification <= 5) NOT NULL,
 	comment VARCHAR(512) NOT NULL,
 	time_posted TIMESTAMP,
-	pedido_id INTEGER REFERENCES pedido NOT NULL,
+	pedido_id INTEGER REFERENCES pedido NOT NULL
+		ON DELETE CASCADE ON UPDATE CASCADE,
 	UNIQUE(commented_id, pedido_id) 
 );
 
@@ -46,33 +51,43 @@ CREATE TABLE skill (
 );
 
 CREATE TABLE users_skill (
-	users_id INTEGER REFERENCES users,
-	skill_id INTEGER REFERENCES skill,
+	users_id INTEGER REFERENCES users
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	skill_id INTEGER REFERENCES skill
+		ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(users_id, skill_id)
 );
 
 CREATE TABLE pedido_skill (
-	pedido_id INTEGER REFERENCES pedido,
-	skill_id INTEGER REFERENCES skill,
+	pedido_id INTEGER REFERENCES pedido
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	skill_id INTEGER REFERENCES skill
+		ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(pedido_id, skill_id)
 );
 
 CREATE TABLE conversa (
 	id SERIAL PRIMARY KEY,
 	pedido_id INTEGER REFERENCES pedido
+		ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE users_conversa (
-	users_id INTEGER REFERENCES users,
-	conversa_id INTEGER REFERENCES conversa,
+	users_id INTEGER REFERENCES users
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	conversa_id INTEGER REFERENCES conversa
+		ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(users_id, conversa_id)
 );
 
 CREATE TABLE mensagem (
 	id SERIAL PRIMARY KEY,
-	conversa_id INTEGER REFERENCES conversa,
-	sender_id INTEGER REFERENCES users,
-	message VARCHAR(512) NOT NULL
+	conversa_id INTEGER REFERENCES conversa
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	sender_id INTEGER REFERENCES users
+		ON DELETE CASCADE ON UPDATE CASCADE,
+	message VARCHAR(512) NOT NULL,
+	time_sent TIMESTAMP
 );
 
 CREATE TABLE filters (
@@ -82,3 +97,16 @@ CREATE TABLE filters (
 		ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(users_id, skill_id)
 );
+
+INSERT INTO skill VALUES (DEFAULT, 'Programação');
+INSERT INTO skill VALUES (DEFAULT, 'Canalização');
+INSERT INTO skill VALUES (DEFAULT, 'Informática');
+INSERT INTO skill VALUES (DEFAULT, 'Mudanças');
+INSERT INTO skill VALUES (DEFAULT, 'Ação Social');
+INSERT INTO skill VALUES (DEFAULT, 'Contabilidade');
+INSERT INTO skill VALUES (DEFAULT, 'Carpintaria');
+INSERT INTO skill VALUES (DEFAULT, 'Negócios');
+INSERT INTO skill VALUES (DEFAULT, 'Finanças');
+INSERT INTO skill VALUES (DEFAULT, 'Matemática');
+INSERT INTO skill VALUES (DEFAULT, 'Física');
+

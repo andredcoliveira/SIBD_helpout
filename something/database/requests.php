@@ -226,4 +226,14 @@
     return false;
   }
 
+  function deleteRequest($request_id){
+    global $conn;
+
+    $stmt = $conn->prepare('DELETE FROM pedido
+                            WHERE id = ?');
+    $stmt->execute(array($request_id));
+
+    return true;
+  }
+
 ?>

@@ -9,7 +9,8 @@
 
     $hash = password_hash ($password , PASSWORD_DEFAULT, $options);
 
-    $stmt = $conn->prepare('INSERT INTO users VALUES (DEFAULT, ?, ?, ?)');
+    $stmt = $conn->prepare('INSERT INTO users (id, name, username, pw)
+                            VALUES (DEFAULT, ?, ?, ?)');
     $stmt->execute(array($realname, $username, $hash));
   }
 
@@ -18,6 +19,17 @@
 
     $stmt = $conn->prepare('SELECT * FROM users WHERE username = ?');
     $stmt->execute(array($username));
+
+    $userrow = $stmt->fetch();
+
+    return $userrow !== false && password_verify($password, $userrow['pw']);
+  }
+
+  function logUserById($user_id, $password) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt->execute(array($user_id));
 
     $userrow = $stmt->fetch();
 
@@ -84,7 +96,7 @@
     }
   }
 
-  function editUser($name, $password, $date, $description, $user_id) {
+  function editUser($name, $password, $date, $description, $user_id, $profession, $location) {
     global $conn;
 
     $options = [
@@ -94,9 +106,9 @@
     $hash = password_hash($password , PASSWORD_DEFAULT, $options);
 
     $stmt = $conn->prepare('UPDATE users
-                            SET name = ? , pw = ? , birthdate = ? , description = ?
+                            SET name = ? , pw = ? , birthdate = ? , description = ? , profession = ? , local = ? 
                             WHERE id = ?');
-    $stmt->execute(array($name, $hash, $date, $description, $user_id));
+    $stmt->execute(array($name, $hash, $date, $description, $profession, $location, $user_id));
 
     return true;
   }

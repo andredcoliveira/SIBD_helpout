@@ -94,6 +94,9 @@
       <?php if($request_owner['id'] != $_ID && getRequest($request_id)['active'] && isHelping($request_id, $_ID)) {?>
         <h5 id="stop_help_request"><a href="actions/action_stop_help_request.php?id=<?=$request_id?>">Deixar de Ajudar!</a></h5>
       <?php } ?>
+      <?php if($request_owner['id'] == $_ID || isHelping($request_id, $_ID)) { ?>
+        <h5 id="chat_link"><a href="chat.php?id=<?php echo getChatIdByRequestId($request_id)['id'];?>">Chat</a></h5>
+      <?php } ?>
     </div>
 
 

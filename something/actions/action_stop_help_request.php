@@ -2,6 +2,8 @@
 	include('../config/init.php');
 	include('../database/users.php');
 	include('../database/requests.php');
+	include('../database/chat.php');
+
 
 	if(isset($_GET['id'])){
 		$request_id = $_GET['id'];
@@ -13,6 +15,7 @@
 
 	try{
 		stopHelpingRequest($request_id, $_ID);
+		leaveChat(getChatIdByRequestId($request_id)['id'], $_ID);
 	}
 	catch(PDOException $e){
 		$_SESSION['error_message'] = $e->getMessage();

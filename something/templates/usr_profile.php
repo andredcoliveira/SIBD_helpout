@@ -21,9 +21,8 @@
           <?php } ?>
         </div>
         <ul>
-          <li>Profissão</li>
-          <li>Localidade</li>
-          <li>Qualquer coisa mais</li>
+          <li>Profissão: <?php echo isset($user_info['profession'])? $user_info['profession']:'Não definido';?></li>
+          <li>Localização: <?php echo isset($user_info['local'])? $user_info['local']:'Não definido';?></li>
         </ul>
       </div>
     </div>
