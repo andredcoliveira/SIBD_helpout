@@ -1,0 +1,9 @@
+foreach() com divs de posts
+
+cada div tem um link para antes e um para depois, baseado no id da div
+
+o id da div depende do foreach()
+
+sempre que um id está :target faz display: visible, senão está display: none
+
+usar javascript para saber o id do que está ativo (?)
