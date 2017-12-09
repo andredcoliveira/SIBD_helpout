@@ -15,5 +15,32 @@
 
   include('templates/index.php');
 
+  if(isset($_USERNAME)){
+    $itemsPerPage = 12;
+
+    if(isset($_GET['page'])) {
+      $page = $_GET['page'];
+    } else {
+      $page = 1;
+    }
+
+    $requests = fillMatchFeed($_ID, $page, $itemsPerPage);
+    foreach($requests as $key => $request) {
+      $requests[$key] = getRequest($request['id']);
+    }
+    if($requests != false && $requests != -1) {
+      $k = 0;
+      foreach($requests as $request) {
+        $request_photo_paths[$k++] = getRequestPhoto($request['id']);
+      }
+      $k = 0;
+    }
+
+    $numberOfPages = ceil(numberOfMatchFeedRequests($_ID) / $itemsPerPage);
+
+    include('templates/post_grid.php');
+    include('templates/content_nav.php');
+  }
+
   include('templates/footer.php');
 ?>

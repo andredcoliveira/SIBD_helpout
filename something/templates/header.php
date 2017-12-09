@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <a href="feed.php" class="logo">
+      <a href="index.php" class="logo">
         <img src="res/logo.png" alt="HelpOut">
       </a>
       <!-- check if user logged in before showing this -->

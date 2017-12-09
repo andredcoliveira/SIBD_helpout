@@ -305,4 +305,40 @@
     return $stmt->fetchAll();
   }
 
+  function fillMatchFeed($user_id, $page, $itemsPerPage) {
+    global $conn;
+
+    $offset = $itemsPerPage * ($page - 1);
+
+    $stmt = $conn->prepare('SELECT COUNT(*), pedido.id
+                            FROM pedido 
+                            JOIN pedido_skill ON pedido_id = pedido.id 
+                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id 
+                            JOIN users_pedido ON users_pedido.pedido_id = pedido.id AND owner = true
+                            JOIN users ON users.id = users_pedido.users_id
+                            WHERE users_skill.users_id = ? AND pedido.active = true AND users_pedido.users_id != ? AND users.active = true
+                            GROUP BY(pedido.id)
+                            ORDER BY count DESC
+                            LIMIT ? OFFSET ?');
+    $stmt->execute(array($user_id, $user_id, $itemsPerPage, $offset));
+
+    return $stmt->fetchAll();
+  }
+
+  function numberOfMatchFeedRequests($user_id){
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT COUNT(*), pedido.id
+                            FROM pedido 
+                            JOIN pedido_skill ON pedido_id = pedido.id 
+                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id 
+                            JOIN users_pedido ON users_pedido.pedido_id = pedido.id AND owner = true
+                            JOIN users ON users.id = users_pedido.users_id
+                            WHERE users_skill.users_id = ? AND pedido.active = true AND users_pedido.users_id != ? AND users.active = true
+                            GROUP BY(pedido.id)');
+    $stmt->execute(array($user_id, $user_id));
+
+    return count($stmt->fetchAll());
+  }
+
 ?>
