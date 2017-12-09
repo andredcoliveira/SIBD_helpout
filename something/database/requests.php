@@ -27,9 +27,10 @@
   function getRequest($request_id) {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT *
-                  FROM pedido
-                  WHERE id = ?');
+    $stmt = $conn->prepare('SELECT pedido.*
+                            FROM pedido JOIN users_pedido ON pedido_id = pedido.id
+                            JOIN users ON users_id = users.id
+                            WHERE users.active = true AND pedido.id = ?');
     $stmt->execute(array($request_id));
 
     return $stmt->fetch();
@@ -64,15 +65,15 @@
     global $conn;
 
     if($limit === 0) {
-      $stmt = $conn->prepare('SELECT *
-                        FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                        WHERE users_id = ? AND users_pedido.owner = false AND active = true');
+      $stmt = $conn->prepare('SELECT pedido.* , pedido_id
+                              FROM pedido JOIN users_pedido ON (pedido.id = pedido_id) JOIN users ON users_id = users.id
+                              WHERE users.active = true AND users_id = ? AND users_pedido.owner = false AND pedido.active = true');
       $stmt->execute(array($user_id));
     } else {
-      $stmt = $conn->prepare('SELECT *
-                        FROM pedido JOIN users_pedido ON (pedido.id = pedido_id)
-                        WHERE users_id = ? AND users_pedido.owner = false AND active = true
-                        LIMIT ?');
+      $stmt = $conn->prepare('SELECT pedido.* , pedido_id
+                              FROM pedido JOIN users_pedido ON (pedido.id = pedido_id) JOIN users ON users_id = users.id
+                              WHERE users.active = true AND users_id = ? AND users_pedido.owner = false AND pedido.active = true
+                              LIMIT ?');
       $stmt->execute(array($user_id, $limit));
     }
 
@@ -167,7 +168,7 @@
 
     $user_filters = getUserFilters($user_id);
 
-    $select = "SELECT DISTINCT id, ";
+    $select = "SELECT DISTINCT pedido.id, ";
 
     if($order != false) {
       foreach($order as $column) {
@@ -180,8 +181,8 @@
     $select = $select . "\n";
 
     if($user_filters == false) {
-      $query = "SELECT *\n" . "FROM users_pedido JOIN pedido ON pedido_id = id
-      WHERE active = true AND users_id != ?  AND owner = true \n";
+      $query = "SELECT users_pedido.* , pedido.* \n" . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN users ON users_id = users.id
+      WHERE users.active = true AND pedido.active = true AND users_id != ?  AND owner = true \n";
       $array = array_merge($array, array($user_id));
     } else {
       foreach($user_filters as $key => $filter) {
@@ -194,12 +195,12 @@
             $_SESSION['error_message'] = "An error occured when fetching your feed.";
             return -1;
           }
-          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
-                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN pedido_skill ON pedido.id = pedido_skill.pedido_id JOIN users ON users_id = users.id
+                  WHERE users.active = true AND pedido.active = true AND users_id != ? AND skill_id = ? AND owner = true";
           $array = array_merge($array, array($user_id, $filter['skill_id']));
         } else {
-          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
-                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN pedido_skill ON pedido.id = pedido_skill.pedido_id JOIN users ON users_id = users.id
+                  WHERE users.active = true AND pedido.active = true AND users_id != ? AND skill_id = ? AND owner = true";
           $array = array_merge($array, array($user_id, $filter['skill_id']));
         }
       }
@@ -237,7 +238,7 @@
 
     $user_filters = getUserFilters($user_id);
 
-    $select = "SELECT DISTINCT id, ";
+    $select = "SELECT DISTINCT pedido.id, ";
 
     if($order != false) {
       foreach($order as $column) {
@@ -250,8 +251,8 @@
     $select = $select . "\n";
 
     if($user_filters == false) {
-      $query = "SELECT *\n" . "FROM users_pedido JOIN pedido ON pedido_id = id
-      WHERE active = true AND users_id != ?  AND owner = true \n";
+      $query = "SELECT users_pedido.* , pedido.* \n" . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN users ON users_id = users.id
+      WHERE users.active = true AND pedido.active = true AND users_id != ?  AND owner = true \n";
       $array = array_merge($array, array($user_id));
     } else {
       foreach($user_filters as $key => $filter) {
@@ -264,12 +265,12 @@
             $_SESSION['error_message'] = "An error occured when fetching your feed.";
             return -1;
           }
-          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
-                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN pedido_skill ON pedido.id = pedido_skill.pedido_id JOIN users ON users_id = users.id
+                  WHERE users.active = true AND pedido.active = true AND users_id != ? AND skill_id = ? AND owner = true";
           $array = array_merge($array, array($user_id, $filter['skill_id']));
         } else {
-          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
-                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = pedido.id JOIN pedido_skill ON pedido.id = pedido_skill.pedido_id JOIN users ON users_id = users.id
+                  WHERE users.active = true AND pedido.active = true AND users_id != ? AND skill_id = ? AND owner = true";
           $array = array_merge($array, array($user_id, $filter['skill_id']));
         }
       }

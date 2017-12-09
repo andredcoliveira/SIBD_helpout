@@ -22,6 +22,13 @@
 
     $userrow = $stmt->fetch();
 
+    if($userrow['active'] === false) {
+      $stmt = $conn->prepare('UPDATE users
+                              SET active = true
+                              WHERE username = ?');
+      $stmt->execute(array($username));
+    }
+
     return $userrow !== false && password_verify($password, $userrow['pw']);
   }
 
@@ -32,6 +39,13 @@
     $stmt->execute(array($user_id));
 
     $userrow = $stmt->fetch();
+
+    if($userrow['active'] === false) {
+      $stmt = $conn->prepare('UPDATE users
+                              SET active = true
+                              WHERE id = ?');
+      $stmt->execute(array($user_id));
+    }
 
     return $userrow !== false && password_verify($password, $userrow['pw']);
   }
@@ -69,7 +83,9 @@
   function getUserInfo($user_id) {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt = $conn->prepare('SELECT * 
+                            FROM users 
+                            WHERE id = ? AND active = true');
     $stmt->execute(array($user_id));
 
     $userrow = $stmt->fetch();
@@ -84,7 +100,9 @@
   function getUserDescription($user_id) {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT * FROM users WHERE id = ?');
+    $stmt = $conn->prepare('SELECT * 
+                            FROM users 
+                            WHERE id = ? AND active = true');
     $stmt->execute(array($user_id));
 
     $userrow = $stmt->fetch();
@@ -211,18 +229,19 @@
   function searchDB($keyword) {
     global $conn;
 
-    $query = "SELECT  *
-                  FROM users
-                  WHERE users.name ILIKE ?";
+    $query = "SELECT *
+              FROM users
+              WHERE users.active = true AND users.name ILIKE ?";
 
     $stmt = $conn->prepare($query);
     $stmt->execute(array("%" . $keyword . "%"));
 
     $results[0] = $stmt->fetchAll();
 
-    $query = "SELECT  *
-                  FROM pedido
-                  WHERE pedido.name ILIKE ?";
+    $query = "SELECT pedido.*
+              FROM pedido JOIN users_pedido ON pedido_id = pedido.id
+              JOIN users ON users_id = users.id
+              WHERE users.active = true AND pedido.name ILIKE ?";
 
     $stmt = $conn->prepare($query);
     $stmt->execute(array("%" . $keyword . "%"));
@@ -231,6 +250,15 @@
 
     if($results != false) return $results;
     return false;
+  }
+
+  function deleteUser($user_id) {
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE users
+                            SET active = false
+                            WHERE id = ?");
+    $stmt->execute(array($user_id));
   }
 
 ?>

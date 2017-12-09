@@ -15,6 +15,10 @@
   $request_id = $_GET['id'];
   try{
     $request = getRequest($request_id);
+    if($request === false){
+      $_SESSION['error_message'] = '404 - Página não existe em HelpOut';
+      die(header("Location: index.php"));
+    } 
     $request_owner = getRequestOwner($request_id);
     $participants = getParticipants($request_id);
     $skills = getAllSkills();

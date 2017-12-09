@@ -16,10 +16,20 @@
   } else {
     $user_id = $_ID;
   }
-  $user_info = getUserInfo($user_id);
-  $user_photo_path = getUserPhoto($user_id);
-  $comments = recentCommentsToUser($user_id, 10); //limite = 10
-  $requests = getOwnedRequests($user_id, 10); //limite = 10
+  try{
+    $user_info = getUserInfo($user_id);
+    if($user_info === false){
+      $_SESSION['error_message'] = '404 - Página não existe em HelpOut';
+      die(header("Location: index.php"));
+    } 
+    $user_photo_path = getUserPhoto($user_id);
+    $comments = recentCommentsToUser($user_id, 10); //limite = 10
+    $requests = getOwnedRequests($user_id, 10); //limite = 10
+  } catch(PDOException $e){
+    $_SESSION['error_message'] = $e->getMessage();
+    die(header("Location: index.php"));
+  }
+  
 
   if($requests != false) {
     $k = 0;
