@@ -18,6 +18,7 @@
     $request_owner = getRequestOwner($request_id);
     $participants = getParticipants($request_id);
     $skills = getAllSkills();
+    $requestSkills = getRequestSkills($request_id);
   } catch(PDOException $e) {
     $_SESSION['error_message'] = $e->getMessage();
     die(header("Location: index.php"));

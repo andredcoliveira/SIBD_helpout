@@ -54,6 +54,18 @@
       </div>
     </div>
 
+    <div class="request_skills">
+      <h4>As especialidades necessárias</h4>
+      <ul>
+        <?php if($requestSkills == FALSE) { ?>
+          <span>Quem fez este pedido não especificou que especialidades são necessárias</span>
+        <?php } else { foreach($requestSkills as $Skill) { ?>
+          <li><?=$Skill['nome']?></li>
+        <?php } } ?>
+      </ul>
+
+    </div>
+
     <div class="participants">
       <h4>Participantes</h4>
       <div class="participants_wrapper">

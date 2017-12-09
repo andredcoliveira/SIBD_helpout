@@ -32,16 +32,16 @@ CREATE TABLE users_pedido (
 
 CREATE TABLE comment (
 	id SERIAL PRIMARY KEY,
-	commenter_id INTEGER REFERENCES users NOT NULL
-		ON DELETE CASCADE ON UPDATE CASCADE,
-	commented_id INTEGER REFERENCES users NOT NULL
-		ON DELETE CASCADE ON UPDATE CASCADE,
+	commenter_id INTEGER REFERENCES users 
+		ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+	commented_id INTEGER REFERENCES users 
+		ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	classification NUMERIC(1,0)
 		CHECK(classification >= 1 AND classification <= 5) NOT NULL,
 	comment VARCHAR(512) NOT NULL,
 	time_posted TIMESTAMP,
-	pedido_id INTEGER REFERENCES pedido NOT NULL
-		ON DELETE CASCADE ON UPDATE CASCADE,
+	pedido_id INTEGER REFERENCES pedido 
+		ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
 	UNIQUE(commented_id, pedido_id) 
 );
 
@@ -98,15 +98,12 @@ CREATE TABLE filters (
 	PRIMARY KEY(users_id, skill_id)
 );
 
-INSERT INTO skill VALUES (DEFAULT, 'Programação');
-INSERT INTO skill VALUES (DEFAULT, 'Canalização');
+INSERT INTO skill VALUES (DEFAULT, 'Bricolage');
 INSERT INTO skill VALUES (DEFAULT, 'Informática');
 INSERT INTO skill VALUES (DEFAULT, 'Mudanças');
 INSERT INTO skill VALUES (DEFAULT, 'Ação Social');
 INSERT INTO skill VALUES (DEFAULT, 'Contabilidade');
-INSERT INTO skill VALUES (DEFAULT, 'Carpintaria');
 INSERT INTO skill VALUES (DEFAULT, 'Negócios');
 INSERT INTO skill VALUES (DEFAULT, 'Finanças');
-INSERT INTO skill VALUES (DEFAULT, 'Matemática');
-INSERT INTO skill VALUES (DEFAULT, 'Física');
+INSERT INTO skill VALUES (DEFAULT, 'Estudo');
 

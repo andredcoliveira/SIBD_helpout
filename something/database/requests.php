@@ -159,7 +159,7 @@
     return $stmt->fetchAll();
   }
 
-  function fillFeed($user_id, $operator, $order) {
+  function fillFeed($user_id, $operator, $order, $page, $itemsPerPage) {
     global $conn;
 
     $array = array();
@@ -216,6 +216,9 @@
       }
       $query = substr($query, 0, -2);
     }
+
+    $offset = $itemsPerPage * ($page - 1);
+    $query = '(' . $query . ") LIMIT $itemsPerPage OFFSET $offset";
     
     $stmt = $conn->prepare($query);
     $stmt->execute($array);
@@ -226,6 +229,60 @@
     return false;
   }
 
+  function numberOfFeedRequests($user_id, $operator, $order) {
+        global $conn;
+
+    $array = array();
+    $query = "";
+
+    $user_filters = getUserFilters($user_id);
+
+    $select = "SELECT DISTINCT id, ";
+
+    if($order != false) {
+      foreach($order as $column) {
+        if($column != false) {
+          $select = $select . $column['name'] . ", ";
+        }
+      }
+    }
+    $select = substr($select, 0, -2);
+    $select = $select . "\n";
+
+    if($user_filters == false) {
+      $query = "SELECT *\n" . "FROM users_pedido JOIN pedido ON pedido_id = id
+      WHERE active = true AND users_id != ?  AND owner = true \n";
+      $array = array_merge($array, array($user_id));
+    } else {
+      foreach($user_filters as $key => $filter) {
+        if($key > 0) {
+          if($operator == 'AND') {
+            $query = $query . "\n\n INTERSECT \n\n";
+          } elseif($operator == 'OR') {
+            $query = $query . "\n\n UNION \n\n";
+          } else {
+            $_SESSION['error_message'] = "An error occured when fetching your feed.";
+            return -1;
+          }
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
+                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $array = array_merge($array, array($user_id, $filter['skill_id']));
+        } else {
+          $query = $query . $select . "FROM users_pedido JOIN pedido ON pedido_id = id JOIN pedido_skill ON id = pedido_skill.pedido_id
+                  WHERE active = true AND users_id != ? AND skill_id = ? AND owner = true";
+          $array = array_merge($array, array($user_id, $filter['skill_id']));
+        }
+      }
+    }
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute($array);
+
+    $requests = $stmt->fetchAll();
+    return count($requests);
+
+  }
+
   function deleteRequest($request_id){
     global $conn;
 
@@ -234,6 +291,17 @@
     $stmt->execute(array($request_id));
 
     return true;
+  }
+
+  function getRequestSkills($request_id) {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT nome
+                  FROM pedido JOIN pedido_skill ON pedido.id = pedido_id JOIN skill ON skill_id = skill.id
+                  WHERE pedido.id = ?');
+    $stmt->execute(array($request_id));
+
+    return $stmt->fetchAll();
   }
 
 ?>

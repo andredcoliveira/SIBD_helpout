@@ -13,6 +13,14 @@
 
   $skills = getAllSkills();
 
+  $itemsPerPage = 12;
+  
+  if(isset($_GET['page'])) {
+    $page = $_GET['page'];
+  } else {
+    $page = 1;
+  }
+
   $order = false;
   $operator = 'OR';
   if(isset($_SESSION['feed_order']) && isset($_SESSION['feed_operator'])) {
@@ -24,7 +32,7 @@
     $operator = $_SESSION['feed_operator'];
   }
 
-  $requests = fillFeed($_ID, $operator, $order); //IDs only
+  $requests = fillFeed($_ID, $operator, $order, $page, $itemsPerPage); //IDs only
   foreach($requests as $key => $request) {
     $requests[$key] = getRequest($request['id']);
   }
@@ -36,6 +44,9 @@
     }
     $k = 0;
   }
+
+  $numberOfPages = ceil(numberOfFeedRequests($_ID, $operator, $order) / $itemsPerPage);
+  
 
   include('templates/header.php');
   include('templates/sidebar.php');

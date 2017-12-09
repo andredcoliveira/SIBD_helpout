@@ -326,7 +326,6 @@ header {
   color: white;
   text-decoration: none;
   font-size: 1.5em;
-  height: 100%;
 }
 
 .content_navigation a.active {
@@ -661,6 +660,24 @@ ul li:before {
 
 .request_usr_profile .profile_top_right {
   margin: 1em auto;
+}
+
+.request_skills {
+  padding: 0 1em;
+  background-color: lightgrey;
+  margin: 0 2em 2em 2em;
+  padding: 1em;
+}
+
+.request_skills span {
+  color: gray;
+}
+
+.request_skills h4 {
+  margin: 0;
+}
+.request_skills ul {
+  margin: 0;
 }
 
 
@@ -1198,7 +1215,8 @@ ul li:before {
 .messages_wrapper {
   padding: 1em;
   background-color: white;
-  height: 100%;
+  height: 60vh;
+  overflow-y: scroll;
 }
 
 .messages_wrapper a {
