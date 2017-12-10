@@ -5,7 +5,7 @@
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $conn->query("SET SCHEMA 'helpout'");
+  $conn->query("SET SCHEMA 'helpout_new'");
 
   if (isset($_SESSION['error_message'])) {
     $_ERROR_MESSAGE = $_SESSION['error_message'];
