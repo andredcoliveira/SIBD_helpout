@@ -13,7 +13,6 @@
                   <ul>
                     <li><?=$request['location']?></li>
                     <li><?=$request['date_limit']?></li>
-                    <li>nr de pessoas (?)</li>
                   </ul>
                   <p>Por: <?=getRequestOwner($request['id'])['name'];?></p>
                 </section>

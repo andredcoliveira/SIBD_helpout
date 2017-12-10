@@ -43,9 +43,8 @@
               <?php } ?>
             </div>
             <ul>
-              <li>Profissão</li>
-              <li>Localidade</li>
-              <li>Qualquer coisa mais</li>
+              <li><?php echo isset($request_owner['profession'])? $request_owner['profession']:'Não definido';?></li>
+              <li><?php echo isset($request_owner['local'])? $request_owner['local']:'Não definido';?></li>
             </ul>
             </div>
           </div>

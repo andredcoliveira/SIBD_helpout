@@ -238,7 +238,7 @@
 
     $results[0] = $stmt->fetchAll();
 
-    $query = "SELECT pedido.*
+    $query = "SELECT DISTINCT pedido.*
               FROM pedido JOIN users_pedido ON pedido_id = pedido.id
               JOIN users ON users_id = users.id
               WHERE users.active = true AND pedido.name ILIKE ?";
