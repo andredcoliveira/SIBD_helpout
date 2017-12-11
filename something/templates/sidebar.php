@@ -16,11 +16,13 @@
       <aside id="show_sidebar" class="sidebar">
         <a href="#/" class="close_sidebar">close</a>
         <div class='sidebar_wrapper'>
-          <?php if(getUserPhoto($_ID) !== false) { ?>
-            <section class="user_photo">
-              <img src="<?=getUserPhoto($_ID)?>" alt="User Photo">
-            </section>
-          <?php } ?>
+          <section class="user_photo">
+            <?php if(getUserPhoto($_ID) !== false) { ?>
+              <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($_ID)?>');"></div>
+            <?php } else { ?>
+              <div class="profile_pic_wrapper" style="background-image: url('res/avatar.png');"></div>
+            <?php } ?>
+          </section>
           <section class="user_info">
             <h2><?=$_NAME?></h2>
             <ul>

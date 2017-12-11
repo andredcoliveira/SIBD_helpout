@@ -141,10 +141,6 @@ header {
   margin: 4em 1em 2em 3.5em;
 }
 
-.post_grid, .post_grid:before, .post_grid:after {
-  box-sizing:  border-box !important;
-}
-
 .post_grid {
   margin: 1em auto;
  -moz-column-width: 15em;
@@ -161,7 +157,7 @@ header {
 }
 
 .post_request {
-  display: inline-block;
+  break-inside: avoid;
   border: 2px solid #FFF;
   background-color: white;
   width: 100%;
@@ -187,6 +183,11 @@ header {
 .post_description {
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+
+.notfound {
+  color: gray;
+  margin: 1em auto;
 }
 
   /**    sidebar    **/
@@ -449,6 +450,7 @@ footer > .authors {
 .profile {
   overflow: hidden;
   max-width: 58em;
+  min-width: 40em;
 
   background-color: white;
   margin: 0 auto;
@@ -498,7 +500,7 @@ footer > .authors {
 
 .profile_top_right {
   width: fit-content;
-  margin: auto 0 0 4em;
+  margin: auto 1em auto 6em;
 }
 
 
@@ -536,14 +538,12 @@ ul li:before {
 }
 
 .description_wrapper {
-  width: 100%;
   padding: 0 1em;
   border-top: 2em solid #FFF;
 }
 
 .description_wrapper * {
   margin-right: 1em;
-  margin-left: 1em;
 }
 
 .description_wrapper p {
@@ -557,6 +557,7 @@ ul li:before {
 
 .recent_posts > h3 {
   transform: translateX(-2.5em);
+  margin:
 }
 
 .recent_comments {
@@ -617,6 +618,8 @@ ul li:before {
 
 .request_left h3 {
   margin: 1em auto;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 .request_pic_wrapper {
@@ -1162,14 +1165,9 @@ ul li:before {
 }
 
 
-
-
-
-
-
+/** chat  **/
 
 .chat {
-  width: fit-content;
   max-width: 40em;
 }
 

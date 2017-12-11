@@ -14,8 +14,8 @@
         <label for="pw"><h3 class="title">Nova palavra-passe</h3></label><input type="password" name="pw">
         <label for="pw2"><h3 class="title">Repetir palavra-passe</h3></label><input type="password" name="pw2">
         <label for="date"><h3 class="title">Data de nascimento</h3></label><input type="date" name="date" value="<?php echo isset($_FORM_VALUES['date'])?$_FORM_VALUES['date']:getUserInfo($_ID)['birthdate'];?>">
-        <label for="profession"><h3 class="title">Profissão</h3></label><input type="text" name="profession" value="<?php echo getUserInfo($_ID)['profession'];?>">
-        <label for="location"><h3 class="title">Localização</h3></label><input type="text" name="location" value="<?php echo getUserInfo($_ID)['local'];?>">
+        <label for="profession"><h3 class="title">Profissão</h3></label><input type="text" name="profession" value="<?php echo isset($_FORM_VALUES['profession'])?$_FORM_VALUES['profession']:getUserInfo($_ID)['profession'];?>">
+        <label for="location"><h3 class="title">Localização</h3></label><input type="text" name="location" value="<?php echo isset($_FORM_VALUES['location'])?$_FORM_VALUES['location']:getUserInfo($_ID)['local'];?>">
 
         <label for="description"><h3 class="title">Descrição</h3></label><textarea rows="4" cols="64" name="description" id="edit_profile_description"><?php echo isset($_FORM_VALUES['description'])?$_FORM_VALUES['description']:getUserInfo($_ID)['description'];?></textarea>
 
@@ -27,7 +27,6 @@
             </div>
           <?php } ?>
         </div>
-
 
         <label><strong>Foto de perfil:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">

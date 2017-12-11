@@ -3,8 +3,8 @@
 
     <div class="chat">
     	<div class="chat_header">
-    		<h3>Chat do pedido: <a href="request.php?id=<?=$request['id']?>"><?=$request['name']?></a></h3>
-    		<h4>Pedido por: <a href="usr_profile.php?id=<?=$owner['id']?>"><?=$owner['name']?></a></h4>
+    		<h3><a href="request.php?id=<?=$request['id']?>"><?=$request['name']?></a></h3>
+    		<h4>Criado por: <a href="usr_profile.php?id=<?=$owner['id']?>"><?=$owner['name']?></a></h4>
     	</div>
     	<div class="chat_new_message">
     		<form action="actions/action_new_message.php" method="post">

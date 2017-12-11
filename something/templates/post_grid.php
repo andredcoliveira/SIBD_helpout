@@ -1,6 +1,7 @@
-      <div class="post_grid">
-        <?php if($requests != false && $requests != -1) {
-          foreach($requests as $key => $request) { ?>
+
+      <?php if($requests != false && $requests != -1) { ?>
+        <div class="post_grid">
+          <?php foreach($requests as $key => $request) { ?>
             <a href="request.php?id=<?=$request['id']?>">
               <article class="post_request">
                 <?php if($request_photo_paths[$key] !== false) { ?>
@@ -18,8 +19,8 @@
                 </section>
               </article>
             </a>
-        <?php }
-        } else { ?>
-          <p>Não foi encontrado nenhum pedido ativo.</p>
-        <?php } ?>
-      </div>
+          <?php } ?>
+        </div>
+      <?php } else { ?>
+        <span class="notfound">Não foi encontrado nenhum pedido ativo.</span>
+      <?php } ?>
