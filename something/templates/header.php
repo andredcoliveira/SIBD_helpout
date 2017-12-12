@@ -24,7 +24,7 @@
             </div>
             <ul class="header_navigation">
               <li><a href="index.php" class="<?php isPageActive('index.php')?>">Página Inicial</a></li>
-              <li><a href="feed.php" class="<?php isPageActive('feed.php');?>">Ajudar</a></li>
+              <li><a href="feed.php" class="<?php isPageActive('feed.php');?>">Feed</a></li>
               <li><a href="my_requests.php" class="<?php isPageActive('my_requests.php');?>">Meus Pedidos</a></li>
               <li><a href="new_request.php" class="<?php isPageActive('new_request.php');?>">Novo Pedido</a></li>
               <li><a href="usr_profile.php" class="<?php isPageActive('usr_profile.php');?>">Perfil</a></li>

@@ -1,7 +1,7 @@
 <div class="profile_wrapper">
   <div class="profile">
     <?php if($_ID == $user_id) { ?>
-      <a href="edit_usr_profile.php">Editar Perfil</a>
+      <a class="button" href="edit_usr_profile.php">Editar Perfil</a>
     <?php } ?>
     <div class="profile_top">
       <?php if($user_photo_path !== false) { ?>

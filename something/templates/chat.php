@@ -10,7 +10,7 @@
     		<form action="actions/action_new_message.php" method="post">
     			<input type="text" name="message" placeholder="Insira aqui uma nova mensagem..." size="33">
     			<input type="hidden" name="chat_id" value="<?=$chat_id?>">
-    			<input type="submit" value="Enviar" name="submit">
+    			<input class="button" type="submit" value="Enviar" name="submit">
     		</form>
     	</div>
     	<div class="messages_wrapper">

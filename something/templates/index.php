@@ -36,6 +36,6 @@
       </div>
     </div>
   <?php } else { ?>
-    <h1>Os pedidos que mais se ajustam a si!</h1>
+    <h1>Recomendado para si</h1>
   <?php } ?>
 </div>

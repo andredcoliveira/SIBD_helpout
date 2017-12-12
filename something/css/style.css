@@ -113,7 +113,7 @@ header {
 .success_error {
   padding: 3em 0 1em 0;
   text-align: center;
-  width: 100vw;
+  width: 100%;
 }
 
 .success_error h3 {
@@ -124,7 +124,7 @@ header {
 
 #error, #success {
   padding: 0.5em 0 1em 0;
-  width: 100vw;
+  width: 100%;
   background-color: #900;
 }
 
@@ -194,6 +194,7 @@ header {
 
 .sidebar {
   overflow: auto;
+  text-align: center;
   white-space: nowrap;
   z-index: 100;
   position: fixed;
@@ -454,6 +455,8 @@ footer > .authors {
 
   background-color: white;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile_top {
@@ -533,7 +536,7 @@ ul li {
   margin: 0.5em 0;
 }
 
-ul li:before {
+ul li:not(.skills_profile_wrapper)::before {
 		 content: "\2023 \0020";
 }
 
@@ -557,7 +560,11 @@ ul li:before {
 
 .recent_posts > h3 {
   transform: translateX(-2.5em);
-  margin:
+}
+
+.recent_posts .notfound {
+  position: relative;
+  left: -3em;
 }
 
 .recent_comments {
@@ -596,7 +603,7 @@ ul li:before {
 /** Request **/
 
 .request {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 1em;
@@ -801,7 +808,6 @@ ul li:before {
 
 .profile > a {
   font-size: 0.8em;
-  color: black;
   text-decoration: none;
 
   width: fit-content;
@@ -811,12 +817,25 @@ ul li:before {
   background-color: lightgrey;
   color: #181818;
 
-  display: inline-block;
-  float: right;
-  margin: 1em 1em 0 0;
+  margin: 1em 1em 0 auto;
 }
 
 .profile > a:hover {
+  cursor: pointer;
+  color: lightgrey;
+  background-color: #181818;
+}
+
+.button:not(.visitor .box a) {
+  width: fit-content;
+  padding: 0.4em 1em;
+  border: none;
+  border-radius: 100px;
+  background-color: lightgrey;
+  color: #181818;
+}
+
+.button:not(.visitor .box a):hover {
   cursor: pointer;
   color: lightgrey;
   background-color: #181818;
@@ -956,6 +975,18 @@ ul li:before {
 
 .skills_profile_wrapper span {
   color: gray;
+}
+
+.skills_profile_wrapper ul li {
+  display: inline;
+}
+
+.skills_profile_wrapper ul li:not(:first-child)::before {
+  content: "\00d7 \0020";
+}
+
+.skills_profile_wrapper ul li:first-child::before {
+  content: none;
 }
 
 #custom_feed {

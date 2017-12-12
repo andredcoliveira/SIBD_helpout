@@ -83,8 +83,8 @@
   function getUserInfo($user_id) {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT * 
-                            FROM users 
+    $stmt = $conn->prepare('SELECT *
+                            FROM users
                             WHERE id = ? AND active = true');
     $stmt->execute(array($user_id));
 
@@ -100,8 +100,8 @@
   function getUserDescription($user_id) {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT * 
-                            FROM users 
+    $stmt = $conn->prepare('SELECT *
+                            FROM users
                             WHERE id = ? AND active = true');
     $stmt->execute(array($user_id));
 
@@ -117,16 +117,35 @@
   function editUser($name, $password, $date, $description, $user_id, $profession, $location) {
     global $conn;
 
+    if(!($name != false || $password != false || $date != false ||
+         $description != false || $profession !=  false || $location != false)) {
+      return false;
+    }
+
     $options = [
       'cost' => 12,
     ];
 
+    $query = "UPDATE users\nSET";
+    $array = array();
+
     $hash = password_hash($password , PASSWORD_DEFAULT, $options);
 
-    $stmt = $conn->prepare('UPDATE users
-                            SET name = ? , pw = ? , birthdate = ? , description = ? , profession = ? , local = ? 
-                            WHERE id = ?');
-    $stmt->execute(array($name, $hash, $date, $description, $profession, $location, $user_id));
+    $stuffz = array('name' => $name, 'pw' => $hash, 'birthdate' => $date,
+     'description' => $description, 'profession' => $profession, 'local' => $location);
+
+    foreach($stuffz as $key => $stuff) {
+      if($stuff != false) {
+        $query = $query . " " . $key . " = ?,";
+        $array = array_merge($array, array($stuff));
+      }
+    }
+    $query = substr($query, 0, -1);
+    $query = $query . "\nWHERE id = ?";
+    $array = array_merge($array, array($user_id));
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute($array);
 
     return true;
   }

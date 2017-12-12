@@ -1,6 +1,8 @@
 <div class="profile_wrapper">
   <div class="profile">
-
+    <?php if($_ID == $request_owner['id']) { ?>
+      <a class="button" href="edit_request.php">Editar Pedido</a>
+    <?php } ?>
     <div class="request">
       <div class="request_left">
         <?php if(getRequestPhoto($request_id) != false) { ?>
@@ -26,7 +28,7 @@
 
         <a href="./usr_profile.php?id=<?=$owner_id?>" class="usr_profile_link">
           <div class="request_usr_profile">
-            <h4>Feito por</h4>
+            <h4>Dono</h4>
             <?php if(getUserPhoto($owner_id) != false) { ?>
               <div class="profile_pic_wrapper" style="background-image: url('<?=getUserPhoto($owner_id)?>');"></div>
             <?php } else { ?>

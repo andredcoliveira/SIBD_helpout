@@ -22,5 +22,5 @@
           <?php } ?>
         </div>
       <?php } else { ?>
-        <span class="notfound">Não foi encontrado nenhum pedido ativo.</span>
+        <br><span class="notfound">&nbsp;&nbsp;Não foi encontrado nenhum pedido ativo.</span>
       <?php } ?>

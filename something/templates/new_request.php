@@ -19,7 +19,7 @@
             </div>
           <?php } ?>
         </div>
-
+        
         <label><strong>Escolha uma imagem:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">
         </label>

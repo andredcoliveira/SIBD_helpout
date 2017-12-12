@@ -19,28 +19,21 @@
   }
   else $skills = NULL;
 
-
   if(!$name) {
-    $_SESSION['error_message'] = 'Nome inválido';
-    die(header('Location: ../edit_usr_profile.php'));
+    $name = getUserInfo($_ID)['name'];
   } elseif(!$password_old) {
-    $_SESSION['error_message'] = "Palavra-passe antiga inválida";
+    $_SESSION['error_message'] = "Insira a sua palavra-passe atual";
     die(header('Location: ../edit_usr_profile.php'));
   } elseif(!logUserById($_ID, $password_old)) {
-    $_SESSION['error_message'] = "Palavra-passe antiga inválida";
+    $_SESSION['error_message'] = "Palavra-passe atual incorreta";
     die(header('Location: ../edit_usr_profile.php'));
-  } elseif(!$password) {
-    $_SESSION['error_message'] = "Palavra-passe nova inválida";
-    die(header('Location: ../edit_usr_profile.php'));
-  } elseif(!$password_bis || ($password_bis != $password)) {
-    $_SESSION['error_message'] = "As palavras-passe diferem.";
+  } elseif($password_bis != $password) {
+    $_SESSION['error_message'] = "As palavras-passe diferem";
     die(header('Location: ../edit_usr_profile.php'));
   } elseif(!$profession) {
-    $_SESSION['error_message'] = "Profissão inválida";
-    die(header('Location: ../edit_usr_profile.php'));
+    $profession = getUserInfo($_ID)['profession'];
   } elseif(!$location) {
-    $_SESSION['error_message'] = "Localização inválida";
-    die(header('Location: ../edit_usr_profile.php'));
+    $location = getUserInfo($_ID)['local'];
   } else {
     try {
       editUser($name, $password, $date, $description, $_ID, $profession, $location);
