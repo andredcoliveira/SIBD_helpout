@@ -27,7 +27,10 @@
 	} else $skills = NULL;
 
 	try{
-		updateRequest($request['id'], $title, $location, $date, $reward, $description, $skills);
+		if(updateRequest($request['id'], $title, $location, $date, $reward, $description, $skills) == false) {
+			$_SESSION['error_message'] = 'Problem updating request';
+			die(header('Location: ../edit_request.php'));
+		}
 	}
 	catch(PDOException $e) {
     $_SESSION['error_message'] = $e->getMessage();
@@ -36,18 +39,18 @@
 
 
 
-	if(!isset($_FILES['fileToUpload']) {
+	if(!isset($_FILES['fileToUpload'])) {
 
-  } else if($_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
+  	} else if(isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
 		$_SESSION['success_message'] = 'Houve um problema com o upload da imagem.';
-    die(header('Location: ../edit_request.php'));
+    	die(header('Location: ../edit_request.php'));
 		/** DO NOTHING **/
 	} else {
 		$extension = explode('.' , basename($_FILES["fileToUpload"]["name"]));
 		$extension = '.' . end($extension);
 
 		$target_dir = "../res/uploads/requests/";
-		$target_file = $target_dir . $request_id . $extension;
+		$target_file = $target_dir .$request['id'] . $extension;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image
 		if(isset($_POST["submit"])) {
@@ -61,7 +64,9 @@
 		}
 
 		// Check if file already exists
-		$possibleImagePath = getRequestPhoto2($request_id);
+		$possibleImagePath = getRequestPhoto2($request['id']);
+
+	
 		if (file_exists($possibleImagePath)) {
 	      $status = unlink($possibleImagePath); //remove the file
 	      if($status != true){
@@ -98,5 +103,5 @@
 		}
 	}
 
-	header("Location: ../request.php?id=$request['id']");
+	header("Location: ../request.php?id=" . $request['id']);
 ?>

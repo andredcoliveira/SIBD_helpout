@@ -118,10 +118,10 @@
     global $conn;
 
     //comentar esta parte??
-    if(!($name != false || $password != false || $date != false ||
+    /*if(!($name != false || $password != false || $date != false ||
          $description != false || $profession !=  false || $location != false)) {
       return false;
-    }
+    }*/
 
     $options = [
       'cost' => 12,
@@ -130,7 +130,8 @@
     $query = "UPDATE users\nSET";
     $array = array();
 
-    $hash = password_hash($password , PASSWORD_DEFAULT, $options);
+    if($password != false) $hash = password_hash($password , PASSWORD_DEFAULT, $options);
+    else $hash = false;
 
     $stuffz = array('name' => $name, 'pw' => $hash, 'birthdate' => $date,
      'description' => $description, 'profession' => $profession, 'local' => $location);

@@ -542,7 +542,7 @@ ul li:not(.skills_profile_wrapper)::before {
 
 .description_wrapper {
   padding: 0 1em;
-  border-top: 2em solid #FFF;
+  /*border-top: 2em solid #FFF;*/
 }
 
 .description_wrapper * {

@@ -32,6 +32,7 @@
       return false;
     }
 
+
     $query = "UPDATE pedido\nSET";
     $array = array();
 
@@ -46,7 +47,11 @@
     }
     $query = substr($query, 0, -1);
     $query = $query . "\nWHERE id = ?";
-    $array = array_merge($array, array($pedido_id));
+    $array = array_merge($array, array($request_id));
+
+
+   
+
 
     $stmt = $conn->prepare($query);
     $stmt->execute($array);
