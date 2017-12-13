@@ -1,6 +1,7 @@
 <div class="profile_wrapper">
   <div class="profile">
-    <?php if($_ID == $request_owner['id']) { ?>
+    <?php if($_ID == $request_owner['id']) {
+      $_SESSION['current_request'] = $request_id; ?>
       <a class="button" href="edit_request.php">Editar Pedido</a>
     <?php } ?>
     <div class="request">
@@ -73,9 +74,12 @@
 
         <?php foreach($participants as $participant){ ?>
           <article class="participant">
-            <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
+            <?php if(($user_photo = getUserPhoto($participant['id'])) != false) { ?>
+              <div class="participant_pic_wrapper" style="background-image: url(<?=getUserPhoto($participant['id'])?>);"></div>
+            <?php } else { ?>
+              <div class="participant_pic_wrapper" style="background-image: url('res/avatar.png');"></div>
+            <?php } ?>
             <h4><a href="usr_profile.php?id=<?=$participant['id']?>"><?=$participant['name']?></a></h4>
-
 
               <?php if($request['active'] === false) include('templates/request_comments.php'); ?>
 
@@ -112,6 +116,7 @@
       <?php } ?>
     </div>
 
+    <?php include('google_api.php'); ?>
 
   </div>
 </div>

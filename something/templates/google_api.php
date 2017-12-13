@@ -3,15 +3,14 @@
   </style>
   <div class="google_api">
     <div id="floating-panel">
-      <?php $local = "Rua Dr. Roberto Frias, 4200-465 PORTO" ?>
-      <input id="address" type="textbox" value="<?=$local?>" readonly>
-      <span><?=$local?></span>
+      <input id="address" type="textbox" value="<?=$request['location']?>" readonly>
+      <span><?=$request['location']?></span>
     </div>
     <div id="map"></div>
     <script type="text/javascript">
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8
+          zoom: 12
         });
         var geocoder = new google.maps.Geocoder();
 

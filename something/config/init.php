@@ -39,4 +39,9 @@
     unset($_SESSION['results']);
   }
 
+  if(isset($_SESSION['current_request'])) {
+    $_CURR_REQ = $_SESSION['current_request'];
+    unset($_SESSION['current_request']);
+  }
+
 ?>

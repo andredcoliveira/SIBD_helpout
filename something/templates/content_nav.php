@@ -1,5 +1,5 @@
 <nav class="content_navigation">
-	<ul>
+	<ul id="pages">
 
 		<?php for($i = 1; $i<= $numberOfPages ; $i++) { ?>
 			<li><a href="feed.php?page=<?=$i?>" <?php echo ($i==$page)? 'class="active"':'';?>><?=$i?></a></li>
