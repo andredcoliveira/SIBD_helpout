@@ -39,7 +39,7 @@
     $numberOfPages = ceil(numberOfMatchFeedRequests($_ID) / $itemsPerPage);
 
     include('templates/post_grid.php');
-    include('templates/content_nav.php');
+    include('templates/content_nav_index.php');
   }
 
   include('templates/footer.php');
