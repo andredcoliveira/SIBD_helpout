@@ -841,6 +841,12 @@ ul li:not(.skills_profile_wrapper)::before {
   background-color: #181818;
 }
 
+.new_request .button {
+  text-decoration: none;
+  color: darkred;
+  font-size: smaller;
+}
+
 
 /** formulario apagar conta **/
 

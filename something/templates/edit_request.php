@@ -14,17 +14,18 @@
           <h3 class="title">Habilidades</h3>
           <?php foreach($skills as $skill) { ?>
             <div class="skill">
-              <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>"><?=$skill['nome']?></label>
+              <label><input type="checkbox" id="<?=$skill['id']?>" name="skills[]" value="<?=$skill['id']?>" <?php if(in_array($skill['nome'], array_column(getRequestSkills($request['id']), 'nome'), true)) echo "checked"?>><?=$skill['nome']?></label>
             </div>
           <?php } ?>
         </div>
 
-        <label><strong>Escolha uma imagem:&nbsp;</strong>
+        <label><strong>Alterar imagem:&nbsp;</strong>
           <input type="file" name="fileToUpload" id="fileToUpload">
         </label>
 
         <input type="submit" value="Submeter" name="submit">
       </form>
+      <a class="button" href="request.php?id=<?=$request['id']?>">Cancelar</a>
     </div>
 
   </div>

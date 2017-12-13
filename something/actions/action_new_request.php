@@ -24,8 +24,7 @@
 	}
 	if(isset($_POST['skills'])){
 		$skills = $_POST['skills']; /** Array com id's de skills selecionadas **/
-	}
-	else $skills = NULL;
+	} else $skills = NULL;
 
 	try{
 		$request_id = insertRequest($title, $location, $date, $reward, $description, $skills);

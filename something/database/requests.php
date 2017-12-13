@@ -24,6 +24,45 @@
     return $request_id;
   }
 
+  function updateRequest($request_id, $title, $location, $date, $reward, $description, $skills) {
+    global $_ID;
+    global $conn;
+
+    if(getRequestOwner($request_id)['id'] != $_ID) {
+      return false;
+    }
+
+    $query = "UPDATE pedido\nSET";
+    $array = array();
+
+    $stuffz = array('name' => $title, 'reward' => $reward, 'description' => $description,
+     'location' => $location, 'date_limit' => $date);
+
+    foreach($stuffz as $key => $stuff) {
+      if($stuff != false) {
+        $query = $query . " " . $key . " = ?,";
+        $array = array_merge($array, array($stuff));
+      }
+    }
+    $query = substr($query, 0, -1);
+    $query = $query . "\nWHERE id = ?";
+    $array = array_merge($array, array($pedido_id));
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute($array);
+
+    if($skills != null){
+      $stmt = $conn->prepare("DELETE FROM pedido_skill WHERE pedido_id = ?");
+      $stmt->execute(array($request_id));
+      foreach ($skills as $skill_id) {
+        $stmt = $conn->prepare("INSERT INTO pedido_skill VALUES (?,?)");
+        $stmt->execute(array($request_id, $skill_id));
+      }
+    }
+
+    return true;
+  }
+
   function getRequest($request_id) {
     global $conn;
 
@@ -220,7 +259,7 @@
 
     $offset = $itemsPerPage * ($page - 1);
     $query = '(' . $query . ") LIMIT $itemsPerPage OFFSET $offset";
-    
+
     $stmt = $conn->prepare($query);
     $stmt->execute($array);
 
@@ -311,9 +350,9 @@
     $offset = $itemsPerPage * ($page - 1);
 
     $stmt = $conn->prepare('SELECT COUNT(*), pedido.id
-                            FROM pedido 
-                            JOIN pedido_skill ON pedido_id = pedido.id 
-                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id 
+                            FROM pedido
+                            JOIN pedido_skill ON pedido_id = pedido.id
+                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id
                             JOIN users_pedido ON users_pedido.pedido_id = pedido.id AND owner = true
                             JOIN users ON users.id = users_pedido.users_id
                             WHERE users_skill.users_id = ? AND pedido.active = true AND users_pedido.users_id != ? AND users.active = true
@@ -329,9 +368,9 @@
     global $conn;
 
     $stmt = $conn->prepare('SELECT COUNT(*), pedido.id
-                            FROM pedido 
-                            JOIN pedido_skill ON pedido_id = pedido.id 
-                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id 
+                            FROM pedido
+                            JOIN pedido_skill ON pedido_id = pedido.id
+                            JOIN users_skill ON users_skill.skill_id = pedido_skill.skill_id
                             JOIN users_pedido ON users_pedido.pedido_id = pedido.id AND owner = true
                             JOIN users ON users.id = users_pedido.users_id
                             WHERE users_skill.users_id = ? AND pedido.active = true AND users_pedido.users_id != ? AND users.active = true

@@ -57,10 +57,11 @@
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-      if(!($check !== false)) {
-        /*echo "File is not an image.";*/
-        $_SESSION['error_message'] = "O ficheiro tem de ser uma imagem.";
+      // $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      $check = exif_imagetype($_FILES["fileToUpload"]["tmp_name"]);
+      // if(!($check !== false)) {
+      if($check != IMAGETYPE_GIF && $check != IMAGETYPE_JPEG && $check != IMAGETYPE_PNG) {
+        $_SESSION['error_message'] = "O ficheiro tem de ser uma imagem JPG, JPEG, PNG ou GIF.";
         die(header('Location: ../edit_usr_profile.php'));
       }
     }
@@ -70,7 +71,6 @@
     if (file_exists($possibleImagePath)) {
       $status = unlink($possibleImagePath); //remove the file
       if($status != true){
-        //$_SESSION['error_message'] = $possibleImagePath . '-> não consegue apagar isto';
         $_SESSION['error_message'] = 'Ocorreu um problema ao eliminar a imagem atual.';
         die(header('Location: ../edit_usr_profile.php'));
       }
