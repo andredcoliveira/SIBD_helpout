@@ -34,6 +34,8 @@
         $request_photo_paths[$k++] = getRequestPhoto($request['id']);
       }
       $k = 0;
+    } else {
+      die(header('Location: feed.php'));
     }
 
     $numberOfPages = ceil(numberOfMatchFeedRequests($_ID) / $itemsPerPage);

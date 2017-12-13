@@ -114,14 +114,8 @@
     }
   }
 
-  function editUser($name, $password, $date, $description, $user_id, $profession, $location) {
+    function editUser($name, $password, $date, $description, $user_id, $profession, $location) {
     global $conn;
-
-    //comentar esta parte??
-    /*if(!($name != false || $password != false || $date != false ||
-         $description != false || $profession !=  false || $location != false)) {
-      return false;
-    }*/
 
     $options = [
       'cost' => 12,

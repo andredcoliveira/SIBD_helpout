@@ -34,14 +34,14 @@
     $profession = getUserInfo($_ID)['profession'];
   } elseif(!$location) {
     $location = getUserInfo($_ID)['local'];
-  } else {
-    try {
-      editUser($name, $password, $date, $description, $_ID, $profession, $location);
-      editUserSkills($_ID, $skills);
-    } catch(PDOException $e) {
-      $_SESSION['error_message'] = $e->getMessage();
-      die(header('Location: ../edit_usr_profile.php'));
-    }
+  } 
+  
+  try {
+    editUser($name, $password, $date, $description, $_ID, $profession, $location);
+    editUserSkills($_ID, $skills);
+  } catch(PDOException $e) {
+    $_SESSION['error_message'] = $e->getMessage();
+    die(header('Location: ../edit_usr_profile.php'));
   }
 
 
