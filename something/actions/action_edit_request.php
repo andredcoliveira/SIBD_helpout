@@ -39,13 +39,9 @@
 
 
 
-	if(!isset($_FILES['fileToUpload'])) {
-
-  	} else if(isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
-		$_SESSION['success_message'] = 'Houve um problema com o upload da imagem.';
-    	die(header('Location: ../edit_request.php'));
-		/** DO NOTHING **/
-	} else {
+	if(!isset($_FILES['fileToUpload']) || $_FILES['fileToUpload']['error'] == UPLOAD_ERR_NO_FILE) {
+    /** DO NOTHING **/
+  	} else {
 		$extension = explode('.' , basename($_FILES["fileToUpload"]["name"]));
 		$extension = '.' . end($extension);
 
