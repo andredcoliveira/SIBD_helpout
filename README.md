@@ -9,3 +9,5 @@ The website is available at
 - https://web.fe.up.pt/~up201405639/helpout/
 
 A sample account for testing purposes is 'roblealerto' : 'roblealerto'.
+
+A clean version can be found in the directory 'sibd17g21'.
